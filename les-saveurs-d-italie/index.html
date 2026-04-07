@@ -98,7 +98,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--terracotta) 0%, #A34E2F 100%);
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1498579150354-977475b7ea0b?w=1200&q=80&fit=crop') center/cover no-repeat;
             color: var(--cream);
             padding: 7rem 2rem;
             text-align: center;
@@ -307,10 +307,16 @@
         }
 
         .story-image {
-            font-size: 6rem;
-            color: var(--terracotta);
             text-align: center;
-            opacity: 0.75;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
         /* Contact Section */
@@ -453,7 +459,7 @@
                     <p>Notre équipe passionnée connaît chaque référence et se fait un plaisir de vous conseiller sur les meilleurs accords, les origines régionales et les traditions culinaires de l'Italie.</p>
                 </div>
                 <div class="story-image">
-                    <i class="fas fa-store"></i>
+                    <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=800&q=80&fit=crop" alt="Fromages italiens premium">
                 </div>
             </div>
         </section>
@@ -552,7 +558,7 @@
             <h2>L'Italie à Paris</h2>
             <div class="story-content">
                 <div class="story-image">
-                    <i class="fas fa-heart"></i>
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800&q=80&fit=crop" alt="Délicatesse italienne - Charcuterie et fromage">
                 </div>
                 <div class="story-text">
                     <h3>Notre Philosophie</h3>

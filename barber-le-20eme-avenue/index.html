@@ -80,7 +80,7 @@
 
         .hero {
             margin-top: 80px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&q=80&fit=crop') center/cover no-repeat;
             color: #fff;
             padding: 140px 40px;
             text-align: center;
@@ -313,6 +313,13 @@
             color: #c9a96e;
             font-size: 18px;
             transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .gallery-item:hover {
@@ -531,21 +538,19 @@
                     <li>Sans rendez-vous ou sur rendez-vous</li>
                 </ul>
             </div>
-            <div style="background: rgba(201, 169, 110, 0.1); height: 400px; border: 1px solid rgba(201, 169, 110, 0.3); display: flex; align-items: center; justify-content: center; color: #666; font-size: 60px;">
-                <i class="fas fa-barber-pole"></i>
-            </div>
+            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80&fit=crop" alt="Barber cutting hair" style="width:100%; height:400px; object-fit:cover; border-radius:12px; box-shadow: 0 10px 40px rgba(201, 169, 110, 0.2);">
         </div>
     </section>
 
     <section id="gallery" class="section">
         <h2 class="section-title">Galerie</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
-            <div class="gallery-item"><i class="fas fa-image"></i></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80&fit=crop" alt="Barbershop interior"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80&fit=crop" alt="Barber cutting hair"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80&fit=crop" alt="Barber tools"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=80&fit=crop" alt="Professional barbershop setting"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80&fit=crop" alt="Precision barbering"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=80&fit=crop" alt="Professional tools and equipment"></div>
         </div>
     </section>
 
