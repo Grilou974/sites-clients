@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kat Pressing - Nettoyage Éco-Responsable Paris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d5016;
+            background: #f5faf8;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: #fff;
+            padding: 25px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(74, 144, 106, 0.1);
+            border-bottom: 2px solid #2D5016;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #2D5016;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 28px;
+            color: #8FAE6D;
+        }
+
+        nav a {
+            color: #2d5016;
+            text-decoration: none;
+            margin-left: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #2D5016;
+            opacity: 0.7;
+        }
+
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #2D5016 0%, #3d6b1f 100%);
+            color: #fff;
+            padding: 140px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .eco-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 72px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 45px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #2D5016;
+            padding: 16px 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #fff;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 54px;
+            font-weight: 600;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #2D5016;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #2D5016 50%, transparent 100%);
+        }
+
+        .about-content {
+            background: #fff;
+            padding: 50px;
+            border-left: 5px solid #2D5016;
+            box-shadow: 0 8px 30px rgba(45, 80, 22, 0.1);
+            border-radius: 6px;
+            margin-top: 40px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #4a4a4a;
+            line-height: 1.95;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-item {
+            background: #fff;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #e5f0e3;
+            border-radius: 6px;
+            transition: all 0.4s;
+        }
+
+        .value-item:hover {
+            border-color: #2D5016;
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 45px;
+            color: #2D5016;
+            margin-bottom: 15px;
+        }
+
+        .value-text {
+            font-weight: 700;
+            color: #2D5016;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 40px;
+            border: 2px solid #e5f0e3;
+            border-radius: 6px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2D5016 0%, #8FAE6D 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #2D5016;
+            box-shadow: 0 12px 40px rgba(45, 80, 22, 0.12);
+        }
+
+        .service-icon {
+            color: #2D5016;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .service-name {
+            font-weight: 700;
+            font-size: 16px;
+            color: #2D5016;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .service-price {
+            font-size: 28px;
+            color: #2D5016;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            color: #6a7a6f;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .eco-note {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e5f0e3;
+            font-size: 12px;
+            color: #2D5016;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .commitment-card {
+            background: linear-gradient(135deg, #f5faf8 0%, #eef5ec 100%);
+            padding: 45px;
+            border: 2px solid #2D5016;
+            text-align: center;
+            border-radius: 6px;
+            transition: all 0.4s;
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(45, 80, 22, 0.15);
+        }
+
+        .commitment-icon {
+            font-size: 48px;
+            color: #2D5016;
+            margin-bottom: 20px;
+        }
+
+        .commitment-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2D5016;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .commitment-text {
+            color: #5a6a5f;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: #fff;
+            padding: 40px;
+            border-left: 4px solid #2D5016;
+            border-radius: 6px;
+            box-shadow: 0 6px 25px rgba(45, 80, 22, 0.08);
+            transition: all 0.4s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(45, 80, 22, 0.12);
+        }
+
+        .testimonial-stars {
+            color: #2D5016;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .testimonial-text {
+            color: #4a4a4a;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #2D5016;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .info-block h3 {
+            font-size: 22px;
+            color: #2D5016;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .info-block p {
+            color: #4a4a4a;
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .info-block strong {
+            color: #2D5016;
+        }
+
+        .hours-table {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(45, 80, 22, 0.1);
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+            color: #4a4a4a;
+            font-size: 15px;
+        }
+
+        .hours-table strong {
+            color: #2D5016;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #2D5016 0%, #3d6b1f 100%);
+            padding: 60px;
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            box-shadow: 0 8px 30px rgba(45, 80, 22, 0.15);
+            min-height: 350px;
+        }
+
+        .map-placeholder i {
+            font-size: 70px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .map-placeholder p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        .map-placeholder strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        footer {
+            background: #f0f5f2;
+            color: #6a7a6f;
+            text-align: center;
+            padding: 40px 40px;
+            border-top: 2px solid #2D5016;
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        footer p:first-child {
+            color: #2D5016;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .services-grid, .values-grid, .commitment-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-leaf"></i>Kat Pressing</div>
+            <div>
+                <a href="#about">Démarche</a>
+                <a href="#services">Services</a>
+                <a href="#commitment">Engagements</a>
+                <a href="#reviews">Avis</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eco-badge"><i class="fas fa-leaf"></i> Éco-Responsable Certifié</span>
+            <h1>Kat Pressing</h1>
+            <p>Nettoyage Qualitatif, Écologie Respectée</p>
+            <a href="#services" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Notre Démarche Éco-Responsable</h2>
+        <div class="about-content">
+            <p>Kat Pressing c'est le choix conscient pour vos vêtements. Nous combinons excellence du nettoyage et engagement écologique pour offrir un service respectueux de la planète et de vos pièces.</p>
+            <p>Nos procédés innovants utilisent des solvants biodégradables et nos pratiques minimisent l'impact environnemental à chaque étape. Chaque vêtement reçoit un traitement minutieux qui prolonge sa vie et sa beauté, réduisant ainsi la consommation textile.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: #f0f7f3;">
+        <h2 class="section-title">Nos Services & Tarifs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-vest"></i></div>
+                <div class="service-name">Costume</div>
+                <div class="service-price">16€</div>
+                <div class="service-desc">Veste et pantalon ensemble</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Nettoyage Délicat Bio</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-dress"></i></div>
+                <div class="service-name">Robe</div>
+                <div class="service-price">14€</div>
+                <div class="service-desc">Entretien premium délicat</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Traitement Écologique</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-coat"></i></div>
+                <div class="service-name">Manteau</div>
+                <div class="service-price">18€</div>
+                <div class="service-desc">Nettoyage complet préservant</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Solvants Éco-Certifiés</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shirt"></i></div>
+                <div class="service-name">Chemise</div>
+                <div class="service-price">5€</div>
+                <div class="service-desc">Nettoyage standard et repassage</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Bio-Nettoyage</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-pants"></i></div>
+                <div class="service-name">Pantalon</div>
+                <div class="service-price">7€</div>
+                <div class="service-desc">Nettoyage délicat précis</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Repassage Inclus</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-sparkles"></i></div>
+                <div class="service-name">Soies & Délicats</div>
+                <div class="service-price">9€</div>
+                <div class="service-desc">Soin spécialisé haute couture</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Traitement Respectueux</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scissors"></i></div>
+                <div class="service-name">Retouches</div>
+                <div class="service-price">À partir de 7€</div>
+                <div class="service-desc">Ourlets, fermetures, adaptations</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Allonger la Vie</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                <div class="service-name">Service Rapide</div>
+                <div class="service-price">+40%</div>
+                <div class="service-desc">Traitement express 48h</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Traitement Expresse</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-umbrella"></i></div>
+                <div class="service-name">Imperméabilisant</div>
+                <div class="service-price">12€</div>
+                <div class="service-desc">Protection écologique durable</div>
+                <div class="eco-note"><i class="fas fa-leaf"></i> Formule Naturelle</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="commitment" class="section">
+        <h2 class="section-title">Nos Engagements Écologiques</h2>
+        <div class="commitment-grid">
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-droplet"></i></div>
+                <div class="commitment-title">Solvants Biodégradables</div>
+                <div class="commitment-text">Utilisation exclusive de solvants respectueux de l'environnement et certifiés écologiques.</div>
+            </div>
+
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-water"></i></div>
+                <div class="commitment-title">Économie d'Eau</div>
+                <div class="commitment-text">Systèmes de récupération et recyclage de l'eau. Réduction drastique de notre consommation.</div>
+            </div>
+
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-leaf"></i></div>
+                <div class="commitment-title">Durabilité des Vêtements</div>
+                <div class="commitment-text">Chaque traitement prolonge la vie de vos pièces, réduisant la consommation textile mondiale.</div>
+            </div>
+
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-truck"></i></div>
+                <div class="commitment-title">Livraison Verte</div>
+                <div class="commitment-text">Livraison à domicile éco-responsable avec vélo-cargo pour réduire les émissions carbone.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section" style="background: #f0f7f3;">
+        <h2 class="section-title">Témoignages</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"Enfin un pressing qui prend soin des vêtements et de la planète ! Résultats impeccables et conscience écologique."</div>
+                <div class="testimonial-author">- Sophie M.</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"Service excellent, équipe très professionnelle. Je suis ravi de soutenir une entreprise vraiment écologique."</div>
+                <div class="testimonial-author">- Olivier B.</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"La qualité de nettoyage est supérieure et je peux vraiment soutenir leurs valeurs environnementales."</div>
+                <div class="testimonial-author">- Claire D.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Nous Trouver</h2>
+        <div class="contact-section">
+            <div class="info-block">
+                <h3><i class="fas fa-map-marker-alt"></i> Adresse</h3>
+                <p><strong>88 Rue de la Roquette</strong><br>75011 Paris</p>
+
+                <h3 style="margin-top: 35px;"><i class="fas fa-phone"></i> Téléphone</h3>
+                <p><strong>06 40 50 62 25</strong></p>
+                <p style="color: #6a7a6f; font-size: 14px;">Livraison éco-responsable à domicile disponible</p>
+
+                <h3 style="margin-top: 35px;"><i class="fas fa-clock"></i> Horaires</h3>
+                <table class="hours-table">
+                    <tr>
+                        <td><strong>Lundi - Vendredi</strong></td>
+                        <td>8h30 - 19h00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Samedi</strong></td>
+                        <td>9h00 - 17h30</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dimanche</strong></td>
+                        <td>Fermé</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <p><strong>Métro Voltaire</strong></p>
+                <p>Ligne 9</p>
+                <p style="margin-top: 15px; font-size: 15px;">À 5 minutes à pied</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Kat Pressing - Nettoyage Éco-Responsable</p>
+        <p>88 Rue de la Roquette, 75011 Paris | 06 40 50 62 25</p>
+        <p>&copy; 2026 Tous droits réservés. Engagement environnemental certifié.</p>
+    </footer>
+</body>
+</html>

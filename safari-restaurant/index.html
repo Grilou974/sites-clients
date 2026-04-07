@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safari Restaurant - Cuisine Africaine à Paris</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: #3a3a3a;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8B6F47 0%, #A0826D 35%, #C19A6B 70%, #D4A574 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(0,0,0,0.08) 60px, rgba(0,0,0,0.08) 120px),
+                repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(184,134,11,0.06) 60px, rgba(184,134,11,0.06) 120px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #2D6A2F;
+            color: #D4A574;
+            padding: 16px 48px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 2px solid #D4A574;
+        }
+
+        .cta-button:hover {
+            background: #D4A574;
+            color: #2D6A2F;
+            transform: translateY(-3px);
+        }
+
+        /* HISTORY SECTION */
+        .history {
+            padding: 90px 40px;
+            background: #F9F5F0;
+            position: relative;
+        }
+
+        .history::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #2D6A2F, transparent);
+        }
+
+        .history h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2D6A2F;
+            font-weight: 700;
+        }
+
+        .history-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .history p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        /* SPECIALTIES SECTION */
+        .specialties {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .specialties h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #2D6A2F;
+            font-weight: 700;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specialty {
+            background: #F9F5F0;
+            padding: 40px;
+            border-radius: 8px;
+            border-top: 4px solid #2D6A2F;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .specialty::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(184,134,11,0.04) 8px, rgba(184,134,11,0.04) 16px);
+            pointer-events: none;
+        }
+
+        .specialty:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(45,106,47,0.15);
+        }
+
+        .specialty-icon {
+            font-size: 2.2rem;
+            color: #C19A6B;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .specialty h3 {
+            color: #2D6A2F;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .specialty p {
+            color: #666;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        /* AMBIANCE SECTION */
+        .ambiance {
+            padding: 90px 40px;
+            background: #F9F5F0;
+            text-align: center;
+        }
+
+        .ambiance h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #2D6A2F;
+            font-weight: 700;
+        }
+
+        .ambiance-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .ambiance p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .ambiance-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .ambiance-feature {
+            padding: 25px;
+        }
+
+        .ambiance-feature-icon {
+            font-size: 2rem;
+            color: #2D6A2F;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .ambiance-feature-title {
+            font-weight: 600;
+            color: #3a3a3a;
+            margin-bottom: 8px;
+        }
+
+        /* LOCATION SECTION */
+        .location {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .location h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #2D6A2F;
+            font-weight: 700;
+        }
+
+        .location-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .location-info h3 {
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            color: #2D6A2F;
+            font-weight: 600;
+        }
+
+        .location-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .location-info a {
+            color: #2D6A2F;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .location-info a:hover {
+            color: #C19A6B;
+        }
+
+        .location-map {
+            background: linear-gradient(135deg, rgba(45,106,47,0.1) 0%, rgba(193,154,107,0.1) 100%);
+            border-radius: 8px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #E8DCD0;
+        }
+
+        .location-map p {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #C19A6B;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            .history h2, .specialties h2, .ambiance h2, .location h2 {
+                font-size: 2.2rem;
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .ambiance-features {
+                grid-template-columns: 1fr;
+            }
+
+            .location-wrapper {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Safari</h1>
+            <p>Restaurant Africain</p>
+            <a href="#location" class="cta-button">Réserver une table</a>
+        </div>
+    </section>
+
+    <!-- HISTORY SECTION -->
+    <section class="history">
+        <h2>Notre Histoire</h2>
+        <div class="history-content">
+            <p>
+                Safari est né du rêve de partager l'âme vibrante de l'Afrique à travers sa gastronomie authentique.
+                Depuis notre ouverture, nous accueillons des voyageurs et des amateurs de cuisine généreuse dans un
+                univers chaleureux et convivial.
+            </p>
+            <p>
+                Nos chefs, originaires de différentes régions africaines, créent ensemble une symphonie culinaire
+                unique, où chaque plat raconte une histoire de tradition, de passion et de savoir-faire transmis
+                de génération en génération.
+            </p>
+        </div>
+    </section>
+
+    <!-- SPECIALTIES SECTION -->
+    <section class="specialties">
+        <h2>Nos Spécialités</h2>
+        <div class="specialties-grid">
+            <div class="specialty">
+                <i class="fas fa-fan specialty-icon"></i>
+                <h3>Mafé Sénégalais</h3>
+                <p>Viande tendre dans une sauce onctueuse à base d'arachide naturelle, légumes frais et riz blanc.
+                Un classique incontournable qui incarne la richesse de la cuisine ouest-africaine.</p>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-fish specialty-icon"></i>
+                <h3>Thiéboudienne</h3>
+                <p>Riz volcanisé aux poissons frais du jour, légumes de saison et sauce tomate savante.
+                Le plat national sénégalais, préparé avec les secrets familiaux de nos cuisiniers.</p>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-drumstick-bite specialty-icon"></i>
+                <h3>Poulet Yassa</h3>
+                <p>Poulet délicat mariné aux oignons caramélisés et citron frais, grillé à la perfection.
+                Une explosion de saveurs douces et acidulées, signature de la Guinée-Bissau.</p>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-leaf specialty-icon"></i>
+                <h3>Ragoût de Légumes</h3>
+                <p>Assortiment de légumes de saison cuits lentement dans une sauce généreuse et savante.
+                Parfait en accompagnement ou comme plat végétarien complet et nourrissant.</p>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-bowl-food specialty-icon"></i>
+                <h3>Couscous Africain</h3>
+                <p>Semoule fine dorée, légumes variés et viande d'agneau tendre. Préparé selon les traditions
+                maghrébines, un voyage culinaire à travers le désert.</p>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-glass-cheers specialty-icon"></i>
+                <h3>Buffet Communautaire</h3>
+                <p>Assiette généreuse avec nos meilleures spécialités. Idéale pour les groupes et les explorateurs
+                culinaires qui désirent découvrir toutes nos saveurs en une seule visite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMBIANCE SECTION -->
+    <section class="ambiance">
+        <h2>L'Ambiance</h2>
+        <div class="ambiance-content">
+            <p>
+                Chez Safari, l'atmosphère est aussi riche que nos mets. Décoration authentique, couleurs chaleureuses
+                et musique africaine créent une immersion totale. Notre espace respire l'hospitalité généreuse et la
+                convivialité qui caractérisent le continent africain.
+            </p>
+        </div>
+        <div class="ambiance-features">
+            <div class="ambiance-feature">
+                <i class="fas fa-music ambiance-feature-icon"></i>
+                <div class="ambiance-feature-title">Musique Authentique</div>
+            </div>
+            <div class="ambiance-feature">
+                <i class="fas fa-palette ambiance-feature-icon"></i>
+                <div class="ambiance-feature-title">Décor Traditionnel</div>
+            </div>
+            <div class="ambiance-feature">
+                <i class="fas fa-handshake ambiance-feature-icon"></i>
+                <div class="ambiance-feature-title">Accueil Chaleureux</div>
+            </div>
+            <div class="ambiance-feature">
+                <i class="fas fa-users ambiance-feature-icon"></i>
+                <div class="ambiance-feature-title">Moments Partagés</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section class="location" id="location">
+        <h2>Nous Trouver</h2>
+        <div class="location-wrapper">
+            <div class="location-info">
+                <h3>Informations Pratiques</h3>
+                <p><strong>Adresse :</strong><br>22 Rue Doudeauville<br>75018 Paris (Montmartre)</p>
+                <p><strong>Téléphone :</strong><br>À convenir sur place</p>
+                <p><strong>Horaires :</strong><br>
+                    Mardi - Jeudi : 12h00 - 23h00<br>
+                    Vendredi - Samedi : 12h00 - 00h30<br>
+                    Dimanche : 12h00 - 23h00<br>
+                    <em>Lundi : Fermé</em>
+                </p>
+                <p><strong>Réservations :</strong> Conseillées pour les groupes</p>
+            </div>
+            <div class="location-map">
+                <p>Google Maps<br><em>(Intégration personnalisée)</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Safari Restaurant. Tous droits réservés.</p>
+        <p>Cuisine africaine authentique • Montmartre, Paris 18e</p>
+    </footer>
+</body>
+</html>

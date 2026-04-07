@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aux Viandes de Montmartre - Boucherie Artisanale Paris 18e</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            color: #3d3d3d;
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f3f0 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8b1a1a 0%, #a82a2a 50%, #c43030 100%);
+            color: #fff5f0;
+            padding: 1.5rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            color: #d4a84a;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #fff5f0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #d4a84a;
+            border-bottom-color: #d4a84a;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #8b1a1a 0%, #a82a2a 30%, #c43030 70%, #d44141 100%);
+            color: #fff5f0;
+            padding: 10rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 168, 74, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 168, 74, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.98;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a84a 0%, #e8be5a 100%);
+            color: #8b1a1a;
+            padding: 1.1rem 3rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #e8be5a 0%, #d4a84a 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: #8b1a1a;
+            position: relative;
+            padding-bottom: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #d4a84a, transparent);
+            border-radius: 2px;
+        }
+
+        #about {
+            background: linear-gradient(180deg, #faf8f5 0%, #fff5f0 100%);
+        }
+
+        .about-content {
+            background: white;
+            padding: 3.5rem;
+            border-left: 6px solid #a82a2a;
+            border-radius: 2px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-content p {
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #3d3d3d;
+        }
+
+        .about-content strong {
+            color: #8b1a1a;
+        }
+
+        #services {
+            background: linear-gradient(180deg, #f5f3f0 0%, #faf8f5 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #a82a2a;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 168, 74, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #a82a2a;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #8b1a1a;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .price-range {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e8dcd4;
+            color: #a82a2a;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .commitment {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .commitment-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .commitment-icon {
+            font-size: 2.5rem;
+            color: #a82a2a;
+            margin-bottom: 1rem;
+        }
+
+        .commitment-item h4 {
+            font-family: 'Playfair Display', serif;
+            color: #8b1a1a;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        #contact {
+            background: linear-gradient(180deg, #faf8f5 0%, #fff5f0 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            margin-bottom: 2.5rem;
+            display: flex;
+            gap: 1.8rem;
+            align-items: flex-start;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #a82a2a;
+            min-width: 50px;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .contact-text h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.6rem;
+            color: #8b1a1a;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-text p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .contact-text a {
+            color: #a82a2a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: #8b1a1a;
+        }
+
+        .montmartre-box {
+            background: linear-gradient(135deg, #8b1a1a 0%, #6b1a1a 100%);
+            color: #fff5f0;
+            padding: 2.5rem;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .montmartre-box h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .montmartre-box i {
+            font-size: 2rem;
+            color: #d4a84a;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #8b1a1a;
+            color: #fff5f0;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(212, 168, 74, 0.2);
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+        }
+
+        footer strong {
+            color: #d4a84a;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-bacon"></i>
+                Aux Viandes de Montmartre
+            </div>
+            <ul>
+                <li><a href="#about">Boucherie</a></li>
+                <li><a href="#services">Viandes</a></li>
+                <li><a href="#commitment">Engagement</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Aux Viandes de Montmartre</h1>
+            <p>Boucherie Artisanale de Tradition • Qualité Supérieure • Sélection Rigoureuse</p>
+            <p style="opacity: 0.95; font-size: 1rem; margin-bottom: 2rem;">49bis Rue Custine • Paris 18e • Cœur de Montmartre</p>
+            <a href="#contact" class="cta-button">Nous Contacter</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">Notre Boucherie</div>
+        <div class="about-content">
+            <p>
+                Au cœur du quartier emblématique de Montmartre, Aux Viandes de Montmartre perpétue depuis des années la <strong>tradition de la boucherie artisanale française</strong>. Nos boulangers charcutiers conjuguent expertise ancestrale et passion pour la qualité.
+            </p>
+            <p>
+                Chaque morceau de viande sélectionné répond à des <strong>critères stricts de qualité</strong>. Nous travaillons exclusivement avec des éleveurs de confiance, privilégiant les méthodes d'élevage respectueuses du bien-être animal et garantissant une viande saine et savoureuse.
+            </p>
+            <p>
+                Notre équipe de charcutiers transforme ces matières premières noblement en <strong>préparations artisanales</strong> : pâtés, terrines, saucisses et spécialités traditionnelles. Montmartre fait confiance à nos générations de savoir-faire et à notre engagement envers l'excellence.
+            </p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-title">Nos Viandes</div>
+
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #8b1a1a; margin-bottom: 2rem; text-align: center;">Viandes Fraîches</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-cow"></i></div>
+                <h3>Bœuf de Qualité Premium</h3>
+                <p>Côtes, rumsteck, entrecôte. Sélection rigoureuse. Decoupe sur demande selon vos besoins.</p>
+                <div class="price-range">18€ à 35€/kg selon coupe</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                <h3>Veau de Grain</h3>
+                <p>Escalope, rôti, blanquette. Viande tendre et délicate pour préparations raffinées.</p>
+                <div class="price-range">22€ à 32€/kg</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-feather"></i></div>
+                <h3>Agneau Fermier</h3>
+                <p>Côtes, gigot, épaule. Agneau de montagne aux saveurs intenses et délicates.</p>
+                <div class="price-range">20€ à 28€/kg</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-drum-steelpan"></i></div>
+                <h3>Volaille Fermière</h3>
+                <p>Poulets label, canards, pintades. Élevage à l'air libre, saveur authentique garantie.</p>
+                <div class="price-range">8€ à 18€/kg</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scroll"></i></div>
+                <h3>Pièces de Choix</h3>
+                <p>Tartares, viandes à griller, viandes en sauce. Sélection quotidienne des meilleures pièces.</p>
+                <div class="price-range">16€ à 40€/kg</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-gift"></i></div>
+                <h3>Plateaux Assortis</h3>
+                <p>Plateaux de charcuterie, compositions sur mesure pour apéritifs et réceptions.</p>
+                <div class="price-range">Sur devis</div>
+            </div>
+        </div>
+
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #8b1a1a; margin-top: 4rem; margin-bottom: 2rem; text-align: center;">Charcuterie & Traiteur</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-wine-bottle"></i></div>
+                <h3>Pâtés Artisanaux</h3>
+                <p>Pâtés maison, terrines, foie gras. Recettes familiales respectées depuis des décennies.</p>
+                <div class="price-range">12€ à 28€/boîte</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-sausage"></i></div>
+                <h3>Saucisses & Spécialités</h3>
+                <p>Andouillettes, boudin, saucisses. Préparations charcutières traditionnelles françaises.</p>
+                <div class="price-range">10€ à 22€/kg</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Plats Cuisinés</h3>
+                <p>Préparations traiteur : blanquettes, civets, ragoûts. Qualité gastronomique maison.</p>
+                <div class="price-range">Sur commande</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="commitment">
+        <div class="section-title">Notre Engagement Qualité</div>
+        <div class="commitment">
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h4>Bien-être Animal</h4>
+                <p>Sélection exclusive d'éleveurs respectueux. Traçabilité complète et transparence.</p>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-check-double"></i></div>
+                <h4>Fraîcheur Garantie</h4>
+                <p>Viandes travaillées quotidiennement. Aucun produit congelé ne côtoie nos sélections.</p>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-hammer"></i></div>
+                <h4>Savoir-faire Artisanal</h4>
+                <p>Générations de boulangers charcutiers. Techniques traditionnelles perpétuées.</p>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-globe"></i></div>
+                <h4>Soutien Local</h4>
+                <p>Partenaires régionaux privilégiés. Circuits courts et économie locale.</p>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-star"></i></div>
+                <h4>Goût & Saveur</h4>
+                <p>Viande riche en saveur. Caractère authentique de chaque race et élevage.</p>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-icon"><i class="fas fa-users"></i></div>
+                <h4>Service Personnalisé</h4>
+                <p>Conseil expert. Recommandations culinaires. Découpe sur mesure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">Le Quartier Montmartre</div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-text">
+                        <h4>Localisation</h4>
+                        <p>49bis Rue Custine<br>75018 Paris<br>Montmartre</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-text">
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:+33186042099">01 86 04 20 99</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-text">
+                        <h4>Horaires</h4>
+                        <p>Lun-Sam: 8h00 - 19h30<br>Dimanche: 8h00 - 13h00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="montmartre-box">
+                <i class="fas fa-landmark"></i>
+                <h4>Cœur de Montmartre</h4>
+                <p>Au pied de la basilique du Sacré-Cœur, Aux Viandes de Montmartre est l'établissement de référence du quartier depuis des générations. Métro Abbesses (ligne 12) à proximité. Venez découvrir nos viandes sélectionnées et nos spécialités charcutières dans une atmosphère authentique montmartroise.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Aux Viandes de Montmartre</strong> &copy; 2024. Tous droits réservés.</p>
+        <p>Boucherie artisanale • Qualité supérieure • Charcuterie maison • Tradition depuis des décennies</p>
+    </footer>
+</body>
+</html>

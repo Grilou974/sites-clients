@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Galibot | Cuisine du Nord – Paris 2e</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charbon:    #18181A;
+      --anthracite: #2A2A2F;
+      --ardoise:    #3D3D45;
+      --biere:      #C8860A;
+      --houblon:    #E8A830;
+      --creme:      #F0E8D8;
+      --brique:     #8B3A1A;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--charbon); color: var(--creme); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: var(--charbon);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 72px;
+      border-bottom: 2px solid var(--biere);
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      color: var(--creme); font-size: 1.4rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .nav-logo small { color: var(--biere); font-size: 0.65rem; letter-spacing: 0.15em; display: block; margin-top: -4px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: #9A9090; text-decoration: none; font-size: 0.82rem;
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--houblon); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--charbon);
+      display: flex; padding-top: 72px;
+    }
+    .hero-left {
+      flex: 1; padding: 80px 64px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; right: 0; top: 15%; bottom: 15%;
+      width: 1px; background: linear-gradient(to bottom, transparent, var(--biere) 50%, transparent);
+    }
+    .hero-right {
+      flex: 0.85;
+      background: var(--anthracite);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 64px 48px; gap: 32px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--biere); color: var(--charbon);
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 6px 16px; font-weight: 700; margin-bottom: 28px; align-self: flex-start;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 700;
+      text-transform: uppercase; line-height: 0.95;
+      color: var(--creme); margin-bottom: 8px;
+    }
+    .hero h1 span { color: var(--biere); }
+    .hero-tagline {
+      font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 300;
+      color: #8A8080; font-size: 1.2rem; margin: 20px 0 40px;
+    }
+    .hero-ctas { display: flex; gap: 16px; }
+    .btn-beer {
+      background: var(--biere); color: var(--charbon);
+      padding: 14px 32px; font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background .2s;
+    }
+    .btn-beer:hover { background: var(--houblon); }
+    .btn-ghost-light {
+      border: 1px solid rgba(240,232,216,0.3); color: var(--creme);
+      padding: 14px 32px; font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: border-color .2s, color .2s;
+    }
+    .btn-ghost-light:hover { border-color: var(--creme); }
+    .hero-specialites {
+      width: 100%; display: flex; flex-direction: column; gap: 0;
+    }
+    .hero-spec {
+      padding: 20px 0; border-bottom: 1px solid rgba(240,232,216,0.08);
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .spec-name { font-family: 'Source Serif 4', serif; font-size: 1.05rem; color: var(--creme); }
+    .spec-origin { font-size: 0.78rem; color: #6A6060; letter-spacing: 0.1em; text-transform: uppercase; }
+    .spec-price { color: var(--biere); font-family: 'Oswald', sans-serif; font-size: 1.1rem; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-overline {
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--biere); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+      text-transform: uppercase; line-height: 1; margin-bottom: 24px;
+      color: var(--creme);
+    }
+    .section-rule { width: 48px; height: 3px; background: var(--biere); margin-bottom: 48px; }
+
+    /* ─── L'ESPRIT ─── */
+    .esprit { background: var(--anthracite); }
+    .esprit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .esprit-body p { color: #9A9080; line-height: 1.85; margin-bottom: 18px; }
+    .esprit-body strong { color: var(--houblon); }
+    .esprit-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .esprit-tile {
+      background: var(--ardoise); padding: 32px 24px; text-align: center;
+    }
+    .esprit-tile .e-num {
+      font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 700;
+      color: var(--biere); line-height: 1;
+    }
+    .esprit-tile .e-label { font-size: 0.78rem; color: #6A6A70; text-transform: uppercase; letter-spacing: 0.12em; margin-top: 6px; }
+
+    /* ─── CARTE ─── */
+    .carte { background: var(--charbon); }
+    .carte-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin-top: 16px; }
+    .carte-col { background: var(--anthracite); padding: 36px 28px; }
+    .carte-col-title {
+      font-family: 'Oswald', sans-serif; text-transform: uppercase;
+      color: var(--biere); font-size: 0.88rem; letter-spacing: 0.18em;
+      margin-bottom: 28px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(200,134,10,0.25);
+    }
+    .plat { margin-bottom: 22px; }
+    .plat-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    .plat-nom { color: var(--creme); font-size: 0.93rem; font-weight: 600; }
+    .plat-prix { color: var(--biere); font-family: 'Oswald', sans-serif; font-size: 1rem; }
+    .plat-desc { color: #6A6060; font-size: 0.8rem; line-height: 1.55; }
+
+    /* ─── BIÈRES ─── */
+    .bieres { background: var(--ardoise); }
+    .bieres-intro { color: #9A9080; max-width: 560px; line-height: 1.8; margin-bottom: 48px; }
+    .biere-grid { display: flex; gap: 3px; }
+    .biere-card {
+      flex: 1; background: var(--anthracite);
+      padding: 36px 24px; text-align: center;
+      border-top: 4px solid var(--biere);
+    }
+    .biere-name { font-family: 'Oswald', sans-serif; font-size: 1.3rem; color: var(--creme); text-transform: uppercase; margin-bottom: 8px; }
+    .biere-origin { font-size: 0.75rem; color: var(--biere); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+    .biere-desc { color: #7A7070; font-size: 0.85rem; line-height: 1.65; }
+    .biere-price { color: var(--houblon); font-family: 'Oswald', sans-serif; font-size: 1.4rem; margin-top: 16px; }
+
+    /* ─── CONTACT ─── */
+    .contact { background: var(--charbon); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-info p { color: #8A8080; line-height: 1.8; margin-bottom: 12px; }
+    .contact-info strong { color: var(--creme); }
+    .contact-tel {
+      margin-top: 32px; display: flex; align-items: center; gap: 12px;
+    }
+    .contact-tel a {
+      font-family: 'Oswald', sans-serif; font-size: 1.8rem; color: var(--biere);
+      text-decoration: none;
+    }
+    .form-dark { display: flex; flex-direction: column; gap: 12px; }
+    .form-dark input, .form-dark select {
+      background: var(--anthracite); border: 1px solid var(--ardoise);
+      color: var(--creme); padding: 14px 18px; font-size: 0.88rem;
+      font-family: 'Inter', sans-serif; outline: none;
+    }
+    .form-dark input::placeholder { color: #4A4A50; }
+    .form-dark select option { background: var(--anthracite); }
+    .btn-submit {
+      background: var(--biere); color: var(--charbon);
+      padding: 16px; font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; border: none; transition: background .2s;
+    }
+    .btn-submit:hover { background: var(--houblon); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0E0E10; border-top: 2px solid var(--biere);
+      text-align: center; padding: 40px 24px;
+    }
+    .footer-name { font-family: 'Oswald', sans-serif; font-size: 1.8rem; color: var(--creme); text-transform: uppercase; letter-spacing: 0.08em; }
+    .footer-sub { color: var(--biere); font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; margin: 6px 0 20px; }
+    .footer-addr { color: #5A5050; font-size: 0.82rem; }
+    .footer-copy { margin-top: 20px; color: #3A3030; font-size: 0.72rem; }
+
+    @media (max-width: 900px) {
+      .hero { flex-direction: column; }
+      .hero-left { padding: 60px 32px; }
+      .hero-left::after { display: none; }
+      .hero-right { padding: 40px 32px; }
+      .esprit-grid, .contact-grid, .carte-cols { grid-template-columns: 1fr; }
+      .biere-grid { flex-direction: column; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Le Galibot<small>Cuisine du Nord · Paris</small></div>
+  <ul class="nav-links">
+    <li><a href="#esprit">L'Esprit</a></li>
+    <li><a href="#carte">La Carte</a></li>
+    <li><a href="#bieres">Bières</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">🍺 Ch'Nord à Paris</div>
+    <h1>Le<br/><span>Galibot</span></h1>
+    <p class="hero-tagline">L'authenticité du Nord, au cœur du 2e</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-beer">Réserver</a>
+      <a href="#carte" class="btn-ghost-light">La Carte</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-specialites">
+      <div class="hero-spec">
+        <div>
+          <div class="spec-name">Carbonade flamande</div>
+          <div class="spec-origin">Nord · Tradition</div>
+        </div>
+        <div class="spec-price">22 €</div>
+      </div>
+      <div class="hero-spec">
+        <div>
+          <div class="spec-name">Potjevleesch maison</div>
+          <div class="spec-origin">Dunkerque · Gelée</div>
+        </div>
+        <div class="spec-price">18 €</div>
+      </div>
+      <div class="hero-spec">
+        <div>
+          <div class="spec-name">Welsh rarebit au Maroilles</div>
+          <div class="spec-origin">Nord-Pas-de-Calais</div>
+        </div>
+        <div class="spec-price">19 €</div>
+      </div>
+      <div class="hero-spec">
+        <div>
+          <div class="spec-name">Moules marinières</div>
+          <div class="spec-origin">Côte d'Opale</div>
+        </div>
+        <div class="spec-price">24 €</div>
+      </div>
+      <div class="hero-spec" style="border-bottom:none;">
+        <div>
+          <div class="spec-name">Gaufres de Lille au sucre</div>
+          <div class="spec-origin">Dessert · Tradition</div>
+        </div>
+        <div class="spec-price">7 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L'ESPRIT -->
+<section class="esprit" id="esprit">
+  <div class="section-inner">
+    <div class="esprit-grid">
+      <div class="esprit-body">
+        <p class="section-overline">Notre histoire</p>
+        <h2 class="section-title">Ch'ti au cœur de Paris</h2>
+        <div class="section-rule"></div>
+        <p>Le Galibot, c'est un bout du <strong>Nord-Pas-de-Calais</strong> transplanté rue Paul Lelong. Un ancien terme minier pour désigner l'apprenti — ici, c'est la sincérité et l'apprentissage continu de la cuisine de terroir nordiste qui sont à l'honneur.</p>
+        <p>La cuisine du Nord, c'est une cuisine de convivialité, de partage, de <strong>saveurs franches</strong> et de réconfort. Carbonades, welsh, potjevleesch, lapin à la bière de Lille : des plats qui rassemblent autour de la table.</p>
+        <p>Une sélection de <strong>bières artisanales</strong> du Nord accompagne chaque plat — de la Choulette Ambrée à l'Abbaye de Vaucelles.</p>
+      </div>
+      <div class="esprit-tiles">
+        <div class="esprit-tile">
+          <div class="e-num">12</div>
+          <div class="e-label">Bières du Nord</div>
+        </div>
+        <div class="esprit-tile">
+          <div class="e-num">100%</div>
+          <div class="e-label">Produits locaux</div>
+        </div>
+        <div class="esprit-tile">
+          <div class="e-num">Fait</div>
+          <div class="e-label">Maison chaque jour</div>
+        </div>
+        <div class="esprit-tile">
+          <div class="e-num">2e</div>
+          <div class="e-label">Arrondissement Paris</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE -->
+<section class="carte" id="carte">
+  <div class="section-inner">
+    <p class="section-overline">À la carte</p>
+    <h2 class="section-title">Les Spécialités du Nord</h2>
+    <div class="section-rule"></div>
+    <div class="carte-cols">
+      <div class="carte-col">
+        <div class="carte-col-title">Entrées</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Soupe à la bière</span><span class="plat-prix">10 €</span></div>
+          <div class="plat-desc">Bière de garde, croûtons grillés, comté râpé</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Ficelle Picarde</span><span class="plat-prix">13 €</span></div>
+          <div class="plat-desc">Crêpe fourrée champignons, jambon, crème</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Salade au Maroilles chaud</span><span class="plat-prix">14 €</span></div>
+          <div class="plat-desc">Mâche, lardons, vinaigrette miel-moutarde</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Potjevleesch maison</span><span class="plat-prix">18 €</span></div>
+          <div class="plat-desc">Terrine froide de veau, poulet, lapin en gelée</div>
+        </div>
+      </div>
+      <div class="carte-col">
+        <div class="carte-col-title">Plats Nordistes</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Carbonade flamande</span><span class="plat-prix">22 €</span></div>
+          <div class="plat-desc">Bœuf mijoté à la bière brune, pain d'épice, frites</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Welsh rarebit au Maroilles</span><span class="plat-prix">19 €</span></div>
+          <div class="plat-desc">Toast fondant, bière blonde, fromage gratiné</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Moules marinières</span><span class="plat-prix">24 €</span></div>
+          <div class="plat-desc">Moules de Boulogne, crème, échalotes, frites</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Lapin à la bière de Lille</span><span class="plat-prix">26 €</span></div>
+          <div class="plat-desc">Lapin fermier, moutarde à l'ancienne, légumes racines</div>
+        </div>
+      </div>
+      <div class="carte-col">
+        <div class="carte-col-title">Desserts & Fromages</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Plateau de fromages nordistes</span><span class="plat-prix">14 €</span></div>
+          <div class="plat-desc">Maroilles, Mimolette, Vieux Boulogne, confiture</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Gaufres de Lille</span><span class="plat-prix">7 €</span></div>
+          <div class="plat-desc">Au sucre vergeoise, chantilly maison</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Tarte au sucre flamande</span><span class="plat-prix">8 €</span></div>
+          <div class="plat-desc">Cassonade, beurre demi-sel, pâte briochée</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-nom">Café gourmand nordiste</span><span class="plat-prix">9 €</span></div>
+          <div class="plat-desc">Café, mini-gaufre, spéculoos, bonbon de Cambrai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIÈRES -->
+<section class="bieres" id="bieres">
+  <div class="section-inner">
+    <p class="section-overline">Sélection</p>
+    <h2 class="section-title">Bières du Nord</h2>
+    <div class="section-rule"></div>
+    <p class="bieres-intro">Une sélection de brasseries artisanales du Nord-Pas-de-Calais, pour compléter vos plats ou simplement vous désaltérer après une longue journée.</p>
+    <div class="biere-grid">
+      <div class="biere-card">
+        <div class="biere-name">La Choulette Ambrée</div>
+        <div class="biere-origin">Brasserie La Choulette · Hordain</div>
+        <div class="biere-desc">Bière ambrée de garde, notes caramel et pain grillé. La parfaite accompagnatrice d'une carbonade.</div>
+        <div class="biere-price">6 €</div>
+      </div>
+      <div class="biere-card">
+        <div class="biere-name">Abbaye de Vaucelles</div>
+        <div class="biere-origin">Abbaye Notre-Dame · Cambrai</div>
+        <div class="biere-desc">Bière d'abbaye blonde, douce et équilibrée, légèrement épicée. Idéale avec le Welsh rarebit.</div>
+        <div class="biere-price">7 €</div>
+      </div>
+      <div class="biere-card">
+        <div class="biere-name">Bière de Garde Blonde</div>
+        <div class="biere-origin">Brasserie du Cambrésis</div>
+        <div class="biere-desc">Bière blonde complexe, longue en bouche, légèrement maltée. La grande classique du Nord.</div>
+        <div class="biere-price">6 €</div>
+      </div>
+      <div class="biere-card">
+        <div class="biere-name">Jenlain Ambrée</div>
+        <div class="biere-origin">Brasserie Duyck · Jenlain</div>
+        <div class="biere-desc">L'emblème du Nord, ambrée fruitée aux arômes de malt et d'épices. En bouteille ou pression.</div>
+        <div class="biere-price">5 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-overline">Nous trouver</p>
+        <h2 class="section-title">Réserver une table</h2>
+        <div class="section-rule"></div>
+        <p><strong>📍 Adresse</strong><br/>17 Rue Paul Lelong, 75002 Paris<br/>Métro Bonne Nouvelle (ligne 8 & 9)</p>
+        <p><strong>🕐 Horaires</strong><br/>Lundi au vendredi : 12h–15h et 19h–23h<br/>Samedi : 19h–23h30 · Dimanche fermé</p>
+        <div class="contact-tel">
+          <a href="tel:0142603025">01 42 60 30 25</a>
+        </div>
+      </div>
+      <div>
+        <div class="form-dark">
+          <input type="text" placeholder="Prénom et nom" />
+          <input type="tel" placeholder="Téléphone" />
+          <input type="date" />
+          <select>
+            <option value="">Nombre de personnes</option>
+            <option>2 personnes</option>
+            <option>3–4 personnes</option>
+            <option>5–6 personnes</option>
+            <option>Groupe (7+)</option>
+          </select>
+          <select>
+            <option value="">Service</option>
+            <option>Déjeuner</option>
+            <option>Dîner</option>
+          </select>
+          <button class="btn-submit">Réserver ma table</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Le Galibot</div>
+  <div class="footer-sub">Cuisine du Nord · Paris 2e · depuis toujours</div>
+  <div class="footer-addr">17 Rue Paul Lelong, 75002 Paris — 01 42 60 30 25</div>
+  <div class="footer-copy">© 2025 Le Galibot — Tous droits réservés</div>
+</footer>
+
+</body>
+</html>

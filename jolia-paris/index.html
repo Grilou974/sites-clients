@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jolia Paris — Cuisine Levantine & Méditerranéenne</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --terracotta: #C4622D;
+      --gold: #D4A853;
+      --dark: #1A1008;
+      --cream: #F5EFE0;
+      --sand: #E8D5B0;
+      --text: #3D2B1F;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 24px 60px; display: flex; justify-content: space-between; align-items: center; background: transparent; transition: background .4s; }
+    nav.scrolled { background: rgba(26,16,8,.92); backdrop-filter: blur(10px); padding: 16px 60px; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--cream); font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; opacity: .85; transition: opacity .3s, color .3s; }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* HERO */
+    .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1A1008 0%, #3D2010 40%, #C4622D 100%); }
+    .hero-pattern { position: absolute; inset: 0; opacity: .08; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A853' fill-opacity='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-content { position: relative; text-align: center; z-index: 2; }
+    .hero-tag { font-size: .75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 10vw, 9rem); color: var(--cream); line-height: 1; margin-bottom: 8px; }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-sub { font-size: .9rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(245,239,224,.6); margin: 24px 0 48px; }
+    .hero-cta { display: inline-block; padding: 16px 48px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: .75rem; letter-spacing: 3px; text-transform: uppercase; transition: all .3s; }
+    .hero-cta:hover { background: var(--gold); color: var(--dark); }
+    .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(245,239,224,.4); font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; }
+    .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollAnim 2s ease-in-out infinite; }
+    @keyframes scrollAnim { 0%,100%{opacity:.3;transform:scaleY(.5) translateY(-10px)} 50%{opacity:1;transform:scaleY(1) translateY(0)} }
+
+    /* SECTION SHARED */
+    section { padding: 100px 60px; }
+    .section-tag { font-size: .7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.2; margin-bottom: 32px; }
+    .divider { width: 60px; height: 2px; background: var(--gold); margin: 0 0 40px; }
+
+    /* ABOUT */
+    .about { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-box { background: linear-gradient(135deg, var(--terracotta), #8B3A18); height: 420px; border-radius: 2px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .about-box-inner { text-align: center; color: var(--cream); }
+    .about-box-inner span { display: block; font-family: 'Playfair Display', serif; font-size: 5rem; opacity: .3; }
+    .about-badge { position: absolute; bottom: -20px; right: -20px; background: var(--gold); width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .about-badge p { font-family: 'Playfair Display', serif; font-size: .9rem; color: var(--dark); line-height: 1.3; }
+    .about-text p { font-size: 1.05rem; line-height: 1.9; color: #5A3E30; margin-bottom: 20px; }
+
+    /* MENU */
+    .menu { background: var(--dark); color: var(--cream); }
+    .menu .section-title { color: var(--cream); }
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+    .menu-card { background: rgba(255,255,255,.03); padding: 40px 32px; border: 1px solid rgba(212,168,83,.15); transition: border-color .3s, transform .3s; }
+    .menu-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .menu-card-icon { font-size: 2rem; margin-bottom: 20px; }
+    .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 16px; }
+    .menu-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .85rem; }
+    .menu-item span:last-child { color: var(--gold); }
+
+    /* AMBIANCE */
+    .ambiance { background: var(--sand); text-align: center; }
+    .ambiance-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-style: italic; color: var(--terracotta); max-width: 700px; margin: 0 auto 60px; line-height: 1.6; }
+    .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .ambiance-item { background: var(--terracotta); height: 250px; display: flex; align-items: center; justify-content: center; font-size: 4rem; opacity: .7; transition: opacity .3s; }
+    .ambiance-item:hover { opacity: 1; }
+
+    /* RESERVATION */
+    .reservation { background: linear-gradient(135deg, var(--terracotta) 0%, #8B3A18 100%); text-align: center; color: var(--cream); }
+    .reservation .section-title { color: var(--cream); }
+    .reservation .divider { margin: 0 auto 40px; }
+    .reservation p { font-size: 1.05rem; opacity: .85; max-width: 500px; margin: 0 auto 48px; line-height: 1.8; }
+    .res-btn { display: inline-block; padding: 20px 64px; background: var(--gold); color: var(--dark); text-decoration: none; font-size: .8rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: all .3s; margin: 0 12px 16px; }
+    .res-btn:hover { background: var(--cream); }
+    .res-btn.outline { background: transparent; border: 2px solid var(--cream); color: var(--cream); }
+    .res-btn.outline:hover { background: var(--cream); color: var(--dark); }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(245,239,224,.4); padding: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+    footer h4 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; margin-bottom: 20px; letter-spacing: 1px; }
+    footer p, footer a { font-size: .85rem; line-height: 2; color: rgba(245,239,224,.5); text-decoration: none; display: block; }
+    footer a:hover { color: var(--gold); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); letter-spacing: 3px; margin-bottom: 16px; }
+    .footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,.06); padding-top: 30px; text-align: center; font-size: .75rem; }
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Jolia</div>
+  <ul class="nav-links">
+    <li><a href="#about">L'histoire</a></li>
+    <li><a href="#menu">La carte</a></li>
+    <li><a href="#ambiance">L'ambiance</a></li>
+    <li><a href="#reservation">Réserver</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Paris 11e — Cuisine du Levant</p>
+    <h1 class="hero-title">Jo<em>lia</em></h1>
+    <p class="hero-sub">Une ode aux nuits méditerranéennes</p>
+    <a href="#reservation" class="hero-cta">Réserver une table</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Découvrir</span>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-visual">
+    <div class="about-box">
+      <div class="about-box-inner"><span>ج</span></div>
+    </div>
+    <div class="about-badge"><p>Paris<br>11<sup>e</sup></p></div>
+  </div>
+  <div class="about-text">
+    <p class="section-tag">Notre histoire</p>
+    <h2 class="section-title">Le Levant<br>s'invite à Paris</h2>
+    <div class="divider"></div>
+    <p>Jolia est une invitation au voyage, au cœur du 11e arrondissement. Une cuisine levantine et méditerranéenne généreuse, aux épices dorées et aux saveurs qui racontent des histoires de soleil.</p>
+    <p>Dans un décor inspiré des soirées disco du Moyen-Orient, chaque assiette célèbre la tradition avec une touche de modernité. L'équipe de Dalia vous accueille du déjeuner jusqu'à minuit.</p>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <p class="section-tag">Notre sélection</p>
+  <h2 class="section-title">La Carte</h2>
+  <div class="divider"></div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-card-icon">🫒</div>
+      <h3>Mezze & Entrées</h3>
+      <div class="menu-item"><span>Houmous maison</span><span>9€</span></div>
+      <div class="menu-item"><span>Fattoush de saison</span><span>12€</span></div>
+      <div class="menu-item"><span>Kibbeh frit</span><span>13€</span></div>
+      <div class="menu-item"><span>Labneh aux herbes</span><span>8€</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🔥</div>
+      <h3>Plats</h3>
+      <div class="menu-item"><span>Agneau braisé</span><span>28€</span></div>
+      <div class="menu-item"><span>Poulet à la chermoula</span><span>22€</span></div>
+      <div class="menu-item"><span>Daurade grillée</span><span>26€</span></div>
+      <div class="menu-item"><span>Shakshuka légumes</span><span>18€</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-icon">🍯</div>
+      <h3>Douceurs</h3>
+      <div class="menu-item"><span>Baklava maison</span><span>8€</span></div>
+      <div class="menu-item"><span>Mouhallabia rose</span><span>9€</span></div>
+      <div class="menu-item"><span>Sélection dattes</span><span>7€</span></div>
+      <div class="menu-item"><span>Halva & pistache</span><span>8€</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ambiance" id="ambiance">
+  <p class="section-tag">L'expérience</p>
+  <p class="ambiance-quote">"Une invitation aux nuits festives du Levant, là où la gastronomie rencontre la musique et la joie de vivre."</p>
+  <div class="ambiance-grid">
+    <div class="ambiance-item">🕯️</div>
+    <div class="ambiance-item">🎶</div>
+    <div class="ambiance-item">🌙</div>
+  </div>
+</section>
+
+<section class="reservation" id="reservation">
+  <p class="section-tag">Nous rejoindre</p>
+  <h2 class="section-title">Réserver une table</h2>
+  <div class="divider"></div>
+  <p>123 Rue du Chemin Vert, 75011 Paris<br>Ouvert du lundi au dimanche • Déjeuner & Dîner</p>
+  <a href="tel:0148074476" class="res-btn">01 48 07 44 76</a>
+  <a href="mailto:hello@jolia-paris.com" class="res-btn outline">hello@jolia-paris.com</a>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">Jolia</div>
+    <p>Cuisine levantine & méditerranéenne<br>Paris 11e</p>
+  </div>
+  <div>
+    <h4>Horaires</h4>
+    <p>Lun–Mer : 12h–14h30 / 19h–0h</p>
+    <p>Jeu–Ven : 12h–14h30 / 19h–0h30</p>
+    <p>Sam : 11h–16h / 19h–0h30</p>
+    <p>Dim : 11h–16h / 19h–0h</p>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <a href="tel:0148074476">01 48 07 44 76</a>
+    <a href="mailto:hello@jolia-paris.com">hello@jolia-paris.com</a>
+    <a href="#">Instagram</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Jolia Paris — Tous droits réservés</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
+</script>
+</body>
+</html>

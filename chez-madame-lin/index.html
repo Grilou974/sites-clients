@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chez Madame Lin - Restaurant Asiatique Paris</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            line-height: 1.6;
+            color: #2a2a2a;
+            background: #fafaf8;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 35%, #FFD700 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -40%;
+            width: 180%;
+            height: 180%;
+            background-image:
+                linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.08) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            animation: wave 15s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, 20px) rotate(5deg); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(255,215,0,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2rem;
+            margin-bottom: 15px;
+            text-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            color: #FFD700;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FFD700;
+            color: #C41E3A;
+            padding: 16px 50px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            background: white;
+        }
+
+        /* TRADITION SECTION */
+        .tradition {
+            padding: 90px 40px;
+            background: white;
+            position: relative;
+        }
+
+        .tradition::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #C41E3A, transparent);
+        }
+
+        .tradition h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #C41E3A;
+            font-weight: 700;
+        }
+
+        .tradition-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tradition p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        /* MENU SECTION */
+        .menu {
+            padding: 90px 40px;
+            background: #fafaf8;
+        }
+
+        .menu h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #C41E3A;
+            font-weight: 700;
+        }
+
+        .menu-categories {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 50px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.5rem;
+            color: #8B0000;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .menu-category-icon {
+            width: 28px;
+            height: 28px;
+            color: #FFD700;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 0 2px 8px rgba(196,30,58,0.08);
+            border-top: 3px solid #FFD700;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 15px;
+            width: 6px;
+            height: 6px;
+            background: #C41E3A;
+            border-radius: 50%;
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 6px 18px rgba(196,30,58,0.15);
+            transform: translateY(-2px);
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: #C41E3A;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+            padding-left: 18px;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 8px;
+            padding-left: 18px;
+        }
+
+        .menu-item-price {
+            font-weight: 700;
+            color: #FFD700;
+            font-size: 0.95rem;
+            padding-left: 18px;
+        }
+
+        /* PROMISE SECTION */
+        .promise {
+            padding: 90px 40px;
+            background: linear-gradient(135deg, #C41E3A 0%, #8B0000 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,215,0,0.05) 100px, rgba(255,215,0,0.05) 200px),
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255,215,0,0.05) 100px, rgba(255,215,0,0.05) 200px);
+            pointer-events: none;
+        }
+
+        .promise h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promise-item {
+            text-align: center;
+        }
+
+        .promise-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #FFD700;
+            transition: all 0.3s ease;
+        }
+
+        .promise-item:hover .promise-icon {
+            background: #FFD700;
+            color: #C41E3A;
+            transform: scale(1.15);
+        }
+
+        .promise-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .promise-item p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #C41E3A;
+            font-weight: 700;
+        }
+
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            color: #C41E3A;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-info a {
+            color: #C41E3A;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #FFD700;
+        }
+
+        .contact-map {
+            background: linear-gradient(135deg, rgba(196,30,58,0.08) 0%, rgba(255,215,0,0.08) 100%);
+            border-radius: 3px;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(196,30,58,0.3);
+        }
+
+        .contact-map p {
+            text-align: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: #FFD700;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .tradition h2, .menu h2, .promise h2, .contact h2 {
+                font-size: 2.2rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .promise-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Chez Madame Lin</h1>
+            <div class="subtitle">陈太太 • 麻辣</div>
+            <p>Restaurant Asiatique Authentique</p>
+            <a href="#contact" class="cta-button">Nous appeler</a>
+        </div>
+    </section>
+
+    <!-- TRADITION SECTION -->
+    <section class="tradition">
+        <h2>Tradition & Savoir-Faire</h2>
+        <div class="tradition-content">
+            <p>
+                Depuis plus de 15 ans, Madame Lin perpétue la tradition culinaire asiatique au cœur de Paris.
+                Avec passion indéfectible et savoir-faire hérité de générations, nous préparons chaque plat
+                selon les recettes authentiques de la famille Lin.
+            </p>
+            <p>
+                Élégance, finesse et saveurs délicates : notre univers célèbre l'harmonie entre tradition et excellence.
+                Chaque détail compte. Chaque bouchée raconte une histoire. Une expérience gastronomique unique vous attend.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu">
+        <h2>La Carte</h2>
+        <div class="menu-categories">
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-leaf menu-category-icon"></i>
+                    Entrées
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Nems au Poulet</div>
+                        <div class="menu-item-desc">Nems croustillants fourrés de poulet frais et légumes</div>
+                        <div class="menu-item-price">5,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Crevettes Panées</div>
+                        <div class="menu-item-desc">Crevettes tempura, sauce aigre-douce maison</div>
+                        <div class="menu-item-price">6,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Beignets de Légumes</div>
+                        <div class="menu-item-desc">Mélange de légumes frais enrobés croustillants</div>
+                        <div class="menu-item-price">4,50 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-utensils menu-category-icon"></i>
+                    Plats Principaux
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Poulet aux Noix de Cajou</div>
+                        <div class="menu-item-desc">Poulet tendre, sauce légère, noix croquantes</div>
+                        <div class="menu-item-price">10,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Crevettes aux Piments</div>
+                        <div class="menu-item-desc">Crevettes fraîches, piments et gingembre frais</div>
+                        <div class="menu-item-price">12,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Nouilles Sautées</div>
+                        <div class="menu-item-desc">Nouilles fraîches wok, légumes, protéine au choix</div>
+                        <div class="menu-item-price">9,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Riz Cantonais Complet</div>
+                        <div class="menu-item-desc">Riz sauté, œufs, pois, carottes, protéine maison</div>
+                        <div class="menu-item-price">9,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-mug-hot menu-category-icon"></i>
+                    Soupes
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Soupe Aigre-Douce</div>
+                        <div class="menu-item-desc">Tofu, champignons, germes, bouillon délicat</div>
+                        <div class="menu-item-price">4,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Soupe Pékinoise</div>
+                        <div class="menu-item-desc">Bouillon riche, nid d'oiseau, crevettes</div>
+                        <div class="menu-item-price">6,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-cookie menu-category-icon"></i>
+                    Desserts
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Bananes Flambées</div>
+                        <div class="menu-item-desc">Bananes caramélisées, sauce miel, cacahuètes</div>
+                        <div class="menu-item-price">5,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Boules de Tapioca</div>
+                        <div class="menu-item-desc">Perles sucrées en sirop, goût délicat</div>
+                        <div class="menu-item-price">4,00 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMISE SECTION -->
+    <section class="promise">
+        <h2>Notre Promesse</h2>
+        <div class="promise-grid">
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Ingrédients Frais</h3>
+                <p>Sélection quotidienne des meilleurs ingrédients. Zéro conservateur. Fraîcheur garantie.</p>
+            </div>
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Recettes Familiales</h3>
+                <p>Recettes secrètes transmises par la famille Lin depuis trois générations.</p>
+            </div>
+            <div class="promise-item">
+                <div class="promise-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Service Excellent</h3>
+                <p>Accueil chaleureux et service courtois. Votre satisfaction est notre priorité.</p>
+            </div>
+        </div>
+    </promise>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <h2>Nous Contacter</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Coordonnées</h3>
+                <p><strong>Adresse :</strong><br>82 Rue Albert<br>75013 Paris (Chinatown)</p>
+                <p><strong>Téléphone :</strong><br><a href="tel:0156610188">01 56 61 01 88</a></p>
+                <p><strong>Horaires :</strong><br>
+                    Lundi - Dimanche : 11h30 - 22h30<br>
+                    <em>Livraison possible sur le secteur</em>
+                </p>
+                <p><strong>Ambiance :</strong><br>Élégante, zen, raffinée</p>
+            </div>
+            <div class="contact-map">
+                <p>Google Maps<br><em>(Intégration personnalisée)</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Chez Madame Lin. Tous droits réservés.</p>
+        <p>Cuisine asiatique authentique • Paris 13e Chinatown</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Chartrons | Bar à Vin & Restaurant – Paris 3e</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bois:       #3D2208;
+      --chene:      #6B3E1A;
+      --ambre:      #C8860A;
+      --miel:       #E8A830;
+      --vin:        #5A1A2A;
+      --creme:      #FAF4E8;
+      --sable:      #F0E0C0;
+      --gris:       #6A5A48;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--creme); color: var(--bois); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: var(--bois);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 70px;
+    }
+    .nav-logo {
+      font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500;
+      color: var(--creme); letter-spacing: 0.03em;
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo small { font-size: 0.65rem; color: var(--ambre); letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Raleway', sans-serif; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: #C4B490; text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--miel); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; padding-top: 70px;
+      background: var(--bois);
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px; position: relative; z-index: 2;
+    }
+    .hero-right {
+      background: var(--chene);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 0 0 0; position: relative; overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -30deg, rgba(200,134,10,0.06) 0, rgba(200,134,10,0.06) 1px,
+        transparent 1px, transparent 28px
+      );
+    }
+    .wine-bottles {
+      position: relative; z-index: 2;
+      padding: 48px 40px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+    .bottle-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: rgba(61,34,8,0.7);
+      border-left: 3px solid var(--ambre);
+    }
+    .bottle-row:nth-child(even) { border-left-color: var(--miel); background: rgba(61,34,8,0.5); }
+    .bottle-name { font-family: 'EB Garamond', serif; color: var(--creme); font-size: 1rem; }
+    .bottle-appellation { font-size: 0.72rem; color: #9A8060; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .bottle-price { color: var(--ambre); font-family: 'EB Garamond', serif; font-size: 1.15rem; }
+    .hero-wine-label {
+      position: absolute; top: 40px; left: 40px; z-index: 3;
+      font-family: 'EB Garamond', serif; font-style: italic;
+      color: var(--ambre); font-size: 1rem; letter-spacing: 0.06em;
+    }
+    .hero-overline {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ambre); font-weight: 700; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 400;
+      color: var(--creme); line-height: 1.0; margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--ambre); display: block; }
+    .hero-sep { width: 64px; height: 1px; background: rgba(200,134,10,0.4); margin: 20px 0; }
+    .hero-desc {
+      color: #9A8060; line-height: 1.8; font-size: 1rem;
+      max-width: 400px; margin-bottom: 40px;
+    }
+    .hero-cta {
+      background: var(--ambre); color: var(--bois);
+      padding: 15px 36px; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; display: inline-block; transition: background .2s;
+    }
+    .hero-cta:hover { background: var(--miel); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ambre); font-weight: 700; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'EB Garamond', serif; font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem); color: var(--bois);
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--vin); }
+    .section-dash { width: 40px; height: 1px; background: var(--ambre); margin-bottom: 48px; }
+
+    /* ─── L'ADRESSE ─── */
+    .adresse { background: var(--creme); }
+    .adresse-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .adresse-text p { color: var(--gris); line-height: 1.9; margin-bottom: 18px; font-size: 1rem; }
+    .adresse-text strong { color: var(--chene); }
+    .adresse-cards { display: grid; grid-template-columns: 1fr; gap: 2px; }
+    .adresse-card {
+      background: var(--bois); color: var(--creme);
+      padding: 28px 32px; display: flex; align-items: center; gap: 20px;
+    }
+    .adresse-card:nth-child(2) { background: var(--chene); }
+    .adresse-card:nth-child(3) { background: var(--vin); }
+    .card-icon { font-size: 2rem; flex-shrink: 0; }
+    .card-title { font-family: 'EB Garamond', serif; font-size: 1.1rem; margin-bottom: 4px; }
+    .card-text { font-size: 0.82rem; color: rgba(250,244,232,0.7); line-height: 1.55; }
+
+    /* ─── LA CAVE ─── */
+    .cave { background: var(--sable); }
+    .cave-intro { color: var(--gris); max-width: 600px; line-height: 1.85; margin-bottom: 56px; font-size: 1.05rem; font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.15rem; }
+    .vins-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; }
+    .vin-card { background: var(--bois); padding: 32px 24px; text-align: center; }
+    .vin-card:nth-child(2) { background: var(--chene); }
+    .vin-card:nth-child(3) { background: #2A1404; }
+    .vin-card:nth-child(4) { background: var(--vin); }
+    .vin-region { font-size: 0.68rem; color: var(--ambre); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+    .vin-name { font-family: 'EB Garamond', serif; font-size: 1.2rem; color: var(--creme); margin-bottom: 8px; }
+    .vin-desc { color: rgba(250,244,232,0.55); font-size: 0.8rem; line-height: 1.6; }
+    .vin-price { color: var(--miel); font-family: 'EB Garamond', serif; font-size: 1.3rem; margin-top: 16px; }
+
+    /* ─── CARTE RESTO ─── */
+    .resto { background: var(--bois); }
+    .resto .section-title { color: var(--creme); }
+    .resto .section-dash { background: var(--ambre); }
+    .resto-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-top: 16px; }
+    .resto-col { background: #2A1404; padding: 36px 28px; }
+    .resto-col-title {
+      font-family: 'EB Garamond', serif; font-size: 1.2rem; font-style: italic;
+      color: var(--ambre); margin-bottom: 28px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(200,134,10,0.2);
+    }
+    .resto-item { margin-bottom: 20px; }
+    .resto-item-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    .resto-item-name { color: var(--creme); font-size: 0.92rem; font-weight: 500; }
+    .resto-item-price { color: var(--ambre); font-family: 'EB Garamond', serif; font-size: 1rem; }
+    .resto-item-desc { color: #7A6050; font-size: 0.8rem; line-height: 1.5; }
+
+    /* ─── RÉSERVATION ─── */
+    .contact { background: var(--chene); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-info .section-title { color: var(--creme); }
+    .contact-info p { color: rgba(250,244,232,0.75); line-height: 1.8; margin-bottom: 14px; }
+    .contact-info strong { color: var(--creme); }
+    .contact-phone { margin-top: 28px; }
+    .contact-phone a { font-family: 'EB Garamond', serif; font-size: 2rem; color: var(--miel); text-decoration: none; }
+    .form-wood { display: flex; flex-direction: column; gap: 12px; }
+    .form-wood input, .form-wood select {
+      background: rgba(61,34,8,0.5); border: 1px solid rgba(200,134,10,0.3);
+      color: var(--creme); padding: 14px 18px; font-size: 0.88rem;
+      font-family: 'Raleway', sans-serif; outline: none;
+    }
+    .form-wood input::placeholder { color: rgba(250,244,232,0.35); }
+    .form-wood select option { background: var(--chene); }
+    .btn-amber {
+      background: var(--ambre); color: var(--bois);
+      padding: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.88rem; cursor: pointer; border: none; font-family: 'Raleway', sans-serif;
+      transition: background .2s;
+    }
+    .btn-amber:hover { background: var(--miel); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1A0A02; border-top: 2px solid var(--ambre);
+      text-align: center; padding: 48px 24px;
+    }
+    .footer-logo { font-family: 'EB Garamond', serif; font-size: 2rem; color: var(--creme); }
+    .footer-tagline { color: var(--ambre); font-family: 'EB Garamond', serif; font-style: italic; margin: 6px 0 24px; }
+    .footer-addr { color: #5A4A38; font-size: 0.82rem; margin-bottom: 4px; }
+    .footer-copy { margin-top: 20px; color: #3A2A18; font-size: 0.72rem; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .adresse-grid, .contact-grid { grid-template-columns: 1fr; }
+      .resto-cols { grid-template-columns: 1fr; }
+      .vins-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-left { padding: 60px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    Les Chartrons
+    <small>Bar à Vin · Restaurant</small>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#adresse">L'Adresse</a></li>
+    <li><a href="#cave">La Cave</a></li>
+    <li><a href="#carte">La Carte</a></li>
+    <li><a href="#contact">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-overline">Bar à Vin · Restaurant · Paris 3e</div>
+    <h1>Les<br/><em>Chartrons</em></h1>
+    <div class="hero-sep"></div>
+    <p class="hero-desc">L'esprit du quai bordelais au cœur du Marais — une cave d'exception, une cuisine de bistrot raffinée, un lieu où le vin est religion.</p>
+    <a href="#contact" class="hero-cta">Réserver une table</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-wine-label">Notre sélection du moment</div>
+    <div class="wine-bottles">
+      <div class="bottle-row">
+        <div>
+          <div class="bottle-name">Saint-Émilion Grand Cru 2019</div>
+          <div class="bottle-appellation">Bordeaux · Merlot dominant</div>
+        </div>
+        <div class="bottle-price">68 €</div>
+      </div>
+      <div class="bottle-row">
+        <div>
+          <div class="bottle-name">Pouilly-Fuissé 2021</div>
+          <div class="bottle-appellation">Bourgogne · Chardonnay</div>
+        </div>
+        <div class="bottle-price">52 €</div>
+      </div>
+      <div class="bottle-row">
+        <div>
+          <div class="bottle-name">Château Pichon Baron 2018</div>
+          <div class="bottle-appellation">Pauillac · Cabernet Sauvignon</div>
+        </div>
+        <div class="bottle-price">95 €</div>
+      </div>
+      <div class="bottle-row">
+        <div>
+          <div class="bottle-name">Sancerre rouge 2022</div>
+          <div class="bottle-appellation">Loire · Pinot Noir</div>
+        </div>
+        <div class="bottle-price">44 €</div>
+      </div>
+      <div class="bottle-row">
+        <div>
+          <div class="bottle-name">Côte-Rôtie 2020</div>
+          <div class="bottle-appellation">Rhône · Syrah</div>
+        </div>
+        <div class="bottle-price">78 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L'ADRESSE -->
+<section class="adresse" id="adresse">
+  <div class="section-inner">
+    <div class="adresse-grid">
+      <div class="adresse-text">
+        <p class="section-eyebrow">Notre histoire</p>
+        <h2 class="section-title">L'esprit des <em>négociants bordelais</em></h2>
+        <div class="section-dash"></div>
+        <p>Les Chartrons, c'est d'abord un quartier de <strong>Bordeaux</strong> — celui des négociants en vins, des chais centenaires, de l'élégance discrète des marchands. Un état d'esprit transposé rue au Maire, dans le Marais parisien.</p>
+        <p>Ici, le vin n'est pas un prétexte : c'est le sujet central. Chaque référence a été sélectionnée avec soin, chaque accord met avec les plats est pensé. <strong>Plus de 200 références</strong>, des grands classiques bordelais aux pépites de vignerons confidentiels.</p>
+        <p>La cuisine joue un rôle de soutien noble : charcuteries affinées, fromages de caractère, petits plats bistronomiques <strong>conçus pour sublimer le vin</strong> dans votre verre.</p>
+      </div>
+      <div class="adresse-cards">
+        <div class="adresse-card">
+          <span class="card-icon">🍷</span>
+          <div>
+            <div class="card-title">200+ références</div>
+            <div class="card-text">De Bordeaux à la Bourgogne, du Rhône à la Loire — une cave pensée pour les passionnés.</div>
+          </div>
+        </div>
+        <div class="adresse-card">
+          <span class="card-icon">🧀</span>
+          <div>
+            <div class="card-title">Planches & accords</div>
+            <div class="card-text">Charcuteries ibériques, fromages affinés, accords suggérés par notre sommelier.</div>
+          </div>
+        </div>
+        <div class="adresse-card">
+          <span class="card-icon">📚</span>
+          <div>
+            <div class="card-title">Conseil & dégustation</div>
+            <div class="card-text">Cours de dégustation le jeudi soir. Conseils personnalisés pour composer votre cave.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CAVE -->
+<section class="cave" id="cave">
+  <div class="section-inner">
+    <p class="section-eyebrow">Notre sélection</p>
+    <h2 class="section-title">La Cave</h2>
+    <div class="section-dash"></div>
+    <p class="cave-intro">« Un vin n'est pas bon ou mauvais — il est à sa place ou pas. Nous trouvons sa place. »</p>
+    <div class="vins-grid">
+      <div class="vin-card">
+        <div class="vin-region">Bordeaux</div>
+        <div class="vin-name">Grands Crus Classés</div>
+        <div class="vin-desc">Margaux, Pauillac, Saint-Émilion, Sauternes. Les grandes maisons bordelaises.</div>
+        <div class="vin-price">à partir de 48 €</div>
+      </div>
+      <div class="vin-card">
+        <div class="vin-region">Bourgogne</div>
+        <div class="vin-name">Villages & Premiers Crus</div>
+        <div class="vin-desc">Gevrey, Chambolle, Meursault, Chablis. La Bourgogne dans ses expressions les plus pures.</div>
+        <div class="vin-price">à partir de 42 €</div>
+      </div>
+      <div class="vin-card">
+        <div class="vin-region">Vignerons</div>
+        <div class="vin-name">Pépites & Confidentiels</div>
+        <div class="vin-desc">Découvertes exclusives de petits vignerons passionnés. Biodynamie et vivant.</div>
+        <div class="vin-price">à partir de 28 €</div>
+      </div>
+      <div class="vin-card">
+        <div class="vin-region">Vins au Verre</div>
+        <div class="vin-name">Sélection du Moment</div>
+        <div class="vin-desc">Chaque semaine, une nouvelle sélection au verre proposée par notre sommelier.</div>
+        <div class="vin-price">à partir de 7 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE RESTO -->
+<section class="resto" id="carte">
+  <div class="section-inner">
+    <p class="section-eyebrow" style="color:var(--ambre);">À table</p>
+    <h2 class="section-title">La Carte</h2>
+    <div class="section-dash"></div>
+    <div class="resto-cols">
+      <div class="resto-col">
+        <div class="resto-col-title">Planches à partager</div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Planche ibérique</span><span class="resto-item-price">24 €</span></div>
+          <div class="resto-item-desc">Jamón ibérico, chorizo, lomo, pain toasté à la tomate</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Sélection fromages affinés</span><span class="resto-item-price">22 €</span></div>
+          <div class="resto-item-desc">4 fromages saisonniers, fruits secs, confiture de figues</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Foie gras mi-cuit maison</span><span class="resto-item-price">18 €</span></div>
+          <div class="resto-item-desc">Chutney de mangue, pain brioché grillé, fleur de sel</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Plancha de légumes d'été</span><span class="resto-item-price">16 €</span></div>
+          <div class="resto-item-desc">Courgettes, aubergines, poivrons, herbes du marché</div>
+        </div>
+      </div>
+      <div class="resto-col">
+        <div class="resto-col-title">Plats Bistro</div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Entrecôte maturée, sauce bordelaise</span><span class="resto-item-price">34 €</span></div>
+          <div class="resto-item-desc">300g, maturée 30 jours, sauce vin rouge aux échalotes</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Magret de canard, jus aux cèpes</span><span class="resto-item-price">28 €</span></div>
+          <div class="resto-item-desc">Magret rosé, poêlée de cèpes, pommes sarladaises</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Risotto aux truffes de saison</span><span class="resto-item-price">32 €</span></div>
+          <div class="resto-item-desc">Truffe noire, parmesan 30 mois, beurre noisette</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Cocotte de joues de bœuf au vin</span><span class="resto-item-price">26 €</span></div>
+          <div class="resto-item-desc">Joues confites, légumes racines, purée maison</div>
+        </div>
+      </div>
+      <div class="resto-col">
+        <div class="resto-col-title">Douceurs</div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Canelés bordelais maison</span><span class="resto-item-price">8 €</span></div>
+          <div class="resto-item-desc">4 canelés, vanille et rhum, caramélisés à la perfection</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Crémeux chocolat grand cru</span><span class="resto-item-price">9 €</span></div>
+          <div class="resto-item-desc">Valrhona Guanaja, caramel sel de Guérande</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Tarte Tatin aux pommes</span><span class="resto-item-price">9 €</span></div>
+          <div class="resto-item-desc">Crème fraîche épaisse, vanille de Madagascar</div>
+        </div>
+        <div class="resto-item">
+          <div class="resto-item-top"><span class="resto-item-name">Accord vin & dessert</span><span class="resto-item-price">+6 €</span></div>
+          <div class="resto-item-desc">Un verre de Sauternes ou de Jurançon moelleux</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-eyebrow" style="color:var(--miel);">Nous rejoindre</p>
+        <h2 class="section-title">Réserver votre table</h2>
+        <div class="section-dash"></div>
+        <p><strong>📍 Adresse</strong><br/>2 Rue au Maire, 75003 Paris<br/>Métro Arts et Métiers (lignes 3 & 11)</p>
+        <p><strong>🕐 Horaires</strong><br/>Mardi au samedi : 12h–15h et 18h30–23h30<br/>Dimanche : 12h–16h (brunch & fromages) · Lundi fermé</p>
+        <div class="contact-phone"><a href="tel:0140278802">01 40 27 88 02</a></div>
+      </div>
+      <div>
+        <div class="form-wood">
+          <input type="text" placeholder="Prénom et nom" />
+          <input type="tel" placeholder="Téléphone" />
+          <input type="email" placeholder="Email" />
+          <input type="date" />
+          <select>
+            <option value="">Nombre de personnes</option>
+            <option>2 personnes</option>
+            <option>3–4 personnes</option>
+            <option>5–6 personnes</option>
+            <option>Groupe (7+)</option>
+          </select>
+          <select>
+            <option value="">Service</option>
+            <option>Déjeuner (12h–15h)</option>
+            <option>Dîner (18h30–23h30)</option>
+            <option>Brunch dimanche</option>
+            <option>Dégustation privée</option>
+          </select>
+          <button class="btn-amber">Réserver ma table</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Les Chartrons</div>
+  <div class="footer-tagline">Bar à Vin · Restaurant · L'âme bordelaise à Paris</div>
+  <div class="footer-addr">2 Rue au Maire, 75003 Paris — 01 40 27 88 02</div>
+  <div class="footer-addr">Mar–Sam 12h–23h30 · Dim 12h–16h · Lun fermé</div>
+  <div class="footer-copy">© 2025 Les Chartrons — Paris 3e</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So Good - Street Food & Snacks à Paris</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 40%, #FF6B35 70%, #FF9D5C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -40%;
+            width: 180%;
+            height: 180%;
+            background-image:
+                radial-gradient(circle, rgba(255,107,53,0.15) 2px, transparent 2px),
+                radial-gradient(circle, rgba(255,107,53,0.1) 3px, transparent 3px);
+            background-size: 80px 80px, 120px 120px;
+            background-position: 0 0, 40px 40px;
+            animation: pulse 20s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.05) translate(10px, -10px); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,107,53,0.08) 60px, rgba(255,107,53,0.08) 120px),
+                repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,107,53,0.05) 60px, rgba(255,107,53,0.05) 120px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5.5rem;
+            margin-bottom: 15px;
+            text-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            font-weight: 600;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FF6B35;
+            color: white;
+            padding: 18px 55px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.3);
+            border: 2px solid white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08) translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255,107,53,0.5);
+            background: white;
+            color: #FF6B35;
+        }
+
+        /* CONCEPT SECTION */
+        .concept {
+            padding: 100px 40px;
+            background: #f8f8f8;
+            position: relative;
+        }
+
+        .concept::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B35, #FF9D5C);
+        }
+
+        .concept h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1a1a1a;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .concept-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .concept p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        /* MENU SECTION */
+        .menu {
+            padding: 100px 40px;
+            background: white;
+        }
+
+        .menu h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #1a1a1a;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .menu-categories {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.6rem;
+            color: #FF6B35;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-category-icon {
+            font-size: 28px;
+            color: #FF6B35;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: #f8f8f8;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #FF6B35;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(255,107,53,0.2);
+            background: white;
+        }
+
+        .menu-item-name {
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .menu-item-price {
+            font-weight: 800;
+            color: #FF6B35;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials {
+            padding: 100px 40px;
+            background: #f8f8f8;
+        }
+
+        .testimonials h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #1a1a1a;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            border-top: 5px solid #FF6B35;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.15);
+        }
+
+        .testimonial-rating {
+            color: #FF6B35;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* DELIVERY SECTION */
+        .delivery {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF9D5C 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .delivery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .delivery h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .delivery-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .delivery-info h3 {
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .delivery-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .delivery-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+            border-bottom: 2px solid white;
+        }
+
+        .delivery-info a:hover {
+            opacity: 0.8;
+        }
+
+        .delivery-map {
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .delivery-map p {
+            text-align: center;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #FF6B35;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .concept h2, .menu h2, .testimonials h2, .delivery h2 {
+                font-size: 2.2rem;
+            }
+
+            .delivery-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SO GOOD</h1>
+            <p>Street Food Passion</p>
+            <p class="tagline">Gourmandise & Vitesse</p>
+            <a href="#delivery" class="cta-button">Commander Maintenant</a>
+        </div>
+    </section>
+
+    <!-- CONCEPT SECTION -->
+    <section class="concept">
+        <h2>Le Concept</h2>
+        <div class="concept-content">
+            <p>
+                Chez So Good, nous ne faisons pas juste de la street food. Nous créons une expérience.
+                Fraîcheur maximale, saveurs explosives, accueil dynamique : c'est notre signature.
+            </p>
+            <p>
+                Ici, la qualité n'est jamais en compromis avec la vitesse. Chaque burger, chaque frite,
+                chaque wrap est préparé avec le même dévouement que dans un restaurant étoilé.
+            </p>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu">
+        <h2>Notre Menu</h2>
+        <div class="menu-categories">
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-hamburger menu-category-icon"></i>
+                    Burgers
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Burger So Good</div>
+                        <div class="menu-item-desc">Pain artisanal toasté, steak haché 200g, sauce secrète, cheddar fondant</div>
+                        <div class="menu-item-price">9,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Burger Double Premium</div>
+                        <div class="menu-item-desc">Deux steaks, double fromage, oignons caramélisés, bacon croustillant</div>
+                        <div class="menu-item-price">12,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Burger Poulet Croustillant</div>
+                        <div class="menu-item-desc">Filet de poulet pané, sauce sriracha mayo, laitue fraîche</div>
+                        <div class="menu-item-price">9,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-fire menu-category-icon"></i>
+                    Sandwiches & Wraps
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Wrap Surprise</div>
+                        <div class="menu-item-desc">Galette fraîche, viande grillée, légumes crisp, fromage fondu</div>
+                        <div class="menu-item-price">8,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Sandwich Merguez</div>
+                        <div class="menu-item-desc">Merguez grillée, oignons sautés, sauce épicée maison</div>
+                        <div class="menu-item-price">7,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Tacos Délire (×3)</div>
+                        <div class="menu-item-desc">Viande grillée, salade fraîche, sauce maison, guacamole</div>
+                        <div class="menu-item-price">10,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <i class="fas fa-star menu-category-icon"></i>
+                    Sides & Combos
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Frites Gourmet</div>
+                        <div class="menu-item-desc">Frites fraîches, sauce au fromage, herbes fraîches</div>
+                        <div class="menu-item-price">4,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Menu Combo</div>
+                        <div class="menu-item-desc">Burger + Frites + Boisson (au choix) - Économisez 3€</div>
+                        <div class="menu-item-price">14,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Boissons Fraîches</div>
+                        <div class="menu-item-desc">Smoothies maison, sodas premium, jus naturels</div>
+                        <div class="menu-item-price">2,50 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <h2>Avis Clients</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-rating">★★★★★</div>
+                <div class="testimonial-text">
+                    "Meilleur burger du 15ème ! Qualité exceptionnelle, portions généreuses,
+                    j'y vais au moins deux fois par semaine. So Good c'est vraiment bon !"
+                </div>
+                <div class="testimonial-author">— Thomas P., Client Régulier</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-rating">★★★★★</div>
+                <div class="testimonial-text">
+                    "Street food de ouf ! Rapidité et qualité réunies, c'est rare.
+                    Les frites maison sont délicieuses et les sauces sont à tomber par terre."
+                </div>
+                <div class="testimonial-author">— Sarah D., Foodblogger</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-rating">★★★★★</div>
+                <div class="testimonial-text">
+                    "Livraison impeccable, commandes précises et chaudes. So Good
+                    a changé ma conception de la street food à Paris. Bravo !"
+                </div>
+                <div class="testimonial-author">— Marc L., Client Fidèle</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DELIVERY SECTION -->
+    <section class="delivery" id="delivery">
+        <h2>Livraison & Contact</h2>
+        <div class="delivery-wrapper">
+            <div class="delivery-info">
+                <h3>Infos Pratiques</h3>
+                <p><strong>Adresse :</strong><br>32 Rue Frémicourt<br>75015 Paris</p>
+                <p><strong>Téléphone :</strong><br><a href="tel:0145351937">01 45 35 19 37</a></p>
+                <p><strong>Horaires :</strong><br>
+                    Lundi - Vendredi : 11h00 - 23h00<br>
+                    Samedi - Dimanche : 12h00 - 23h00
+                </p>
+                <p><strong>Livraison :</strong><br>Gratuite à partir de 15€ dans le quartier</p>
+            </div>
+            <div class="delivery-map">
+                <p>Google Maps<br><em>(Intégration personnalisée)</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 So Good. Tous droits réservés.</p>
+        <p>Street Food & Snacks de Qualité • Paris 15e</p>
+    </footer>
+</body>
+</html>

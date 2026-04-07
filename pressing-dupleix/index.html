@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressing Dupleix - Nettoyage Professionnel Paris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Raleway:wght@300;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #4a4a4a;
+            background: #f8fbfd;
+            line-height: 1.8;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: #fff;
+            padding: 25px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(27, 58, 92, 0.12);
+            border-bottom: 3px solid #1B3A5C;
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #1B3A5C;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: #4a4a4a;
+            text-decoration: none;
+            margin-left: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #1B3A5C;
+        }
+
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #1B3A5C 0%, #2d5580 100%);
+            color: #fff;
+            padding: 140px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 244, 253, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 244, 253, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 76px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 45px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #1B3A5C;
+            padding: 16px 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #fff;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 54px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #1B3A5C;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #1B3A5C 50%, transparent 100%);
+        }
+
+        .about-content {
+            background: #fff;
+            padding: 50px;
+            border-left: 5px solid #1B3A5C;
+            box-shadow: 0 8px 30px rgba(27, 58, 92, 0.1);
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #5a5a5a;
+            line-height: 1.95;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fbfd 0%, #e8f4f9 100%);
+            padding: 40px;
+            border: 2px solid #1B3A5C;
+            transition: all 0.4s;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1B3A5C 0%, #2d5580 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(27, 58, 92, 0.2);
+        }
+
+        .service-icon {
+            color: #1B3A5C;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .service-name {
+            font-weight: 700;
+            font-size: 17px;
+            color: #1B3A5C;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .service-price {
+            font-size: 28px;
+            color: #1B3A5C;
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .service-desc {
+            color: #6a6a6a;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            font-family: 'Raleway', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: #1B3A5C;
+            margin-bottom: 20px;
+        }
+
+        .process-icon {
+            font-size: 50px;
+            color: #1B3A5C;
+            margin-bottom: 20px;
+        }
+
+        .process-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            color: #1B3A5C;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .process-text {
+            color: #6a6a6a;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .info-block h3 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 22px;
+            color: #1B3A5C;
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .info-block p {
+            color: #5a5a5a;
+            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .info-block strong {
+            color: #1B3A5C;
+        }
+
+        .hours-table {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(27, 58, 92, 0.1);
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+            color: #5a5a5a;
+            font-size: 15px;
+        }
+
+        .hours-table strong {
+            color: #1B3A5C;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #1B3A5C 0%, #2d5580 100%);
+            padding: 60px;
+            text-align: center;
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            box-shadow: 0 8px 30px rgba(27, 58, 92, 0.15);
+            min-height: 350px;
+        }
+
+        .map-placeholder i {
+            font-size: 70px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .map-placeholder p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 16px;
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        .map-placeholder strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        footer {
+            background: #f0f5f8;
+            color: #6a6a6a;
+            text-align: center;
+            padding: 40px 40px;
+            border-top: 3px solid #1B3A5C;
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        footer p:first-child {
+            color: #1B3A5C;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .services-grid, .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Pressing Dupleix</div>
+            <div>
+                <a href="#about">Notre Engagement</a>
+                <a href="#services">Services</a>
+                <a href="#process">Comment Ça Marche</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pressing Dupleix</h1>
+            <p>Votre Linge Impeccable, Toujours</p>
+            <a href="#services" class="cta-button">Nos Services</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Notre Engagement</h2>
+        <div class="about-content">
+            <p>Depuis 20 ans, Pressing Dupleix est le partenaire de confiance des Parisiens pour l'entretien de leurs vêtements. Situé au cœur du 15ème arrondissement, nous proposons un service professionnel et fiable, adapté à tous les types de tissus et de pièces.</p>
+            <p>Nos équipes qualifiées traitent chaque vêtement avec soin et attention, en utilisant des techniques et des produits de qualité supérieure. Nous nous engageons à préserver la beauté et la durée de vie de vos pièces, quelque soit leur nature ou leur délicatesse.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: #e8f4f9;">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-vest"></i></div>
+                <div class="service-name">Costume</div>
+                <div class="service-price">18€</div>
+                <div class="service-desc">Veste et pantalon complets</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-dress"></i></div>
+                <div class="service-name">Robe</div>
+                <div class="service-price">16€</div>
+                <div class="service-desc">Nettoyage à sec standard</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-coat"></i></div>
+                <div class="service-name">Manteau</div>
+                <div class="service-price">20€</div>
+                <div class="service-desc">Nettoyage à sec complet</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shirt"></i></div>
+                <div class="service-name">Chemise</div>
+                <div class="service-price">6€</div>
+                <div class="service-desc">Nettoyage et repassage</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-pants"></i></div>
+                <div class="service-name">Pantalon</div>
+                <div class="service-price">8€</div>
+                <div class="service-desc">Nettoyage et repassage précis</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-water"></i></div>
+                <div class="service-name">Blanchisserie</div>
+                <div class="service-price">0,50€/kg</div>
+                <div class="service-desc">Linge blanc spécialisé</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scissors"></i></div>
+                <div class="service-name">Retouches</div>
+                <div class="service-price">À partir de 8€</div>
+                <div class="service-desc">Ourlets, fermetures, adaptations</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                <div class="service-name">Service Rapide</div>
+                <div class="service-price">+50%</div>
+                <div class="service-desc">Garantie 24h travail</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-crown"></i></div>
+                <div class="service-name">Service Premium</div>
+                <div class="service-price">+30%</div>
+                <div class="service-desc">Soin intensif et traitement luxe</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="section">
+        <h2 class="section-title">Comment Ça Marche</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-number">1</div>
+                <div class="process-icon"><i class="fas fa-hand-holding-box"></i></div>
+                <div class="process-title">Déposer</div>
+                <div class="process-text">Apportez vos vêtements à notre comptoir. Nous vous donnons un numéro de dossier pour suivi.</div>
+            </div>
+
+            <div class="process-card">
+                <div class="process-number">2</div>
+                <div class="process-icon"><i class="fas fa-industry"></i></div>
+                <div class="process-title">Traiter</div>
+                <div class="process-text">Vos vêtements reçoivent le traitement approprié selon le type de tissu et les instructions.</div>
+            </div>
+
+            <div class="process-card">
+                <div class="process-number">3</div>
+                <div class="process-icon"><i class="fas fa-box-open"></i></div>
+                <div class="process-title">Récupérer</div>
+                <div class="process-text">Vos vêtements sont prêts ! Nous vous contactons pour la récupération ou la livraison à domicile.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: #e8f4f9;">
+        <h2 class="section-title">Horaires & Contact</h2>
+        <div class="contact-section">
+            <div class="info-block">
+                <h3><i class="fas fa-map-marker-alt"></i> Adresse</h3>
+                <p><strong>27 Rue Desaix</strong><br>75015 Paris</p>
+
+                <h3 style="margin-top: 35px;"><i class="fas fa-phone"></i> Téléphone</h3>
+                <p><strong>01 40 61 91 52</strong></p>
+                <p style="color: #7a7a7a; font-size: 14px;">Livraison à domicile sur demande</p>
+
+                <h3 style="margin-top: 35px;"><i class="fas fa-clock"></i> Horaires</h3>
+                <table class="hours-table">
+                    <tr>
+                        <td><strong>Lundi - Vendredi</strong></td>
+                        <td>8h00 - 19h00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Samedi</strong></td>
+                        <td>9h00 - 18h00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dimanche</strong></td>
+                        <td>Fermé</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <p><strong>Métro Duplex</strong></p>
+                <p>Lignes 6 & 8</p>
+                <p style="margin-top: 15px; font-size: 15px;">À 2 minutes à pied</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Pressing Dupleix</p>
+        <p>27 Rue Desaix, 75015 Paris | 01 40 61 91 52</p>
+        <p>&copy; 2026 Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

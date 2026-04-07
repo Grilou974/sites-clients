@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Jalles | Brasserie Art Déco – Paris 2e</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --noir:    #0C0A08;
+      --encre:   #161210;
+      --charbon: #1E1A16;
+      --or:      #C9A84C;
+      --or-vif:  #D4AF37;
+      --or-pale: #E8D08A;
+      --cuivre:  #B87333;
+      --creme:   #F8F3E8;
+      --ivoire:  #FAF7EF;
+      --gris:    #8A8070;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; background: var(--noir); color: var(--creme); overflow-x: hidden; }
+
+    /* ── DIVIDER ORNEMENT ── */
+    .deco-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin: 0 auto 48px; max-width: 380px;
+    }
+    .deco-divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+    .deco-divider .line.r { background: linear-gradient(90deg, var(--or), transparent); }
+    .deco-divider .gem { width: 10px; height: 10px; background: var(--or); transform: rotate(45deg); flex-shrink: 0; }
+    .deco-divider .gem-sm { width: 5px; height: 5px; background: var(--cuivre); transform: rotate(45deg); flex-shrink: 0; }
+
+    /* ══ NAVBAR ══ */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      background: rgba(12,10,8,0.97);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      height: 72px; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 56px;
+    }
+    .nav-brand-name { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 600; color: var(--or); letter-spacing: 0.18em; text-transform: uppercase; }
+    .nav-brand-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.7rem; color: var(--gris); letter-spacing: 0.1em; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(248,243,232,0.5); text-decoration: none; transition: color .25s; }
+    .nav-links a:hover { color: var(--or); }
+    .nav-resa { border: 1px solid var(--or); color: var(--or); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 9px 22px; text-decoration: none; transition: background .25s, color .25s; }
+    .nav-resa:hover { background: var(--or); color: var(--noir); }
+
+    /* ══ HERO ══ */
+    .hero {
+      min-height: 100vh; padding-top: 72px;
+      background: var(--encre);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    /* Rayons Art Déco */
+    .hero-rays { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; opacity: 0.055; }
+    .hero-rays svg { width: 140%; height: 140%; }
+    /* Coins dorés */
+    .hero-corner { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+    .hero-corner.tl { top: 88px; left: 40px; border-top: 2px solid var(--or); border-left: 2px solid var(--or); }
+    .hero-corner.tr { top: 88px; right: 40px; border-top: 2px solid var(--or); border-right: 2px solid var(--or); }
+    .hero-corner.bl { bottom: 28px; left: 40px; border-bottom: 2px solid var(--or); border-left: 2px solid var(--or); }
+    .hero-corner.br { bottom: 28px; right: 40px; border-bottom: 2px solid var(--or); border-right: 2px solid var(--or); }
+    /* Cadres fins */
+    .hero-frame { position: absolute; pointer-events: none; border: 1px solid rgba(201,168,76,0.1); }
+    .hero-frame.outer { top: 84px; left: 36px; right: 36px; bottom: 24px; }
+    .hero-frame.inner { top: 92px; left: 44px; right: 44px; bottom: 32px; }
+
+    .hero-inner { position: relative; z-index: 2; padding: 64px 40px; max-width: 840px; }
+    .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cuivre); margin-bottom: 28px; }
+    .hero-orn { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 28px; }
+    .orn-bar { width: 72px; height: 1px; background: linear-gradient(90deg, transparent, var(--or)); }
+    .orn-bar.r { background: linear-gradient(90deg, var(--or), transparent); }
+    .orn-d { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); }
+    .orn-ds { width: 4px; height: 4px; background: var(--cuivre); transform: rotate(45deg); }
+
+    .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(4rem, 9vw, 8rem); font-weight: 700; line-height: 0.9; color: var(--or); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 300; color: rgba(248,243,232,0.55); letter-spacing: 0.08em; margin-bottom: 36px; }
+    .hero-tags { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 48px; }
+    .hero-tags span { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,168,76,0.65); }
+    .hero-tags .sep { width: 4px; height: 4px; background: var(--cuivre); transform: rotate(45deg); }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; }
+    .btn-or { background: var(--or); color: var(--noir); padding: 15px 40px; font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background .25s; }
+    .btn-or:hover { background: var(--or-vif); }
+    .btn-ghost { border: 1px solid rgba(201,168,76,0.35); color: var(--or); padding: 15px 40px; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: border-color .25s, background .25s; }
+    .btn-ghost:hover { border-color: var(--or); background: rgba(201,168,76,0.06); }
+
+    /* ══ BANDEAU ══ */
+    .bandeau { background: var(--or); padding: 18px 56px; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .bandeau-item { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--noir); font-weight: 600; }
+    .bandeau-sep { width: 1px; height: 18px; background: rgba(12,10,8,0.2); }
+
+    /* ══ SECTIONS ══ */
+    section { padding: 100px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cuivre); margin-bottom: 14px; display: block; }
+    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 600; color: var(--or); letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.05; margin-bottom: 10px; }
+    .section-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 300; color: rgba(248,243,232,0.45); margin-bottom: 40px; }
+
+    /* ══ L'ADRESSE ══ */
+    .adresse { background: var(--charbon); }
+    .adresse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .adresse-text p { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: rgba(248,243,232,0.58); line-height: 1.95; margin-bottom: 20px; font-size: 1.08rem; }
+    .adresse-text strong { color: var(--or-pale); font-weight: 400; }
+    .adresse-panels { display: flex; flex-direction: column; gap: 2px; }
+    .adresse-panel { background: var(--encre); padding: 26px 30px; display: flex; align-items: flex-start; gap: 18px; border-left: 2px solid var(--or); }
+    .adresse-panel:nth-child(2) { border-left-color: var(--cuivre); }
+    .adresse-panel:nth-child(3) { border-left-color: rgba(201,168,76,0.25); }
+    .panel-icon { font-size: 1.3rem; flex-shrink: 0; opacity: 0.7; margin-top: 2px; }
+    .panel-label { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); margin-bottom: 5px; }
+    .panel-value { color: var(--creme); font-size: 0.92rem; line-height: 1.55; }
+
+    /* ══ CARTE ══ */
+    .carte { background: var(--encre); }
+    .carte-intro { font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(248,243,232,0.38); font-size: 1.15rem; line-height: 1.85; max-width: 580px; margin-bottom: 64px; font-weight: 300; }
+    .carte-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .carte-col { background: var(--charbon); padding: 40px 30px; position: relative; }
+    .carte-col::before { content: ''; position: absolute; top: 0; left: 30px; right: 30px; height: 2px; background: linear-gradient(90deg, transparent, var(--or), transparent); }
+    .carte-col:nth-child(2)::before { background: linear-gradient(90deg, transparent, var(--cuivre), transparent); }
+    .carte-col:nth-child(3)::before { background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); }
+    .col-num { font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.25em; color: rgba(201,168,76,0.45); text-transform: uppercase; margin-bottom: 8px; }
+    .col-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-style: italic; color: var(--or-pale); margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid rgba(201,168,76,0.12); }
+    .plat { margin-bottom: 22px; }
+    .plat-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; gap: 10px; }
+    .plat-name { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: var(--creme); flex: 1; }
+    .plat-price { font-family: 'Cinzel', serif; font-size: 0.78rem; color: var(--or); flex-shrink: 0; }
+    .plat-desc { color: rgba(201,168,76,0.35); font-size: 0.8rem; line-height: 1.5; font-style: italic; font-family: 'Cormorant Garamond', serif; }
+
+    /* ══ ROTISSERIE ══ */
+    .rotisserie { background: var(--charbon); padding: 100px 24px; }
+    .rot-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .rot-vis {
+      aspect-ratio: 1; background: var(--encre);
+      border: 1px solid rgba(201,168,76,0.18);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .rot-vis::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(201,168,76,0.08); pointer-events: none; }
+    /* Rayons animés */
+    .rot-vis::after {
+      content: ''; position: absolute; inset: -60%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(201,168,76,0.035) 1deg, transparent 2deg, transparent 19deg, rgba(201,168,76,0.035) 20deg, transparent 21deg);
+      animation: rot-spin 80s linear infinite;
+    }
+    @keyframes rot-spin { to { transform: rotate(360deg); } }
+    .rot-icon { font-size: 5rem; position: relative; z-index: 2; margin-bottom: 16px; }
+    .rot-caption { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--or); position: relative; z-index: 2; text-align: center; line-height: 1.7; }
+    .rot-text p { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: rgba(248,243,232,0.58); line-height: 1.95; margin-bottom: 20px; font-size: 1.05rem; }
+    .rot-text strong { color: var(--or-pale); font-weight: 400; }
+    .rot-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 36px; }
+    .rot-spec { background: var(--encre); padding: 20px; text-align: center; }
+    .rot-spec-val { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; color: var(--or); display: block; margin-bottom: 4px; }
+    .rot-spec-key { font-size: 0.68rem; color: rgba(201,168,76,0.35); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ══ L'ÉTAGE ══ */
+    .etage { background: var(--encre); position: relative; overflow: hidden; }
+    .etage::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 36px, rgba(201,168,76,0.018) 36px, rgba(201,168,76,0.018) 72px); }
+    .etage-wrap { max-width: 860px; margin: 0 auto; position: relative; z-index: 2; }
+    .etage-box { border: 1px solid rgba(201,168,76,0.18); padding: 72px 80px; position: relative; text-align: center; }
+    .etage-box::before { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(201,168,76,0.07); pointer-events: none; }
+    .ec { position: absolute; width: 28px; height: 28px; }
+    .ec.tl { top: -1px; left: -1px; border-top: 2px solid var(--or); border-left: 2px solid var(--or); }
+    .ec.tr { top: -1px; right: -1px; border-top: 2px solid var(--or); border-right: 2px solid var(--or); }
+    .ec.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--or); border-left: 2px solid var(--or); }
+    .ec.br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--or); border-right: 2px solid var(--or); }
+    .etage-title { font-family: 'Cinzel', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; color: var(--or); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .etage-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: rgba(248,243,232,0.4); margin-bottom: 36px; }
+    .etage-body { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: rgba(248,243,232,0.55); font-size: 1.05rem; line-height: 1.95; max-width: 560px; margin: 0 auto 44px; }
+    .etage-body strong { color: var(--or-pale); font-weight: 400; }
+    .etage-feats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .etage-feat { text-align: center; }
+    .etage-feat-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+    .etage-feat-text { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,168,76,0.5); }
+
+    /* ══ RÉSERVATION ══ */
+    .reservation { background: var(--charbon); }
+    .resa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .resa-info p { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: rgba(248,243,232,0.55); line-height: 1.95; font-size: 1.05rem; margin-bottom: 16px; }
+    .resa-info strong { color: var(--or-pale); font-weight: 400; }
+    .resa-tel { margin-top: 36px; padding-top: 32px; border-top: 1px solid rgba(201,168,76,0.1); }
+    .resa-tel-lbl { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cuivre); margin-bottom: 10px; display: block; }
+    .resa-tel a { font-family: 'Cinzel', serif; font-size: 1.55rem; color: var(--or); text-decoration: none; letter-spacing: 0.06em; transition: color .2s; }
+    .resa-tel a:hover { color: var(--or-pale); }
+
+    .form-deco { display: flex; flex-direction: column; gap: 3px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+    .form-deco input, .form-deco select, .form-deco textarea {
+      background: var(--encre); border: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      color: var(--creme); padding: 16px 20px;
+      font-size: 0.85rem; font-family: 'Raleway', sans-serif;
+      outline: none; width: 100%; transition: border-color .2s;
+    }
+    .form-deco input:focus, .form-deco select:focus { border-color: var(--or); }
+    .form-deco input::placeholder { color: rgba(248,243,232,0.2); font-style: italic; }
+    .form-deco select option { background: var(--encre); }
+    .form-deco textarea { resize: vertical; min-height: 80px; }
+    .btn-submit { background: transparent; border: 1px solid var(--or); color: var(--or); padding: 18px; font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: background .25s, color .25s; width: 100%; }
+    .btn-submit:hover { background: var(--or); color: var(--noir); }
+
+    /* ══ FOOTER ══ */
+    footer { background: #070504; border-top: 1px solid rgba(201,168,76,0.12); padding: 64px 24px 40px; }
+    .footer-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; gap: 48px; align-items: start; }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; color: var(--or); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; color: rgba(248,243,232,0.28); font-size: 0.95rem; }
+    .footer-orn-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .footer-orn-line { width: 1px; height: 52px; background: linear-gradient(to bottom, var(--or), transparent); }
+    .footer-orn-line.b { background: linear-gradient(to top, var(--or), transparent); }
+    .footer-orn-gem { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); }
+    .footer-info-lbl { font-family: 'Cinzel', serif; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cuivre); margin-bottom: 4px; }
+    .footer-info-val { color: rgba(248,243,232,0.35); font-size: 0.84rem; line-height: 1.6; margin-bottom: 14px; }
+    .footer-bottom { max-width: 1080px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid rgba(201,168,76,0.07); display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { color: rgba(248,243,232,0.16); font-size: 0.7rem; letter-spacing: 0.05em; }
+    .footer-nav { display: flex; gap: 28px; }
+    .footer-nav a { color: rgba(248,243,232,0.18); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.1em; font-family: 'Cinzel', serif; text-transform: uppercase; transition: color .2s; }
+    .footer-nav a:hover { color: var(--or); }
+
+    @media (max-width: 900px) {
+      .adresse-grid, .rot-inner, .resa-grid { grid-template-columns: 1fr; gap: 48px; }
+      .carte-cols { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 16px; }
+      nav { padding: 0 20px; }
+      .nav-links, .bandeau-sep { display: none; }
+      .bandeau { gap: 16px; padding: 16px 24px; }
+      .hero-corner, .hero-frame { display: none; }
+      .etage-box { padding: 48px 32px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div>
+    <div class="nav-brand-name">Les Jalles</div>
+    <div class="nav-brand-sub">Brasserie Parisienne · Art Déco</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#adresse">L'Adresse</a></li>
+    <li><a href="#carte">La Carte</a></li>
+    <li><a href="#rotisserie">La Rôtisserie</a></li>
+    <li><a href="#etage">L'Étage</a></li>
+  </ul>
+  <a href="#reservation" class="nav-resa">Réserver</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Sunburst Art Déco -->
+  <div class="hero-rays">
+    <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(400,400)" fill="none" stroke="#C9A84C" stroke-width="0.6">
+        <line x1="0" y1="-400" x2="0" y2="400"/>
+        <line x1="-400" y1="0" x2="400" y2="0"/>
+        <line x1="-283" y1="-283" x2="283" y2="283"/>
+        <line x1="283" y1="-283" x2="-283" y2="283"/>
+        <line x1="-153" y1="-374" x2="153" y2="374"/>
+        <line x1="153" y1="-374" x2="-153" y2="374"/>
+        <line x1="-374" y1="-153" x2="374" y2="153"/>
+        <line x1="-374" y1="153" x2="374" y2="-153"/>
+        <circle cx="0" cy="0" r="100"/>
+        <circle cx="0" cy="0" r="190"/>
+        <circle cx="0" cy="0" r="290"/>
+        <polygon points="0,-100 86,-50 86,50 0,100 -86,50 -86,-50"/>
+        <polygon points="0,-190 164,-95 164,95 0,190 -164,95 -164,-95"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-corner tl"></div>
+  <div class="hero-corner tr"></div>
+  <div class="hero-corner bl"></div>
+  <div class="hero-corner br"></div>
+  <div class="hero-frame outer"></div>
+  <div class="hero-frame inner"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">14 Rue des Capucines · Paris 75002</div>
+    <div class="hero-orn">
+      <div class="orn-bar"></div>
+      <div class="orn-ds"></div>
+      <div class="orn-d"></div>
+      <div class="orn-ds"></div>
+      <div class="orn-bar r"></div>
+    </div>
+    <h1>Les Jalles</h1>
+    <p class="hero-sub">Brasserie Parisienne · Décor Art Déco · Depuis les Années Folles</p>
+    <div class="deco-divider">
+      <div class="line"></div>
+      <div class="gem-sm"></div>
+      <div class="gem"></div>
+      <div class="gem-sm"></div>
+      <div class="line r"></div>
+    </div>
+    <div class="hero-tags">
+      <span>Banquettes &amp; Boiseries</span>
+      <div class="sep"></div>
+      <span>Rôtisserie Maison</span>
+      <div class="sep"></div>
+      <span>Cuisine du Terroir</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#reservation" class="btn-or">Réserver une table</a>
+      <a href="#carte" class="btn-ghost">Découvrir la carte</a>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<div class="bandeau">
+  <div class="bandeau-item">📍 14 Rue des Capucines, 75002</div>
+  <div class="bandeau-sep"></div>
+  <div class="bandeau-item">📞 +33 1 42 61 66 71</div>
+  <div class="bandeau-sep"></div>
+  <div class="bandeau-item">🕐 Lun–Ven · Déj &amp; Dîner · Sam soir</div>
+  <div class="bandeau-sep"></div>
+  <div class="bandeau-item">💶 Menus dès 55 €</div>
+</div>
+
+<!-- L'ADRESSE -->
+<section class="adresse" id="adresse">
+  <div class="section-inner">
+    <div class="adresse-grid">
+      <div class="adresse-text">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">L'Adresse</h2>
+        <p class="section-italic">Entre la Madeleine et l'Opéra</p>
+        <p>Au cœur du deuxième arrondissement, à deux pas des Tuileries, <strong>Les Jalles</strong> s'est imposé comme une adresse incontournable de la gastronomie parisienne. Son décor <strong>Art Déco</strong> d'exception — banquettes de cuir capitonné, boiseries sombres laquées, rampes en cuivre poli, miroirs aux cadres dorés — évoque l'élégance fastueuse des grandes brasseries des <strong>Années Folles</strong>.</p>
+        <p>Ici, le temps semble suspendu. La lumière chaude des appliques en bronze, le reflet des lustres dans les grandes glaces et le murmure des conversations feutrées composent un tableau que l'on ne se lasse pas de contempler.</p>
+        <p>Depuis <strong>2015 sous la direction de Nadège Jaouen</strong>, la maison perpétue une tradition d'excellence : une cuisine de terroir magnifiée, servie dans un écrin digne des pages les plus belles de l'histoire gastronomique parisienne.</p>
+      </div>
+      <div class="adresse-panels">
+        <div class="adresse-panel">
+          <span class="panel-icon">📍</span>
+          <div>
+            <div class="panel-label">Adresse</div>
+            <div class="panel-value">14 Rue des Capucines, 75002 Paris<br/>Entre Madeleine et Opéra</div>
+          </div>
+        </div>
+        <div class="adresse-panel">
+          <span class="panel-icon">🕐</span>
+          <div>
+            <div class="panel-label">Horaires</div>
+            <div class="panel-value">Lun–Ven : déjeuner &amp; dîner<br/>Samedi : dîner uniquement · Dim fermé</div>
+          </div>
+        </div>
+        <div class="adresse-panel">
+          <span class="panel-icon">🎩</span>
+          <div>
+            <div class="panel-label">Tarifs</div>
+            <div class="panel-value">Menu déjeuner dès 55 €<br/>Carte ~80 € · Menu prestige 120 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE -->
+<section class="carte" id="carte">
+  <div class="section-inner">
+    <span class="section-label">Terroir &amp; Raffinement</span>
+    <h2 class="section-title">La Carte</h2>
+    <p class="section-italic">Une cuisine du marché, revisitée avec élégance</p>
+    <p class="carte-intro">« Naviguant avec élégance entre les classiques de la brasserie parisienne et les découvertes de la bistronomie contemporaine, notre cuisine est ancrée dans le terroir et sublimée par le soin du détail. »</p>
+    <div class="carte-cols">
+      <div class="carte-col">
+        <div class="col-num">I — Entrées</div>
+        <div class="col-title">Premiers Actes</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Escargots de Bourgogne</span><span class="plat-price">18 €</span></div>
+          <div class="plat-desc">Beurre persillé, ail doux, pain de campagne grillé</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Foie gras de canard mi-cuit</span><span class="plat-price">28 €</span></div>
+          <div class="plat-desc">Fleur de sel, poivre long, chutney de figues, brioche toastée</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Crabe effiloché, minestrone</span><span class="plat-price">24 €</span></div>
+          <div class="plat-desc">Légumes du marché, émulsion bisque légère, cerfeuil</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Lapin pressé, lentilles du Puy</span><span class="plat-price">22 €</span></div>
+          <div class="plat-desc">Vinaigrette moutarde à l'ancienne, herbes fraîches</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Œuf parfait, caviar de citron</span><span class="plat-price">26 €</span></div>
+          <div class="plat-desc">Veau confit, purée de pommes dorées, truffe noire râpée</div>
+        </div>
+      </div>
+
+      <div class="carte-col">
+        <div class="col-num">II — Plats</div>
+        <div class="col-title">Grands Tableaux</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Filet de bœuf à la broche</span><span class="plat-price">42 €</span></div>
+          <div class="plat-desc">Pommes dauphines, jus corsé, cresson de fontaine</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Épaule d'agneau, sept heures</span><span class="plat-price">38 €</span></div>
+          <div class="plat-desc">Confite longuement, légumes racines glacés, romarin</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Blanquette de veau traditionnelle</span><span class="plat-price">34 €</span></div>
+          <div class="plat-desc">Riz pilaf, champignons de Paris, sauce veloutée maison</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Sole meunière entière</span><span class="plat-price">46 €</span></div>
+          <div class="plat-desc">Beurre noisette, câpres, citron de Menton, pommes vapeur</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Poulet de Bresse rôtisserie</span><span class="plat-price">36 €</span></div>
+          <div class="plat-desc">Jus naturel, pommes grenaille, thym citron</div>
+        </div>
+      </div>
+
+      <div class="carte-col">
+        <div class="col-num">III — Douceurs</div>
+        <div class="col-title">Fins de Soirée</div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Soufflé au Grand Marnier</span><span class="plat-price">16 €</span></div>
+          <div class="plat-desc">À commander en début de repas · Léger et aérien</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Millefeuille vanille Bourbon</span><span class="plat-price">14 €</span></div>
+          <div class="plat-desc">Pâte feuilletée caramélisée, crème légère maison</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Profiteroles au chocolat chaud</span><span class="plat-price">12 €</span></div>
+          <div class="plat-desc">Choux, glace vanille, sauce Valrhona</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Fromages affinés du chariot</span><span class="plat-price">18 €</span></div>
+          <div class="plat-desc">Sélection du fromager, pain aux noix, confiture</div>
+        </div>
+        <div class="plat">
+          <div class="plat-top"><span class="plat-name">Baba au rhum flambé</span><span class="plat-price">13 €</span></div>
+          <div class="plat-desc">Rhum vieux, chantilly légère, zeste d'orange confite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÔTISSERIE -->
+<section class="rotisserie" id="rotisserie">
+  <div class="rot-inner">
+    <div class="rot-vis">
+      <div class="rot-icon">🔥</div>
+      <div class="rot-caption">La Rôtisserie<br/>Maison des Jalles</div>
+    </div>
+    <div class="rot-text">
+      <span class="section-label">Le cœur vivant de la maison</span>
+      <h2 class="section-title">La Rôtisserie</h2>
+      <p class="section-italic">Visible depuis chaque table</p>
+      <p>Au centre de la salle des Jalles, <strong>la rôtisserie</strong> est bien plus qu'un équipement de cuisine — c'est un spectacle vivant, une promesse faite aux convives dès leur arrivée. Poulets de Bresse dorés, filets de bœuf maturés, gigots d'agneau : les pièces se succèdent lentement, nappées de leur jus naturel et embaumant la salle de leurs arômes.</p>
+      <p>C'est autour d'elle que la cuisine des Jalles s'est construite : une <strong>cuisine du feu</strong>, patiente et généreuse, qui renoue avec les gestes les plus anciens et les plus nobles de la gastronomie française.</p>
+      <div class="rot-specs">
+        <div class="rot-spec">
+          <span class="rot-spec-val">7h</span>
+          <span class="rot-spec-key">Préparation quotidienne</span>
+        </div>
+        <div class="rot-spec">
+          <span class="rot-spec-val">100%</span>
+          <span class="rot-spec-key">Produits sélectionnés</span>
+        </div>
+        <div class="rot-spec">
+          <span class="rot-spec-val">Feu</span>
+          <span class="rot-spec-key">Traditionnel</span>
+        </div>
+        <div class="rot-spec">
+          <span class="rot-spec-val">Live</span>
+          <span class="rot-spec-key">Visible en salle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- L'ÉTAGE -->
+<section class="etage" id="etage">
+  <div class="section-inner etage-wrap">
+    <div class="etage-box">
+      <div class="ec tl"></div><div class="ec tr"></div>
+      <div class="ec bl"></div><div class="ec br"></div>
+      <span class="section-label" style="text-align:center;display:block;margin-bottom:12px;">Privatisation</span>
+      <h2 class="etage-title">L'Étage</h2>
+      <p class="etage-sub">Salon privatif · 40 couverts</p>
+      <div class="deco-divider">
+        <div class="line"></div>
+        <div class="gem-sm"></div>
+        <div class="gem"></div>
+        <div class="gem-sm"></div>
+        <div class="line r"></div>
+      </div>
+      <p class="etage-body">Au premier étage des Jalles, un <strong>salon entièrement privatisable de 40 convives</strong> accueille vos événements les plus précieux. Dîners d'affaires, célébrations, soirées de prestige : le cadre Art Déco de l'Étage confère à chaque occasion une dimension exceptionnelle. <strong>Menus sur mesure</strong> composés par notre chef selon vos souhaits.</p>
+      <div class="etage-feats">
+        <div class="etage-feat"><span class="etage-feat-icon">🎩</span><span class="etage-feat-text">40 couverts</span></div>
+        <div class="etage-feat"><span class="etage-feat-icon">🍽️</span><span class="etage-feat-text">Menu sur mesure</span></div>
+        <div class="etage-feat"><span class="etage-feat-icon">🥂</span><span class="etage-feat-text">Cave privée</span></div>
+        <div class="etage-feat"><span class="etage-feat-icon">🎶</span><span class="etage-feat-text">Sonorisation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section class="reservation" id="reservation">
+  <div class="section-inner">
+    <div class="resa-grid">
+      <div class="resa-info">
+        <span class="section-label">Votre table vous attend</span>
+        <h2 class="section-title">Réservation</h2>
+        <p class="section-italic">La réservation est recommandée</p>
+        <p><strong>Déjeuner</strong> — Lundi au vendredi, 12h–14h30<br/>Formule déjeuner à partir de 55 €</p>
+        <p><strong>Dîner</strong> — Lundi au samedi, 19h30–23h<br/>Menu à la carte à partir de 80 €</p>
+        <p>Pour la <strong>privatisation de l'Étage</strong> (40 couverts) et les événements, contactez directement notre équipe.</p>
+        <div class="resa-tel">
+          <span class="resa-tel-lbl">Réservations par téléphone</span>
+          <a href="tel:+33142616671">+33 1 42 61 66 71</a>
+        </div>
+      </div>
+      <div>
+        <div class="form-deco">
+          <div class="form-row">
+            <input type="text" placeholder="Prénom" />
+            <input type="text" placeholder="Nom" />
+          </div>
+          <div class="form-row">
+            <input type="tel" placeholder="Téléphone" />
+            <input type="email" placeholder="Email" />
+          </div>
+          <input type="date" />
+          <div class="form-row">
+            <select>
+              <option value="">Nombre de couverts</option>
+              <option>1 couvert</option>
+              <option>2 couverts</option>
+              <option>3 couverts</option>
+              <option>4 couverts</option>
+              <option>5–6 couverts</option>
+              <option>7–10 couverts</option>
+              <option>Privatisation (10+)</option>
+            </select>
+            <select>
+              <option value="">Service</option>
+              <option>Déjeuner (12h–14h30)</option>
+              <option>Dîner (19h30–23h)</option>
+              <option>Privatisation L'Étage</option>
+            </select>
+          </div>
+          <textarea placeholder="Message, allergies, occasion particulière…"></textarea>
+          <button class="btn-submit">Confirmer la réservation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-name">Les Jalles</div>
+      <div class="footer-tagline">Brasserie Parisienne · Art Déco · Paris 2e</div>
+    </div>
+    <div class="footer-orn-wrap">
+      <div class="footer-orn-line"></div>
+      <div class="footer-orn-gem"></div>
+      <div class="footer-orn-line b"></div>
+    </div>
+    <div>
+      <div class="footer-info-lbl">Adresse</div>
+      <div class="footer-info-val">14 Rue des Capucines, 75002 Paris</div>
+      <div class="footer-info-lbl">Téléphone</div>
+      <div class="footer-info-val">+33 1 42 61 66 71</div>
+      <div class="footer-info-lbl">Horaires</div>
+      <div class="footer-info-val">Lun–Ven déj &amp; dîner · Sam dîner · Dim fermé</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Les Jalles · 14 Rue des Capucines, 75002 Paris</div>
+    <nav class="footer-nav">
+      <a href="#adresse">L'Adresse</a>
+      <a href="#carte">La Carte</a>
+      <a href="#rotisserie">Rôtisserie</a>
+      <a href="#etage">L'Étage</a>
+      <a href="#reservation">Réserver</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

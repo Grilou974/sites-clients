@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cordonnerie Serrurerie Bastille - Réparation Chaussures et Clés à Paris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            color: #3e2723;
+            background: linear-gradient(135deg, #faf6f0 0%, #f5ede5 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #5c3317 0%, #8b6120 50%, #6b4423 100%);
+            color: #fff8e7;
+            padding: 1.5rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            color: #b8860b;
+            font-size: 1.9rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #fff8e7;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #b8860b;
+            border-bottom-color: #b8860b;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #6d4c41 0%, #8b6f47 30%, #9d7e68 70%, #a1887f 100%);
+            color: #fff8e7;
+            padding: 10rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 900;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.98;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
+            color: #5c3317;
+            padding: 1.1rem 3rem;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            color: #5c3317;
+            position: relative;
+            padding-bottom: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #b8860b, transparent);
+            border-radius: 2px;
+        }
+
+        #about {
+            background: linear-gradient(180deg, #faf6f0 0%, #fff8e7 100%);
+        }
+
+        .about-content {
+            background: white;
+            padding: 3.5rem;
+            border-left: 6px solid #8b6120;
+            border-radius: 2px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content p {
+            margin-bottom: 1.8rem;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #3e2723;
+        }
+
+        .about-content strong {
+            color: #5c3317;
+        }
+
+        #services {
+            background: linear-gradient(180deg, #f5ede5 0%, #faf6f0 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #8b6120;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: #8b6120;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #5c3317;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .price-range {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e8dcd4;
+            color: #8b6120;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .qualities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 2px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .quality-icon {
+            font-size: 2.5rem;
+            color: #8b6120;
+            margin-bottom: 1rem;
+        }
+
+        .quality-item h4 {
+            font-family: 'Playfair Display', serif;
+            color: #5c3317;
+            margin-bottom: 0.8rem;
+        }
+
+        #contact {
+            background: linear-gradient(180deg, #faf6f0 0%, #fff8e7 100%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            margin-bottom: 2.5rem;
+            display: flex;
+            gap: 1.8rem;
+            align-items: flex-start;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #8b6120;
+            min-width: 50px;
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        .contact-text h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.6rem;
+            color: #5c3317;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-text p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .contact-text a {
+            color: #8b6120;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: #5c3317;
+        }
+
+        .access-box {
+            background: linear-gradient(135deg, #8b6120 0%, #6b4423 100%);
+            color: #fff8e7;
+            padding: 2.5rem;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .access-box h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .access-box i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #5c3317;
+            color: #fff8e7;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(184, 134, 11, 0.2);
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+        }
+
+        footer strong {
+            color: #b8860b;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-hammer"></i>
+                Bastille Cordonnerie
+            </div>
+            <ul>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cordonnerie & Serrurerie Bastille</h1>
+            <p>Artisans expérimentés depuis 1985 • Réparations de précision • Savoir-faire traditionnel</p>
+            <a href="#contact" class="cta-button">Nous Contacter</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title">Notre Savoir-Faire</div>
+        <div class="about-content">
+            <p>
+                Depuis <strong>plus de 38 ans</strong>, la Cordonnerie Serrurerie Bastille est le partenaire de confiance des Parisiens du 12e arrondissement. Nos maîtres cordonniers et serruriers combinent l'expertise traditionnelle avec les techniques contemporaines les plus fiables.
+            </p>
+            <p>
+                Nous perpétuons une <strong>tradition d'excellence</strong> fondée sur l'authenticité, le respect du matériel et l'engagement envers la satisfaction de chaque client. Chaque chaussure, chaque clé, chaque serrure reçoit le soin minutieux qu'elle mérite. Notre atelier reste un lieu où la qualité prime sur la rapidité, et où chaque détail compte.
+            </p>
+        </div>
+
+        <div class="qualities">
+            <div class="quality-item">
+                <div class="quality-icon"><i class="fas fa-medal"></i></div>
+                <h4>Expertise Reconnue</h4>
+                <p>Décennies d'expérience en réparation et restauration de qualité supérieure.</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon"><i class="fas fa-leaf"></i></div>
+                <h4>Matériaux Durables</h4>
+                <p>Utilisation de matériaux et de techniques respectueux de vos articles.</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon"><i class="fas fa-handshake"></i></div>
+                <h4>Service Personnalisé</h4>
+                <p>Écoute active et solutions sur mesure pour chaque besoin spécifique.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-title">Nos Services</div>
+
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #5c3317; margin-bottom: 2rem; text-align: center;">Cordonnerie</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shoe-prints"></i></div>
+                <h3>Ressemelage</h3>
+                <p>Restauration complète des semelles pour prolonger la vie de vos chaussures préférées.</p>
+                <div class="price-range">À partir de 25€ à 45€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scroll"></i></div>
+                <h3>Talons & Contreforts</h3>
+                <p>Remplacement de talons usés et renforcement des contreforts pour un confort optimal.</p>
+                <div class="price-range">À partir de 15€ à 25€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-needle"></i></div>
+                <h3>Couture & Travail Fin</h3>
+                <p>Réparation de déchirures, renforts de coutures et modifications délicates.</p>
+                <div class="price-range">À partir de 10€ à 30€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>Teinture & Finition</h3>
+                <p>Teinture professionnelle et finitions esthétiques pour redonner de l'éclat à vos souliers.</p>
+                <div class="price-range">À partir de 20€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-soap"></i></div>
+                <h3>Entretien du Cuir</h3>
+                <p>Nettoyage professionnel, imperméabilisant et traitement protecteur pour la durabilité.</p>
+                <div class="price-range">À partir de 15€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shoe-prints"></i></div>
+                <h3>Semelles Orthopédiques</h3>
+                <p>Adaptation et pose de semelles pour le confort et la santé de vos pieds.</p>
+                <div class="price-range">Tarif sur devis</div>
+            </div>
+        </div>
+
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #5c3317; margin-top: 4rem; margin-bottom: 2rem; text-align: center;">Serrurerie</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-key"></i></div>
+                <h3>Duplication de Clés</h3>
+                <p>Copies rapides et précises de clés simples, de sécurité et adaptées.</p>
+                <div class="price-range">À partir de 5€ à 15€</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-door-open"></i></div>
+                <h3>Ouverture d'Urgence</h3>
+                <p>Intervention rapide en cas d'accès refusé ou de clé oubliée, sans casse.</p>
+                <div class="price-range">Tarif sur devis</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-id-badge"></i></div>
+                <h3>Badges & Contrôle d'Accès</h3>
+                <p>Programmation et reproduction de badges pour bâtiments et systèmes d'accès.</p>
+                <div class="price-range">Tarif sur devis</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">Nous Contacter</div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-text">
+                        <h4>Adresse</h4>
+                        <p>10 Rue Lacuée<br>75012 Paris<br>12e arrondissement</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-text">
+                        <h4>Téléphone</h4>
+                        <p><a href="tel:+33143412241">01 43 41 22 41</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-text">
+                        <h4>Horaires</h4>
+                        <p>Lun-Ven: 9h00 - 19h00<br>Samedi: 9h00 - 18h00<br>Dimanche: Fermé</p>
+                    </div>
+                </div>
+            </div>
+            <div class="access-box">
+                <i class="fas fa-location-dot"></i>
+                <h4>Facilement Accessible</h4>
+                <p>Situé au cœur du 12e arrondissement, à quelques pas de la Place de la Bastille. Stationnement facile à proximité. Métro Bastille (lignes 1, 5, 8) à 200m. Nos artisans vous accueillent dans un atelier chaleureux et traditionnel.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Cordonnerie Serrurerie Bastille</strong> &copy; 2024. Tous droits réservés.</p>
+        <p>Artisans expérimentés • Qualité premium • Tarifs justes • Service d'excellence</p>
+    </footer>
+</body>
+</html>

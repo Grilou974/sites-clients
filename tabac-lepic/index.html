@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabac Lepic - Institution Montmartre Paris 18</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #6B2D3E;
+            --green: #2D4A3E;
+            --gold: #C4A35A;
+            --cream: #F5F1E8;
+            --dark: #1A1A1A;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--cream);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--green) 0%, #3A5248 100%);
+            color: var(--cream);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            font-size: 1.6rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--cream);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--burgundy) 0%, #8B3A4D 100%);
+            color: var(--cream);
+            padding: 6.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(196, 163, 90, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #D4B864;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5.5rem 0;
+        }
+
+        section h2 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2.8rem;
+            color: var(--burgundy);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border-radius: 6px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.35s;
+            border-left: 5px solid var(--burgundy);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(107, 45, 62, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.8rem;
+            color: var(--burgundy);
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Story Section */
+        .story-section {
+            background: var(--cream);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .story-text p {
+            color: #555;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            font-size: 6rem;
+            color: var(--burgundy);
+            text-align: center;
+            opacity: 0.75;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--green) 0%, #3A5248 100%);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--cream);
+        }
+
+        .contact-section h2::after {
+            background: var(--gold);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2.2rem;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-box:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-4px);
+        }
+
+        .info-box i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-smoking"></i>
+                Tabac Lepic
+            </div>
+            <nav>
+                <a href="#tabac">Tabac</a>
+                <a href="#services">Services</a>
+                <a href="#montmartre">Montmartre</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tabac Lepic</h1>
+            <p>Une institution de Montmartre depuis 1952</p>
+            <p style="font-size: 1rem; opacity: 0.9;">Au cœur de la célèbre Rue Lepic, votre tabac référence du 18ème arrondissement</p>
+            <a href="#services" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="services">
+            <h2>Nos Services</h2>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Tabac & Cigares</h3>
+                    <p>Large sélection de tabacs, cigarettes et cigares de prestige. Réserve privée disponible sur commande.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h3>Presse & Magazines</h3>
+                    <p>Journaux français et internationaux, magazines spécialisés et publications des quatre coins du monde.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <h3>Jeux FDJ & PMU</h3>
+                    <p>Loterie, Euromillions, grattages, courses hippiques et tous les jeux d'argent officiels.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Recharges Téléphoniques</h3>
+                    <p>Recharges tous opérateurs mobiles et fixes. Tarifs compétitifs, paiement immédiat.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stamp"></i>
+                    </div>
+                    <h3>Timbres Fiscaux</h3>
+                    <p>Timbres de toutes valeurs, vignettes, timbres spécialisés pour démarches administratives.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Articles Fumeurs</h3>
+                    <p>Briquets, allume-cigares, pipes, humidificateurs et accessoires de collection premium.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="montmartre" class="story-section">
+            <h2>Au Cœur de Montmartre</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>La Rue Lepic</h3>
+                    <p>Rue Lepic est l'une des plus célèbres rues de Montmartre, fréquentée par artistes, écrivains et bohémiens depuis le 19ème siècle. Depuis 1952, Tabac Lepic en est une institution incontournable.</p>
+                    <p>Nous avons servi des générations de Montmartrois et de visiteurs du monde entier, perpétuant la tradition parisienne d'excellence. Notre boutique reste un point de rendez-vous privilégié, un havre de tradition et d'authenticité.</p>
+                    <p>Entre la Place Dalida et la Basilique, Tabac Lepic respire l'histoire de Paris. Nous en sommes fiers.</p>
+                </div>
+                <div class="story-image">
+                    <i class="fas fa-landmark"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Nous Trouver</h2>
+            <div class="contact-info">
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>12 Rue Lepic<br>75018 Paris</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-phone"></i>
+                    <h3>Téléphone</h3>
+                    <p>01 42 51 01 07</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires</h3>
+                    <p>Lun-Dim: 7h-20h<br>Tous les jours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tabac Lepic - Institution Montmartre depuis 1952</p>
+        <p>12 Rue Lepic, 75018 Paris | Tél: 01 42 51 01 07</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">Une boutique authentique au cœur de la belle Montmartre</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grill Ménilmontant - Kebab & Grillades à Paris</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3d1515 0%, #6b2c2c 40%, #8B4513 70%, #A0522D 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255,255,255,0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.03) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            font-weight: 500;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #D4AF37;
+            color: #3d1515;
+            padding: 16px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            background: #FFD700;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 90px 40px;
+            background: #f5f1ed;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: #6b2c2c;
+            font-weight: 700;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* MENU SECTION */
+        .menu {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .menu h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6b2c2c;
+            font-weight: 700;
+        }
+
+        .menu-intro {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .menu-categories {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 50px;
+        }
+
+        .menu-category h3 {
+            font-size: 1.6rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .menu-category-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: #faf7f3;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 5px 15px rgba(107,44,44,0.1);
+            transform: translateY(-3px);
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: #3d1515;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .menu-item-price {
+            font-weight: 700;
+            color: #D4AF37;
+            font-size: 1rem;
+        }
+
+        /* PILLARS SECTION */
+        .pillars {
+            padding: 90px 40px;
+            background: linear-gradient(135deg, #3d1515 0%, #6b2c2c 100%);
+            color: white;
+        }
+
+        .pillars h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            font-weight: 700;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pillar {
+            text-align: center;
+        }
+
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+            font-size: 40px;
+        }
+
+        .pillar:hover .pillar-icon {
+            background: #D4AF37;
+            color: #3d1515;
+            transform: scale(1.1);
+        }
+
+        .pillar h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .pillar p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* HOURS & CONTACT SECTION */
+        .hours-contact {
+            padding: 90px 40px;
+            background: #f5f1ed;
+        }
+
+        .hours-contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #6b2c2c;
+            font-weight: 700;
+        }
+
+        .hours-contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .hours-contact-block h3 {
+            font-size: 1.4rem;
+            color: #3d1515;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .block-icon {
+            width: 30px;
+            height: 30px;
+            color: #D4AF37;
+        }
+
+        .hours-contact-block p {
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .hours-contact-block a {
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .hours-contact-block a:hover {
+            color: #D4AF37;
+        }
+
+        /* TESTIMONIALS SECTION */
+        .testimonials {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .testimonials h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #6b2c2c;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: #faf7f3;
+            padding: 35px;
+            border-radius: 8px;
+            border-top: 4px solid #D4AF37;
+            position: relative;
+        }
+
+        .testimonial-stars {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #3d1515;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2a1010;
+            color: #D4AF37;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about h2, .menu h2, .pillars h2, .hours-contact h2, .testimonials h2 {
+                font-size: 2.2rem;
+            }
+
+            .hours-contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Grill Ménilmontant</h1>
+            <p>Saveurs Authentiques</p>
+            <div class="subtitle">Kebabs & Grillades depuis 1998</div>
+            <a href="#contact" class="cta-button">Nous contacter</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about">
+        <h2>Bienvenue</h2>
+        <p>
+            Au cœur du 20ème arrondissement, Grill Ménilmontant perpétue la tradition des saveurs orientales
+            avec authenticité et passion depuis plus de deux décennies.
+        </p>
+        <p>
+            Nos chefs expérimentés cuisinent chaque plat à partir des meilleures viandes et ingrédients frais,
+            sélectionnés quotidiennement pour garantir une expérience culinaire exceptionnelle et mémorable.
+        </p>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu">
+        <h2>Notre Carte</h2>
+        <div class="menu-intro">
+            Tous les plats sont préparés fraîchement à la commande
+        </div>
+        <div class="menu-categories">
+            <div class="menu-category">
+                <h3>
+                    <div class="menu-category-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    Kebabs Premium
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Kebab Poulet Classique</div>
+                        <div class="menu-item-desc">Poulet grillé mariné, sauce maison, légumes frais</div>
+                        <div class="menu-item-price">8,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Kebab Agneau Réserve</div>
+                        <div class="menu-item-desc">Agneau tendre, épices aromatiques, légumes crisp</div>
+                        <div class="menu-item-price">10,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Kebab du Chef</div>
+                        <div class="menu-item-desc">Mélange agneau et poulet, sauce spéciale, oignons</div>
+                        <div class="menu-item-price">11,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <div class="menu-category-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    Grillades
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Brochettes d'Agneau</div>
+                        <div class="menu-item-desc">Agneau frais mariné 48h, grillé à la flamme</div>
+                        <div class="menu-item-price">12,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Merguez Artisanale</div>
+                        <div class="menu-item-desc">Recette traditionnelle, épices fines sélectionnées</div>
+                        <div class="menu-item-price">9,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Poulet Tandoori</div>
+                        <div class="menu-item-desc">Marinade yogurt et épices, grillé à la perfection</div>
+                        <div class="menu-item-price">10,00 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <div class="menu-category-icon">
+                        <i class="fas fa-bowl-food"></i>
+                    </div>
+                    Assiettes
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Assiette Mixte Prestige</div>
+                        <div class="menu-item-desc">Kebab, merguez, kofta, riz et salade fraîche</div>
+                        <div class="menu-item-price">14,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Tabboulé & Fattoush</div>
+                        <div class="menu-item-desc">Salade libanaise traditionnelle, vinaigrette maison</div>
+                        <div class="menu-item-price">9,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Riz Pilaf Complet</div>
+                        <div class="menu-item-desc">Riz basmati, protéine au choix, légumes sautés</div>
+                        <div class="menu-item-price">11,50 €</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3>
+                    <div class="menu-category-icon">
+                        <i class="fas fa-wine-glass"></i>
+                    </div>
+                    Boissons
+                </h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-name">Jus Frais Citron</div>
+                        <div class="menu-item-desc">Préparation fraîche quotidienne, sucre réduit</div>
+                        <div class="menu-item-price">2,50 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Ayran Traditionnel</div>
+                        <div class="menu-item-desc">Boisson yaourt turc, rafraîchissante</div>
+                        <div class="menu-item-price">2,00 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Sodas & Eaux</div>
+                        <div class="menu-item-desc">Sélection de boissons fraîches premium</div>
+                        <div class="menu-item-price">1,50 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS SECTION -->
+    <section class="pillars">
+        <h2>Pourquoi Nous Choisir</h2>
+        <div class="pillars-grid">
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Fraîcheur Quotidienne</h3>
+                <p>Sélection rigoureuse des ingrédients chaque matin. Aucun conservateur, que du frais.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <i class="fas fa-chef-hat"></i>
+                </div>
+                <h3>Savoir-Faire</h3>
+                <p>Équipe expérimentée avec plus de 20 ans de tradition culinaire orientale.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Passion Authentique</h3>
+                <p>Chaque plat préparé avec dévouement et respect des traditions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <h2>Nos Clients Parlent</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">
+                    "Le meilleur kebab du 20ème ! Viande tendre, sauces savoureuses, service impeccable.
+                    J'y vais au moins deux fois par semaine."
+                </div>
+                <div class="testimonial-author">— Sophie M., Client Régulier</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">
+                    "Authenticité garantie. Les grillades sont cuites à la perfection, les ingrédients
+                    sont visiblement frais. Petit prix pour grande qualité."
+                </div>
+                <div class="testimonial-author">— Marc D., Restaurant Critic</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">
+                    "Livraison rapide et commandes précises. Les portions sont généreuses et le goût
+                    est toujours au rendez-vous. Merci pour cette qualité constante !"
+                </div>
+                <div class="testimonial-author">— Amélie T., Client Fidèle</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOURS & CONTACT SECTION -->
+    <section class="hours-contact" id="contact">
+        <h2>Horaires & Contact</h2>
+        <div class="hours-contact-wrapper">
+            <div class="hours-contact-block">
+                <h3>
+                    <svg class="block-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Horaires d'Ouverture
+                </h3>
+                <p><strong>Lundi - Jeudi :</strong> 11h00 - 23h00</p>
+                <p><strong>Vendredi - Samedi :</strong> 11h00 - 00h00</p>
+                <p><strong>Dimanche :</strong> 12h00 - 23h00</p>
+            </div>
+            <div class="hours-contact-block">
+                <h3>
+                    <svg class="block-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    Nous Contacter
+                </h3>
+                <p><strong>Adresse :</strong><br>101bis Rue de Ménilmontant<br>75020 Paris</p>
+                <p><strong>Téléphone :</strong><br><a href="tel:0633924634">06 33 92 46 34</a></p>
+                <p><strong>Livraison :</strong> Oui, sur le secteur</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Grill Ménilmontant. Tous droits réservés.</p>
+        <p>Saveurs authentiques du Moyen-Orient à Paris • Depuis 1998</p>
+    </footer>
+</body>
+</html>

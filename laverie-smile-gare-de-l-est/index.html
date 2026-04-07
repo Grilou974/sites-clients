@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laverie Smile - Laverie Automatique Professionnelle Gare de l'Est</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #2E86AB;
+            --teal: #45B7AA;
+            --white: #FFFFFF;
+            --light-grey: #F5F7FA;
+            --dark: #1A1A1A;
+            --text: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            background-color: var(--light-grey);
+        }
+
+        /* Navigation Header */
+        header {
+            background: var(--white);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
+            color: var(--white);
+            padding: 6.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,0,0,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--blue);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: var(--light-grey);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5.5rem 2rem;
+            background: var(--light-grey);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.6rem;
+            color: var(--blue);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 1.2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--teal);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: all 0.35s;
+            border-top: 4px solid var(--teal);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(46, 134, 171, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            color: var(--blue);
+        }
+
+        .feature-card h3 {
+            color: var(--blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5.5rem 2rem;
+            background: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-box {
+            background: linear-gradient(135deg, var(--light-grey) 0%, var(--white) 100%);
+            padding: 2.2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--blue);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .service-box:hover {
+            box-shadow: 0 12px 28px rgba(46, 134, 171, 0.12);
+            border-left-color: var(--teal);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--teal);
+        }
+
+        .service-box h4 {
+            color: var(--blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .service-box p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Prices Section */
+        .prices {
+            padding: 5.5rem 2rem;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--teal) 100%);
+            color: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prices .section-title {
+            color: var(--white);
+            margin-bottom: 3.5rem;
+        }
+
+        .prices .section-title::after {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .prices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-item {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .price-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .price-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .price-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .price-item small {
+            opacity: 0.92;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5.5rem 2rem;
+            background: var(--light-grey);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .contact-info-box h3 {
+            color: var(--blue);
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .info-item {
+            margin-bottom: 1.8rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            color: var(--teal);
+        }
+
+        .info-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .info-item strong {
+            color: var(--blue);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .hours-table {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td {
+            padding: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--blue);
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--blue);
+            color: var(--white);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 4rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .services-container,
+            .prices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose, .services, .prices, .contact {
+                padding: 3.5rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-water"></i>
+                Laverie Smile
+            </div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#prix">Tarifs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Laverie Smile</h1>
+            <p>Laverie automatique moderne et accueillante à Gare de l'Est</p>
+            <p style="font-size: 1rem; opacity: 0.9;">Machines performantes, tarifs avantageux, ambiance agréable</p>
+            <a href="#services" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <h2 class="section-title">Nos Forces</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sparkles"></i></div>
+                <h3>Propre & Moderne</h3>
+                <p>Espace hygiénique et contemporain, nettoyage régulier et rigoureux</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Sécurité 24h/24</h3>
+                <p>Surveillance vidéo, caméras de sécurité et éclairage optimal</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+                <h3>Ambiance Agréable</h3>
+                <p>Wi-Fi gratuit, espace climatisé et zone détente accueillante</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-euro-sign"></i></div>
+                <h3>Tarifs Accessibles</h3>
+                <p>Prix compétitifs du quartier avec qualité garantie</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-cog"></i></div>
+                <h3>Machines Performantes</h3>
+                <p>Équipements neufs, entretien régulier et rendement optimal</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Équipe Accueillante</h3>
+                <p>Personnel courtois et réactif, à votre écoute</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="services-container">
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-washing-machine"></i></div>
+                <h4>Machines à Laver</h4>
+                <p>Capacités variées : 6kg, 10kg et 18kg. Cycles standards et délicats disponibles</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-fan"></i></div>
+                <h4>Séchoirs Performants</h4>
+                <p>Puissance optimale pour séchage rapide et respectueux de vos vêtements</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-soap"></i></div>
+                <h4>Lessive Incluse</h4>
+                <p>Détergent écologique de qualité fourni avec chaque lavage, sans supplément</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-iron"></i></div>
+                <h4>Repassage Gratuit</h4>
+                <p>Tables à repasser et fers électriques disponibles gratuitement</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-credit-card"></i></div>
+                <h4>Paiement Flexible</h4>
+                <p>Pièces de monnaie, cartes bancaires et bientôt paiement mobile</p>
+            </div>
+            <div class="service-box">
+                <div class="service-icon"><i class="fas fa-gift"></i></div>
+                <h4>Programme Fidélité</h4>
+                <p>Bonus à chaque lavage, réductions régulières pour nos clients fidèles</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section class="prices" id="prix">
+        <h2 class="section-title">Tarifs Compétitifs</h2>
+        <div class="prices-grid">
+            <div class="price-item">
+                <h4>Lavage 6kg</h4>
+                <div class="price-amount">3,50€</div>
+                <small>Programme standard</small>
+            </div>
+            <div class="price-item">
+                <h4>Lavage 10kg</h4>
+                <div class="price-amount">5,50€</div>
+                <small>Recommandé</small>
+            </div>
+            <div class="price-item">
+                <h4>Lavage 18kg</h4>
+                <div class="price-amount">8,50€</div>
+                <small>Capacité maximale</small>
+            </div>
+            <div class="price-item">
+                <h4>Séchage</h4>
+                <div class="price-amount">1,50€</div>
+                <small>Par 10 minutes</small>
+            </div>
+            <div class="price-item">
+                <h4>Repassage</h4>
+                <div class="price-amount">Gratuit</div>
+                <small>Accès libre</small>
+            </div>
+            <div class="price-item">
+                <h4>Carnet 10 lavages</h4>
+                <div class="price-amount">45€</div>
+                <small>Économisez 10€</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Nous Trouver</h2>
+        <div class="contact-grid">
+            <div class="contact-info-box">
+                <h3>Localisation</h3>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-map-pin"></i></div>
+                    <div>
+                        <strong>Adresse</strong>
+                        <p>25 Rue du Terrage<br>75010 Paris</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-subway"></i></div>
+                    <div>
+                        <strong>Métro</strong>
+                        <p>Gare de l'Est (lignes 4, 5, 7)</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-bus"></i></div>
+                    <div>
+                        <strong>Transports</strong>
+                        <p>Bus lignes 26, 32, 38, 46</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info-box">
+                <h3>Horaires & Contact</h3>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <strong>Téléphone</strong>
+                        <p><a href="tel:0651583737" style="color: var(--blue); text-decoration: none;">06 51 58 37 37</a></p>
+                    </div>
+                </div>
+                <table class="hours-table">
+                    <tr>
+                        <td>Lundi - Dimanche</td>
+                        <td>7h00 - 22h00</td>
+                    </tr>
+                    <tr>
+                        <td>Accès 24h/24</td>
+                        <td>Clients fidèles</td>
+                    </tr>
+                </table>
+                <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem;"><i class="fas fa-wheelchair" style="margin-right: 0.5rem;"></i> Accessible handicapés</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Laverie Smile. Laverie Automatique Professionnelle</p>
+            <p>25 Rue du Terrage, 75010 Paris | Tél: 06 51 58 37 37</p>
+        </div>
+    </footer>
+</body>
+</html>

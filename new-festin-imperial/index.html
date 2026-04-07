@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Festin Impérial | Restaurant Chinois – Paris 10e</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rouge:    #B81C2C;
+      --rouge-vif: #D4202E;
+      --or:       #C8960A;
+      --or-clair: #E8B830;
+      --noir:     #0E0A06;
+      --encre:    #1A1208;
+      --creme:    #FAF4E4;
+      --sable:    #F0E4C0;
+      --jade:     #2A6A4A;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--noir); color: var(--creme); overflow-x: hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(14,10,6,0.97);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 72px;
+      border-bottom: 1px solid rgba(200,150,10,0.3);
+    }
+    .nav-logo {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo-main {
+      font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600;
+      color: var(--or); letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .nav-logo-cn {
+      font-family: 'Noto Serif SC', serif; font-size: 1.2rem; color: rgba(200,150,10,0.6);
+      letter-spacing: 0.15em;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: #8A7A60; text-decoration: none; font-size: 0.8rem;
+      letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--or-clair); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; padding-top: 72px;
+      background: var(--encre);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* Dragon/cloud pattern background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 20% 50%, rgba(184,28,44,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 30%, rgba(200,150,10,0.1) 0%, transparent 60%);
+    }
+    .hero-lanterns {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; justify-content: space-around; padding: 72px 80px 0;
+      pointer-events: none;
+    }
+    .lantern {
+      width: 20px; height: 36px;
+      background: linear-gradient(180deg, var(--rouge) 0%, #8B0010 100%);
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      position: relative; opacity: 0.7;
+    }
+    .lantern::before {
+      content: '';
+      position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 10px; background: var(--or);
+    }
+    .lantern::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 8px; background: var(--or-clair);
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px;
+      max-width: 820px;
+    }
+    .hero-cn {
+      font-family: 'Noto Serif SC', serif; font-size: 2.5rem;
+      color: var(--or); letter-spacing: 0.3em;
+      margin-bottom: 20px; line-height: 1.2; opacity: 0.9;
+    }
+    .hero-border {
+      width: 200px; height: 2px; margin: 0 auto 28px;
+      background: linear-gradient(90deg, transparent, var(--or), transparent);
+    }
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 5.5vw, 5rem); font-weight: 700;
+      color: var(--creme); line-height: 1.05; margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .hero h1 span { color: var(--or); display: block; font-size: 0.65em; letter-spacing: 0.15em; margin-bottom: 4px; }
+    .hero-tagline {
+      color: #8A7A5A; font-size: 1rem; letter-spacing: 0.1em;
+      margin: 24px 0 40px; line-height: 1.7; font-weight: 300;
+    }
+    .hero-gems { display: flex; gap: 32px; justify-content: center; margin-bottom: 48px; }
+    .hero-gem { text-align: center; }
+    .hero-gem-icon { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .hero-gem-text { font-size: 0.72rem; color: #6A5A3A; letter-spacing: 0.14em; text-transform: uppercase; }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--or) 0%, var(--or-clair) 100%);
+      color: var(--noir); padding: 15px 40px;
+      font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .btn-gold:hover { opacity: .85; }
+    .btn-outline-gold {
+      border: 1px solid var(--or); color: var(--or);
+      padding: 15px 40px; font-family: 'Cinzel', serif; font-size: 0.85rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-outline-gold:hover { background: var(--or); color: var(--noir); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-cn-top {
+      font-family: 'Noto Serif SC', serif; font-size: 1.4rem;
+      color: rgba(200,150,10,0.5); letter-spacing: 0.2em; margin-bottom: 8px; display: block;
+    }
+    .section-overline {
+      font-family: 'Cinzel', serif; font-size: 0.7rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--or); margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 600;
+      color: var(--creme); line-height: 1.1; margin-bottom: 20px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .section-ornament { text-align: left; color: var(--or); font-size: 1.2rem; margin-bottom: 40px; letter-spacing: 0.3em; }
+
+    /* ─── HISTOIRE ─── */
+    .histoire { background: var(--encre); }
+    .histoire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .histoire-text p { color: #8A7A5A; line-height: 1.9; margin-bottom: 18px; font-size: 1rem; }
+    .histoire-text strong { color: var(--or-clair); }
+    .histoire-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .pillar {
+      background: rgba(200,150,10,0.06); border: 1px solid rgba(200,150,10,0.15);
+      padding: 28px 20px; text-align: center;
+    }
+    .pillar-cn { font-family: 'Noto Serif SC', serif; font-size: 1.8rem; color: var(--or); display: block; margin-bottom: 8px; }
+    .pillar-label { font-size: 0.75rem; color: #5A4A2A; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ─── MENU ─── */
+    .menu-section { background: #120C04; }
+    .menu-intro { color: #6A5A3A; max-width: 600px; line-height: 1.85; margin-bottom: 56px; font-style: italic; font-size: 1rem; }
+    .menu-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .menu-cat { background: var(--encre); padding: 36px 28px; border-top: 2px solid var(--or); }
+    .menu-cat-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .menu-cat-title {
+      font-family: 'Cinzel', serif; font-size: 0.88rem; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--or); margin-bottom: 24px;
+      padding-bottom: 12px; border-bottom: 1px solid rgba(200,150,10,0.2);
+    }
+    .menu-item { margin-bottom: 20px; }
+    .menu-item-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+    .menu-item-name { color: var(--creme); font-size: 0.9rem; font-weight: 700; }
+    .menu-item-price { color: var(--or); font-family: 'Cinzel', serif; font-size: 0.95rem; }
+    .menu-item-desc { color: #5A4A2A; font-size: 0.78rem; line-height: 1.55; }
+
+    /* ─── BANQUETS ─── */
+    .banquets { background: var(--rouge); }
+    .banquets .section-title { color: var(--creme); }
+    .banquets .section-overline { color: rgba(250,244,228,0.7); }
+    .banquets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+    .banquet-card { background: rgba(14,10,6,0.3); padding: 36px 24px; text-align: center; border: 1px solid rgba(200,150,10,0.2); }
+    .banquet-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .banquet-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--or-clair); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .banquet-text { color: rgba(250,244,228,0.7); font-size: 0.85rem; line-height: 1.7; }
+
+    /* ─── CONTACT ─── */
+    .contact { background: var(--encre); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .contact-info p { color: #7A6A4A; line-height: 1.85; margin-bottom: 14px; }
+    .contact-info strong { color: var(--creme); }
+    .contact-tel { margin-top: 28px; }
+    .contact-tel a { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--or); text-decoration: none; }
+    .form-imperial { display: flex; flex-direction: column; gap: 12px; }
+    .form-imperial input, .form-imperial select {
+      background: rgba(200,150,10,0.06); border: 1px solid rgba(200,150,10,0.2);
+      color: var(--creme); padding: 14px 18px; font-size: 0.88rem;
+      font-family: 'Lato', sans-serif; outline: none;
+    }
+    .form-imperial input::placeholder { color: #4A3A1A; }
+    .form-imperial select option { background: var(--encre); }
+    .btn-imperial {
+      background: linear-gradient(135deg, var(--rouge) 0%, var(--rouge-vif) 100%);
+      color: var(--creme); padding: 16px; font-family: 'Cinzel', serif;
+      font-size: 0.88rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; border: none; border-top: 1px solid var(--or); transition: opacity .2s;
+    }
+    .btn-imperial:hover { opacity: .85; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060402;
+      border-top: 2px solid rgba(200,150,10,0.4);
+      text-align: center; padding: 56px 24px;
+    }
+    .footer-cn { font-family: 'Noto Serif SC', serif; font-size: 1.8rem; color: var(--or); letter-spacing: 0.3em; margin-bottom: 8px; }
+    .footer-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--creme); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+    .footer-sep { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--or), transparent); margin: 0 auto 20px; }
+    .footer-addr { color: #4A3A1A; font-size: 0.82rem; margin-bottom: 4px; }
+    .footer-copy { margin-top: 20px; color: #2A1A0A; font-size: 0.72rem; }
+
+    @media (max-width: 900px) {
+      .histoire-grid, .contact-grid { grid-template-columns: 1fr; }
+      .menu-cats { grid-template-columns: 1fr; }
+      .banquets-grid { grid-template-columns: 1fr; }
+      .hero-gems { gap: 16px; flex-wrap: wrap; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-main">New Festin Impérial</div>
+    <div class="nav-logo-cn">新皇家盛宴</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#histoire">Notre Histoire</a></li>
+    <li><a href="#menu">La Carte</a></li>
+    <li><a href="#banquets">Banquets</a></li>
+    <li><a href="#contact">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lanterns">
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-cn">新 皇 家 盛 宴</div>
+    <div class="hero-border"></div>
+    <h1>
+      <span>New Festin</span>
+      Impérial
+    </h1>
+    <p class="hero-tagline">La grande cuisine impériale chinoise au cœur de Paris —<br/>canard laqué, dim sum, spécialités de Pékin et de Chine du Sud</p>
+    <div class="hero-gems">
+      <div class="hero-gem">
+        <span class="hero-gem-icon">🦆</span>
+        <div class="hero-gem-text">Canard laqué</div>
+      </div>
+      <div class="hero-gem">
+        <span class="hero-gem-icon">🥟</span>
+        <div class="hero-gem-text">Dim Sum</div>
+      </div>
+      <div class="hero-gem">
+        <span class="hero-gem-icon">🦞</span>
+        <div class="hero-gem-text">Fruits de mer</div>
+      </div>
+      <div class="hero-gem">
+        <span class="hero-gem-icon">🍜</span>
+        <div class="hero-gem-text">Nouilles maison</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-gold">Réserver</a>
+      <a href="#menu" class="btn-outline-gold">La Carte</a>
+    </div>
+  </div>
+</section>
+
+<!-- L'HISTOIRE -->
+<section class="histoire" id="histoire">
+  <div class="section-inner">
+    <div class="histoire-grid">
+      <div class="histoire-text">
+        <span class="section-cn-top">历史</span>
+        <p class="section-overline">Notre histoire</p>
+        <h2 class="section-title">L'Art Culinaire Impérial</h2>
+        <div class="section-ornament">— 皇 —</div>
+        <p>Inspiré des grandes tables de la <strong>Cité Interdite</strong>, le New Festin Impérial perpétue les traditions les plus raffinées de la gastronomie chinoise, entre haute cuisine pékinoise et générosité de la Chine du Sud.</p>
+        <p>Notre chef, formé aux grandes écoles culinaires de <strong>Pékin et Hong Kong</strong>, sélectionne chaque ingrédient avec soin : canard élevé spécialement, épices rares, sauces secrètes transmises de génération en génération.</p>
+        <p>Le Festin Impérial, c'est une expérience totale : <strong>décor imperial</strong>, service attentionné, cuisine authentique qui rend hommage à des millénaires de savoir-faire culinaire.</p>
+      </div>
+      <div class="histoire-pillars">
+        <div class="pillar">
+          <span class="pillar-cn">北京</span>
+          <div class="pillar-label">Cuisine Pékinoise</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-cn">粤菜</span>
+          <div class="pillar-label">Cuisine Cantonaise</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-cn">点心</span>
+          <div class="pillar-label">Dim Sum artisan</div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-cn">皇家</span>
+          <div class="pillar-label">Recettes Impériales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE -->
+<section class="menu-section" id="menu">
+  <div class="section-inner">
+    <span class="section-cn-top">菜单</span>
+    <p class="section-overline">Nos spécialités</p>
+    <h2 class="section-title">La Carte Impériale</h2>
+    <div class="section-ornament">— ✦ —</div>
+    <p class="menu-intro">Chaque plat est une invitation au voyage à travers les régions de Chine. Du canard laqué de Pékin aux trésors de la mer cantonais, notre cuisine raconte une histoire millénaire.</p>
+    <div class="menu-cats">
+      <div class="menu-cat">
+        <span class="menu-cat-icon">🥟</span>
+        <div class="menu-cat-title">Dim Sum & Entrées</div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Assortiment Dim Sum (8 pcs)</span><span class="menu-item-price">18 €</span></div>
+          <div class="menu-item-desc">Har Gow, Siu Mai, raviolis vapeur, cheung fun</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Nems impériaux (4 pcs)</span><span class="menu-item-price">12 €</span></div>
+          <div class="menu-item-desc">Crevettes, porc, shiitake, sauce aigre-douce maison</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Salade de méduses</span><span class="menu-item-price">14 €</span></div>
+          <div class="menu-item-desc">Méduse marinée, concombre, sésame, coriandre</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Soupe Wonton crevettes</span><span class="menu-item-price">13 €</span></div>
+          <div class="menu-item-desc">Bouillon clair, wontons crevettes, ciboulette</div>
+        </div>
+      </div>
+      <div class="menu-cat">
+        <span class="menu-cat-icon">🦆</span>
+        <div class="menu-cat-title">Spécialités Impériales</div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Canard laqué de Pékin (½)</span><span class="menu-item-price">38 €</span></div>
+          <div class="menu-item-desc">Crêpes mandarin, sauce hoisin, concombre, ciboule</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Canard laqué entier</span><span class="menu-item-price">72 €</span></div>
+          <div class="menu-item-desc">Pour 2–3 personnes, servi en deux services</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Porc laqué façon Char Siu</span><span class="menu-item-price">26 €</span></div>
+          <div class="menu-item-desc">Filet de porc mariné, riz cuit vapeur, pak choy</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Homard sauté au gingembre</span><span class="menu-item-price">52 €</span></div>
+          <div class="menu-item-desc">Homard entier, sauce gingembre-ciboule, nouilles</div>
+        </div>
+      </div>
+      <div class="menu-cat">
+        <span class="menu-cat-icon">🍚</span>
+        <div class="menu-cat-title">Wok, Riz & Desserts</div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Bœuf sauté aux légumes</span><span class="menu-item-price">22 €</span></div>
+          <div class="menu-item-desc">Bœuf tendre, brocoli, sauce huître, riz blanc</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Crevettes à la sauce XO</span><span class="menu-item-price">28 €</span></div>
+          <div class="menu-item-desc">Crevettes tiger, champignons noirs, sauce XO</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Riz cantonnais au wok</span><span class="menu-item-price">18 €</span></div>
+          <div class="menu-item-desc">Œuf, jambon, crevettes, petits pois, oignons verts</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top"><span class="menu-item-name">Perles de coco et mangue</span><span class="menu-item-price">8 €</span></div>
+          <div class="menu-item-desc">Lait de coco, tapioca, mangue fraîche</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANQUETS & ÉVÉNEMENTS -->
+<section class="banquets" id="banquets">
+  <div class="section-inner">
+    <span class="section-overline" style="color:rgba(250,244,228,0.7);">Célébrations</span>
+    <h2 class="section-title" style="color:var(--creme);">Banquets & Événements</h2>
+    <div class="section-ornament" style="color:var(--or-clair);">— 宴会 —</div>
+    <div class="banquets-grid">
+      <div class="banquet-card">
+        <div class="banquet-icon">🎊</div>
+        <div class="banquet-title">Banquets Familiaux</div>
+        <div class="banquet-text">Anniversaires, fiançailles, réunions de famille. Menus spéciaux à partir de 10 personnes, avec décoration traditionnelle.</div>
+      </div>
+      <div class="banquet-card">
+        <div class="banquet-icon">🏢</div>
+        <div class="banquet-title">Repas d'Affaires</div>
+        <div class="banquet-text">Salle privée pour vos déjeuners et dîners professionnels. Menus adaptés et service personnalisé jusqu'à 30 convives.</div>
+      </div>
+      <div class="banquet-card">
+        <div class="banquet-icon">🎆</div>
+        <div class="banquet-title">Nouvel An Chinois</div>
+        <div class="banquet-text">Célébrez le Nouvel An lunaire avec notre menu de fête traditionnel : canard, poissons entiers, 8 bonheurs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-cn-top">预订</span>
+        <p class="section-overline">Nous trouver</p>
+        <h2 class="section-title">Réserver</h2>
+        <div class="section-ornament">— ✦ —</div>
+        <p><strong>📍 Adresse</strong><br/>209 Rue du Faubourg Saint-Martin, 75010 Paris<br/>Métro Louis Blanc (ligne 7) ou La Chapelle (ligne 2)</p>
+        <p><strong>🕐 Horaires</strong><br/>Tous les jours de 11h30 à 15h et de 18h30 à 23h<br/>Dim Sum servis le week-end jusqu'à 15h30</p>
+        <div class="contact-tel"><a href="tel:0142092415">01 42 09 24 15</a></div>
+      </div>
+      <div>
+        <div class="form-imperial">
+          <input type="text" placeholder="Prénom et nom" />
+          <input type="tel" placeholder="Téléphone" />
+          <input type="email" placeholder="Email" />
+          <input type="date" />
+          <select>
+            <option value="">Nombre de personnes</option>
+            <option>2 personnes</option>
+            <option>3–4 personnes</option>
+            <option>5–8 personnes</option>
+            <option>9–15 personnes</option>
+            <option>Banquet (16+)</option>
+          </select>
+          <select>
+            <option value="">Service</option>
+            <option>Déjeuner / Dim Sum (11h30–15h)</option>
+            <option>Dîner (18h30–23h)</option>
+            <option>Banquet privé</option>
+          </select>
+          <button class="btn-imperial">Confirmer la réservation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-cn">新 皇 家 盛 宴</div>
+  <div class="footer-name">New Festin Impérial</div>
+  <div class="footer-sep"></div>
+  <div class="footer-addr">209 Rue du Faubourg Saint-Martin, 75010 Paris — 01 42 09 24 15</div>
+  <div class="footer-addr">Ouvert 7j/7 · Déjeuner 11h30–15h · Dîner 18h30–23h</div>
+  <div class="footer-copy">© 2025 New Festin Impérial — Paris 10e · Tous droits réservés</div>
+</footer>
+
+</body>
+</html>

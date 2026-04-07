@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebab Istanbul - Saveurs Turques à Paris</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0B3D5F 0%, #1B5C7C 35%, #8B2E2E 65%, #D4AF37 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(212,175,55,0.08) 50px, rgba(212,175,55,0.08) 100px),
+                repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(212,175,55,0.06) 50px, rgba(212,175,55,0.06) 100px);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(212,175,55,0.12) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139,46,46,0.12) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 700px;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            text-shadow: 4px 4px 12px rgba(0,0,0,0.5);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero .city {
+            font-size: 1.6rem;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #D4AF37;
+            color: #0B3D5F;
+            padding: 18px 55px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #8B2E2E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        /* EXPERTISE SECTION */
+        .expertise {
+            padding: 90px 40px;
+            background: #F9F6F1;
+            position: relative;
+        }
+
+        .expertise::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(11,61,95,0.02) 100px, rgba(11,61,95,0.02) 200px);
+            pointer-events: none;
+        }
+
+        .expertise h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #0B3D5F;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expertise-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .expertise p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        /* SPECIALTIES SECTION */
+        .specialties {
+            padding: 90px 40px;
+            background: white;
+        }
+
+        .specialties h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            color: #0B3D5F;
+            font-weight: 700;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specialty {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid #E8DCC8;
+            box-shadow: 0 3px 12px rgba(11,61,95,0.08);
+        }
+
+        .specialty::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0B3D5F, #8B2E2E, #D4AF37);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .specialty:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(11,61,95,0.15);
+            border-color: #0B3D5F;
+        }
+
+        .specialty-icon {
+            font-size: 2rem;
+            color: #8B2E2E;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .specialty h3 {
+            color: #0B3D5F;
+            margin-bottom: 15px;
+            margin-top: 5px;
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .specialty p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .specialty-price {
+            font-weight: 700;
+            color: #D4AF37;
+            font-size: 1rem;
+        }
+
+        /* QUALITY SECTION */
+        .quality {
+            padding: 90px 40px;
+            background: linear-gradient(135deg, #0B3D5F 0%, #1B5C7C 50%, #8B2E2E 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image:
+                radial-gradient(circle, rgba(212,175,55,0.08) 2px, transparent 2px);
+            background-size: 50px 50px;
+            animation: rotate 40s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .quality h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quality-item {
+            text-align: center;
+        }
+
+        .quality-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(212,175,55,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 38px;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .quality-item:hover .quality-icon {
+            background: #D4AF37;
+            color: #0B3D5F;
+            transform: scale(1.15);
+        }
+
+        .quality-item h3 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .quality-item p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        /* PRACTICAL INFO SECTION */
+        .practical {
+            padding: 90px 40px;
+            background: #F9F6F1;
+        }
+
+        .practical h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #0B3D5F;
+            font-weight: 700;
+        }
+
+        .practical-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .practical-info h3 {
+            margin-bottom: 25px;
+            font-size: 1.35rem;
+            color: #0B3D5F;
+            font-weight: 600;
+        }
+
+        .practical-info p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .practical-info a {
+            color: #0B3D5F;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .practical-info a:hover {
+            color: #D4AF37;
+        }
+
+        .practical-map {
+            background: linear-gradient(135deg, rgba(11,61,95,0.08) 0%, rgba(212,175,55,0.08) 100%);
+            border-radius: 8px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #E8DCC8;
+        }
+
+        .practical-map p {
+            text-align: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0a0a0a;
+            color: #D4AF37;
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .hero .city {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .expertise h2, .specialties h2, .quality h2, .practical h2 {
+                font-size: 2.2rem;
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .quality-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .practical-wrapper {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Kebab Istanbul</h1>
+            <div class="city">Istanbul meets Paris</div>
+            <p>Tradition & Saveur Turque</p>
+            <a href="#practical" class="cta-button">Nous Appeler</a>
+        </div>
+    </section>
+
+    <!-- EXPERTISE SECTION -->
+    <section class="expertise">
+        <h2>Notre Savoir-Faire</h2>
+        <div class="expertise-content">
+            <p>
+                Depuis notre ouverture, Kebab Istanbul apporte l'authenticité des saveurs turques traditionnelles
+                au cœur du 8e arrondissement parisien. Nos recettes sont transmises directement d'Istanbul,
+                préparées avec dévouement et respect des traditions culinaires turques.
+            </p>
+            <p>
+                Viandes marinées lentement, légumes frais sélectionnés quotidiennement, sauces faites maison :
+                chaque détail compte. Venez partager un moment savoureux dans notre univers chaud et accueillant,
+                où l'hospitalité turque rencontre l'élégance parisienne.
+            </p>
+        </div>
+    </section>
+
+    <!-- SPECIALTIES SECTION -->
+    <section class="specialties">
+        <h2>Nos Spécialités</h2>
+        <div class="specialties-grid">
+            <div class="specialty">
+                <i class="fas fa-fire specialty-icon"></i>
+                <h3>Kebab Adana</h3>
+                <p>Viande d'agneau finement hachée avec piments et épices aromatiques, grillée à la flamme vive.</p>
+                <div class="specialty-price">10,50 €</div>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-drumstick-bite specialty-icon"></i>
+                <h3>Kebab Iskender</h3>
+                <p>Viande grillée épaisse et tendre, sauce tomate chaude, yaourt frais, beurre fondu doré.</p>
+                <div class="specialty-price">11,00 €</div>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-utensils specialty-icon"></i>
+                <h3>Döner Traditionnel</h3>
+                <p>Viande rôtie verticalement pendant des heures. Texture incomparable, saveur authentique d'Istanbul.</p>
+                <div class="specialty-price">9,50 €</div>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-flame specialty-icon"></i>
+                <h3>Brochette Mixte</h3>
+                <p>Agneau et poulet grillés ensemble, accompagnés de légumes variés et riz pilaf savoureux.</p>
+                <div class="specialty-price">12,00 €</div>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-bowl-food specialty-icon"></i>
+                <h3>Assiette Complète</h3>
+                <p>Choix de viande, salade fraîche turque, hummus crémeux, pita chaude faite maison.</p>
+                <div class="specialty-price">11,50 €</div>
+            </div>
+            <div class="specialty">
+                <i class="fas fa-glass-cheers specialty-icon"></i>
+                <h3>Boissons Turques</h3>
+                <p>Ayran traditionnel, thé turc, limonade fraîche naturelle. Accompagnements parfaits.</p>
+                <div class="specialty-price">2,00 € - 3,50 €</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUALITY SECTION -->
+    <section class="quality">
+        <h2>Qualité & Fraîcheur</h2>
+        <div class="quality-grid">
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Ingrédients Premium</h3>
+                <p>Sélection rigoureuse quotidienne des meilleures viandes et légumes frais d'Istanbul et Paris.</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-fire-alt"></i>
+                </div>
+                <h3>Préparation Artisanale</h3>
+                <p>Chaque plat cuit à la demande avec les techniques traditionnelles turques au feu de bois.</p>
+            </div>
+            <div class="quality-item">
+                <div class="quality-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Passion Authentique</h3>
+                <p>Respect des traditions culinaires turques, mariages lents et sauces faites maison chaque jour.</p>
+            </div>
+        </div>
+    </quality>
+
+    <!-- PRACTICAL INFO SECTION -->
+    <section class="practical" id="practical">
+        <h2>Informations Pratiques</h2>
+        <div class="practical-wrapper">
+            <div class="practical-info">
+                <h3>Contact & Horaires</h3>
+                <p><strong>Adresse :</strong><br>90 Rue du Rocher<br>75008 Paris (Champs-Élysées)</p>
+                <p><strong>Téléphone :</strong><br><a href="tel:0951214101">09 51 21 41 01</a></p>
+                <p><strong>Horaires :</strong><br>
+                    Lundi - Jeudi : 11h00 - 23h00<br>
+                    Vendredi - Dimanche : 11h00 - 00h00<br>
+                    <em>Dernière commande 30 min avant fermeture</em>
+                </p>
+                <p><strong>Livraison :</strong> Sur demande</p>
+            </div>
+            <div class="practical-map">
+                <p>Google Maps<br><em>(Intégration personnalisée)</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Kebab Istanbul. Tous droits réservés.</p>
+        <p>Authenticité Turque • Paris 8e Champs-Élysées</p>
+    </footer>
+</body>
+</html>

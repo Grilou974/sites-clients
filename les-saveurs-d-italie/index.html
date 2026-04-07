@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Saveurs D'Italie - Épicerie Italienne Haut de Gamme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --terracotta: #B85C38;
+            --olive: #5C6B3C;
+            --cream: #FFF9F0;
+            --warm-white: #FFFBF5;
+            --dark: #2C2C2C;
+            --red-it: #CE2B37;
+            --green-it: #009246;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--warm-white);
+        }
+
+        /* Header Navigation */
+        header {
+            background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(184, 92, 56, 0.08);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--terracotta);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--terracotta);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--terracotta) 0%, #A34E2F 100%);
+            color: var(--cream);
+            padding: 7rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .italian-flag {
+            display: inline-block;
+            height: 3px;
+            width: 80px;
+            background: linear-gradient(to right, var(--green-it) 0%, var(--green-it) 33%, var(--cream) 33%, var(--cream) 66%, var(--red-it) 66%, var(--red-it) 100%);
+            margin: 1.5rem 0;
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--terracotta);
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5.5rem 0;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--terracotta);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--green-it), var(--red-it));
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .product-card {
+            background: var(--cream);
+            border-radius: 6px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 5px solid var(--terracotta);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(184, 92, 56, 0.2);
+        }
+
+        .product-icon {
+            font-size: 2.8rem;
+            color: var(--terracotta);
+            margin-bottom: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-icon {
+            transform: scale(1.15);
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: var(--olive);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .product-card ul {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.2rem;
+            color: #666;
+        }
+
+        .product-card li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(184, 92, 56, 0.12);
+            font-size: 0.95rem;
+        }
+
+        .product-card li:last-child {
+            border-bottom: none;
+        }
+
+        .product-card li::before {
+            content: '•';
+            color: var(--terracotta);
+            margin-right: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Story Section */
+        .story-section {
+            background: var(--cream);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--olive);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .story-text p {
+            color: #555;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            font-size: 6rem;
+            color: var(--terracotta);
+            text-align: center;
+            opacity: 0.75;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--olive) 0%, #4A5430 100%);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--cream);
+        }
+
+        .contact-section h2::after {
+            background: linear-gradient(to right, var(--cream), rgba(255, 255, 255, 0.4));
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 2.2rem;
+            border-radius: 6px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-box:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-5px);
+        }
+
+        .info-box i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--cream);
+        }
+
+        .info-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .info-box p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-wine-bottle"></i>
+                Les Saveurs D'Italie
+            </div>
+            <ul>
+                <li><a href="#epicerie">Notre Épicerie</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#histoire">Philosophie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Les Saveurs D'Italie</h1>
+            <div class="italian-flag"></div>
+            <p>L'authenticité italienne depuis 25 ans à Paris</p>
+            <p style="font-size: 1rem; opacity: 0.92;">Importations directes de nos régions partenaires. Qualité, authenticité et passion.</p>
+            <a href="#produits" class="cta-button">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="epicerie">
+            <h2>Notre Épicerie</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>Un coin d'Italie à Paris</h3>
+                    <p>Depuis 1998, Les Saveurs D'Italie est votre référence pour les produits italiens authentiques. Nous travaillons directement avec des producteurs familiaux qui perpétuent les traditions depuis des générations.</p>
+                    <p>Chaque produit est sélectionné avec rigueur pour garantir non seulement la qualité, mais aussi l'authenticité. Nous refusons systématiquement les substituts industriels au profit de l'artisanat véritable.</p>
+                    <p>Notre équipe passionnée connaît chaque référence et se fait un plaisir de vous conseiller sur les meilleurs accords, les origines régionales et les traditions culinaires de l'Italie.</p>
+                </div>
+                <div class="story-image">
+                    <i class="fas fa-store"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="produits">
+            <h2>Nos Produits</h2>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Pâtes Fraîches</h3>
+                    <ul>
+                        <li>Tagliatelle fraîches quotidiennes</li>
+                        <li>Pappardelle artisanale</li>
+                        <li>Ravioli assortis</li>
+                        <li>Tortellini ricotta-épinard</li>
+                        <li>Pâtes spéciales régionales</li>
+                    </ul>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Antipasti Premium</h3>
+                    <ul>
+                        <li>Tomates séchées au soleil</li>
+                        <li>Artichauts marinés Toscane</li>
+                        <li>Champignons porcini sauvages</li>
+                        <li>Olives vertes & noires DOP</li>
+                        <li>Poivrons rôtis maison</li>
+                    </ul>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-cheese"></i>
+                    </div>
+                    <h3>Fromages d'Excellence</h3>
+                    <ul>
+                        <li>Parmigiano Reggiano 36 mois</li>
+                        <li>Burrata fraîche d'Apulie</li>
+                        <li>Pecorino Romano véritable</li>
+                        <li>Gorgonzola di Novara</li>
+                        <li>Mozzarella di bufala campana</li>
+                    </ul>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-drumstick-bite"></i>
+                    </div>
+                    <h3>Charcuterie Fine</h3>
+                    <ul>
+                        <li>Prosciutto di Parma PDO</li>
+                        <li>Mortadella bolognese traditionnelle</li>
+                        <li>Bresaola della Valtellina</li>
+                        <li>Speck Alto Adige IGP</li>
+                        <li>Culatello di Zibello rare</li>
+                    </ul>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3>Huiles & Vinaigres</h3>
+                    <ul>
+                        <li>Huile d'olive extra-vierge Toscane</li>
+                        <li>Huile de noix piémontaise</li>
+                        <li>Vinaigre balsamique traditionnel</li>
+                        <li>Vinaigre blanc de Modène</li>
+                        <li>Sauces spécialisées</li>
+                    </ul>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h3>Vins Italiens</h3>
+                    <ul>
+                        <li>Toscane & Brunello di Montalcino</li>
+                        <li>Barolo & Barbaresco du Piémont</li>
+                        <li>Prosecco de Valdobbiadene</li>
+                        <li>Vins blancs du Nord</li>
+                        <li>Sélection région par région</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="histoire" class="story-section">
+            <h2>L'Italie à Paris</h2>
+            <div class="story-content">
+                <div class="story-image">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="story-text">
+                    <h3>Notre Philosophie</h3>
+                    <p>Chaque produit raconte une histoire. Nous refusons de transiger sur la qualité pour vous offrir une expérience authentique du terroir italien.</p>
+                    <p>Nos partenaires en Italie sont des producteurs passionnés, souvent familiaux, qui perpétuent des méthodes transmises depuis générations. Cette approche garantit un savoir-faire incomparable.</p>
+                    <p>Vous n'achetez pas simplement des produits chez nous. Vous investissez dans une culture, une tradition, une célébration de l'excellence culinaire italienne. C'est notre engagement quotidien.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Nous Contacter</h2>
+            <div class="contact-info">
+                <div class="info-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>49 Rue de Meaux<br>75019 Paris</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-phone"></i>
+                    <h3>Téléphone</h3>
+                    <p>01 42 39 19 89</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <h3>Horaires</h3>
+                    <p>Lun-Sam: 9h-20h<br>Dimanche: 10h-18h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Les Saveurs D'Italie - Épicerie Italienne Haut de Gamme</p>
+        <p>49 Rue de Meaux, 75019 Paris | Tél: 01 42 39 19 89</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">Produits authentiques italiens sélectionnés avec passion depuis 1998</p>
+    </footer>
+</body>
+</html>

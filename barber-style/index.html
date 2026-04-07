@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBER STYLE - Barbershop Urbaine Paris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #f0f0f0;
+            background: #000;
+            line-height: 1.7;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 168, 232, 0.5); }
+            50% { text-shadow: 0 0 40px rgba(0, 168, 232, 0.8); }
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.98);
+            padding: 25px 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00a8e8;
+            box-shadow: 0 0 30px rgba(0, 168, 232, 0.2);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            color: #00a8e8;
+        }
+
+        nav a {
+            color: #e8e8e8;
+            text-decoration: none;
+            margin-left: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            font-weight: 700;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #00a8e8;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00a8e8;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, #000 0%, #0a2a3a 100%);
+            color: #fff;
+            padding: 160px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 168, 232, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 168, 232, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 80px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero h1 span {
+            color: #00a8e8;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            color: #b0b0b0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #00a8e8;
+            color: #000;
+            padding: 18px 55px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 3px solid #00a8e8;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: #00a8e8;
+            box-shadow: 0 0 20px rgba(0, 168, 232, 0.5);
+        }
+
+        .section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 54px;
+            font-weight: 900;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent 0%, #00a8e8 50%, transparent 100%);
+        }
+
+        .about-content {
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(0, 168, 232, 0.05);
+            border-left: 4px solid #00a8e8;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #d0d0d0;
+            line-height: 1.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: rgba(0, 20, 40, 0.8);
+            padding: 35px;
+            border: 2px solid #00a8e8;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 168, 232, 0.1);
+            transition: top 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #00a8e8;
+            box-shadow: 0 15px 40px rgba(0, 168, 232, 0.25);
+        }
+
+        .service-card:hover::before {
+            top: 0;
+        }
+
+        .service-icon {
+            color: #00a8e8;
+            font-size: 32px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-name {
+            font-weight: 800;
+            font-size: 18px;
+            color: #00a8e8;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-price {
+            font-size: 32px;
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-desc {
+            color: #a0a0a0;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+
+        .commitment-card {
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.1) 0%, rgba(0, 100, 150, 0.05) 100%);
+            padding: 40px;
+            border: 2px solid #00a8e8;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .commitment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 168, 232, 0.2);
+        }
+
+        .commitment-icon {
+            font-size: 45px;
+            color: #00a8e8;
+            margin-bottom: 20px;
+        }
+
+        .commitment-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .commitment-text {
+            color: #b8b8b8;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: rgba(0, 168, 232, 0.08);
+            padding: 35px;
+            border-left: 4px solid #00a8e8;
+            position: relative;
+        }
+
+        .testimonial-text {
+            color: #d0d0d0;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #00a8e8;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .testimonial-stars {
+            color: #00a8e8;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .info-block h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            color: #00a8e8;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .info-block p {
+            color: #b8b8b8;
+            font-size: 16px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .contact-table {
+            width: 100%;
+            background: rgba(0, 168, 232, 0.05);
+            border: 1px solid #00a8e8;
+            margin-top: 30px;
+        }
+
+        .contact-table tr {
+            border-bottom: 1px solid rgba(0, 168, 232, 0.2);
+        }
+
+        .contact-table td {
+            padding: 15px 20px;
+            color: #b8b8b8;
+            font-size: 14px;
+        }
+
+        .contact-table strong {
+            color: #00a8e8;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, rgba(0, 168, 232, 0.15) 0%, rgba(0, 100, 150, 0.05) 100%);
+            padding: 60px;
+            text-align: center;
+            border: 2px solid #00a8e8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .map-placeholder i {
+            font-size: 80px;
+            color: #00a8e8;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .map-placeholder p {
+            color: #b0b0b0;
+            font-size: 15px;
+        }
+
+        footer {
+            background: #000;
+            color: #707070;
+            text-align: center;
+            padding: 40px 40px;
+            border-top: 2px solid #00a8e8;
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        footer p:first-child {
+            color: #00a8e8;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .services-grid, .commitment-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-cut"></i>BARBER STYLE</div>
+            <div>
+                <a href="#about">À Propos</a>
+                <a href="#services">Services</a>
+                <a href="#commitment">Engagements</a>
+                <a href="#reviews">Avis</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BARBER <span>STYLE</span></h1>
+            <p>La Barbershop Urbaine Moderne</p>
+            <a href="#services" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Le Style</h2>
+        <div class="about-content">
+            <p>BARBER STYLE incarne l'essence de la barbershop urbaine contemporaine. Situé au cœur du 12ème arrondissement, notre salon allie design moderne et expertise du barbering de haut niveau.</p>
+            <p>Nous mettons l'accent sur la qualité, l'hygiène impeccable et l'excellence du service. Nos barbiers sont formés aux dernières techniques et suivent les tendances mondiales du barbering. Chaque client bénéficie d'une prise en charge personnalisée et professionnelle.</p>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: rgba(0, 0, 0, 0.5);">
+        <h2 class="section-title">Nos Tarifs</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scissors"></i></div>
+                <div class="service-name">Coupe</div>
+                <div class="service-price">22€</div>
+                <div class="service-desc">Coupe moderne avec finition précise</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-cut"></i></div>
+                <div class="service-name">Coupe + Barbe</div>
+                <div class="service-price">30€</div>
+                <div class="service-desc">Coupe complète + rasage barbe stérile</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-razor"></i></div>
+                <div class="service-name">Rasage</div>
+                <div class="service-price">20€</div>
+                <div class="service-desc">Rasage classique à l'ancienne</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <div class="service-name">Entretien Barbe</div>
+                <div class="service-price">14€</div>
+                <div class="service-desc">Taille, forme et soin de la barbe</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-spray-can"></i></div>
+                <div class="service-name">Teignasse/Fade</div>
+                <div class="service-price">25€</div>
+                <div class="service-desc">Dégradé moderne ou teignasse technique</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-sparkles"></i></div>
+                <div class="service-name">Styling + Produit</div>
+                <div class="service-price">8€</div>
+                <div class="service-desc">Mise en forme avec produit premium</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="commitment" class="section">
+        <h2 class="section-title">Nos Engagements</h2>
+        <div class="commitment-grid">
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-ruler"></i></div>
+                <div class="commitment-title">Précision</div>
+                <div class="commitment-text">Chaque ligne est travaillée avec une extrême précision. Nos barbiers maîtrisent les techniques pointues du dégradé et de la sculpture.</div>
+            </div>
+
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-star"></i></div>
+                <div class="commitment-title">Style</div>
+                <div class="commitment-text">Nous vous proposons les coupes et tendances les plus actuelles, adaptées à votre style personnel et morphologie.</div>
+            </div>
+
+            <div class="commitment-card">
+                <div class="commitment-icon"><i class="fas fa-soap"></i></div>
+                <div class="commitment-title">Hygiène</div>
+                <div class="commitment-text">Hygiène irréprochable à chaque étape. Instruments stérilisés, espace immaculé, protocoles de nettoyage stricts.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section" style="background: rgba(0, 0, 0, 0.5);">
+        <h2 class="section-title">Avis Clients</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"Service excellent, barbier très professionnel. Résultat parfait, ne changerai plus de salon."</div>
+                <div class="testimonial-author">- Marc D.</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"Ambiance moderne, hygiène impeccable, barbiers à jour sur les dernières tendances. À recommander !"</div>
+                <div class="testimonial-author">- Thomas B.</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-stars"><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></div>
+                <div class="testimonial-text">"Lieu incontournable du 12ème, accueil chaleureux, barbiers compétents. Vraiment satisfait !"</div>
+                <div class="testimonial-author">- Jean P.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact & Horaires</h2>
+        <div class="contact-info">
+            <div class="info-block">
+                <h3><i class="fas fa-map-marker-alt"></i> Adresse</h3>
+                <p><strong style="color: #fff;">28 Rue de Wattignies</strong><br>75012 Paris</p>
+
+                <h3 style="margin-top: 30px;"><i class="fas fa-phone"></i> Téléphone</h3>
+                <p>09 53 48 30 75</p>
+
+                <h3 style="margin-top: 30px;"><i class="fas fa-clock"></i> Horaires</h3>
+                <table class="contact-table">
+                    <tr>
+                        <td><strong>Lundi - Samedi</strong></td>
+                        <td>10h00 - 20h00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dimanche</strong></td>
+                        <td>10h00 - 18h00</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <p><strong style="color: #00a8e8; font-size: 16px;">Métro Reuilly-Diderot</strong><br>Lignes 1 & 8 - À 3 minutes à pied</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>BARBER STYLE</p>
+        <p>28 Rue de Wattignies, 75012 Paris | 09 53 48 30 75</p>
+        <p>&copy; 2026 Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

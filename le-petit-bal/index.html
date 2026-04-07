@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Petit Bal | Restaurant Méditerranéen – Paris 2e</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azur:       #1A6FA8;
+      --ciel:       #3A9ED4;
+      --mer:        #0D4D7A;
+      --terra:      #C4632A;
+      --sable:      #F0E8D0;
+      --olive:      #5A7A2A;
+      --blanc:      #FAFCFE;
+      --gris:       #5A6070;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--blanc); color: #2A3040; overflow-x: hidden; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(250,252,254,0.96); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 70px;
+      border-bottom: 1px solid rgba(26,111,168,0.15);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600;
+      color: var(--mer); letter-spacing: 0.02em;
+    }
+    .nav-logo em { color: var(--terra); font-style: italic; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--gris); text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.06em; font-weight: 600; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--azur); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; padding-top: 70px;
+      background: linear-gradient(135deg, #0A3856 0%, #1A6FA8 55%, #3AB8DC 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 120px;
+      background: var(--blanc);
+      clip-path: ellipse(60% 100% at 50% 100%);
+    }
+    .wave-pattern {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image: radial-gradient(circle at 20% 80%, white 1px, transparent 1px),
+                        radial-gradient(circle at 80% 20%, white 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      text-align: center; padding: 80px 24px 140px;
+      max-width: 800px;
+    }
+    .hero-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+    .hero-overline {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      color: rgba(255,255,255,0.75); font-size: 1.1rem; letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300;
+      color: white; line-height: 1.0; margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .hero h1 strong { font-weight: 600; }
+    .hero-tagline {
+      color: rgba(255,255,255,0.8); font-size: 1.1rem; font-weight: 300;
+      margin: 24px 0 48px; line-height: 1.6;
+    }
+    .hero-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-tag {
+      background: rgba(255,255,255,0.15); color: white;
+      padding: 8px 20px; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; }
+    .btn-white-solid {
+      background: white; color: var(--mer);
+      padding: 15px 36px; border-radius: 4px;
+      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .btn-white-solid:hover { opacity: .85; }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.6); color: white;
+      padding: 15px 36px; border-radius: 4px;
+      font-size: 0.88rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: border-color .2s;
+    }
+    .btn-outline-white:hover { border-color: white; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 96px 24px; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-chip {
+      display: inline-block;
+      background: rgba(26,111,168,0.1); color: var(--azur);
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px; font-weight: 700; margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300;
+      color: var(--mer); line-height: 1.1; margin-bottom: 24px;
+    }
+    .section-title em { font-style: italic; color: var(--terra); }
+    .section-bar { width: 48px; height: 3px; background: var(--terra); border-radius: 2px; margin-bottom: 40px; }
+
+    /* ─── À LA TABLE ─── */
+    .atable { background: var(--blanc); }
+    .atable-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+    .atable-text p { color: var(--gris); line-height: 1.9; margin-bottom: 18px; font-size: 1rem; }
+    .atable-text strong { color: var(--azur); }
+    .atable-highlights { display: flex; flex-direction: column; gap: 20px; }
+    .highlight-row {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px; border-left: 3px solid var(--terra);
+      background: rgba(26,111,168,0.04);
+    }
+    .highlight-icon { font-size: 2rem; }
+    .highlight-title { font-weight: 700; color: #2A3040; margin-bottom: 4px; font-size: 0.95rem; }
+    .highlight-desc { color: var(--gris); font-size: 0.85rem; line-height: 1.5; }
+
+    /* ─── MENU ─── */
+    .menu { background: #F0F8FF; }
+    .menu-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 16px; }
+    .menu-col { background: white; padding: 40px 32px; }
+    .menu-col-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
+      padding-bottom: 16px; border-bottom: 2px solid rgba(26,111,168,0.12);
+    }
+    .menu-col-icon { font-size: 1.8rem; }
+    .menu-col-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--mer); }
+    .dish { margin-bottom: 24px; }
+    .dish-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+    .dish-name { color: #2A3040; font-size: 0.95rem; font-weight: 700; }
+    .dish-price { color: var(--terra); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+    .dish-desc { color: var(--gris); font-size: 0.82rem; line-height: 1.55; }
+    .menu-note {
+      margin-top: 32px; text-align: center; color: var(--azur);
+      font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1rem;
+    }
+
+    /* ─── TERRASSE ─── */
+    .terrasse {
+      background: linear-gradient(180deg, var(--sable) 0%, #E8F0D8 100%);
+    }
+    .terrasse-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .terrasse-card { background: white; padding: 36px 24px; text-align: center; border-radius: 4px; }
+    .terrasse-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .terrasse-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--mer); margin-bottom: 12px; font-weight: 600; }
+    .terrasse-text { color: var(--gris); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ─── RÉSERVATION ─── */
+    .resa { background: var(--azur); }
+    .resa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .resa-left { color: rgba(255,255,255,0.85); }
+    .resa-left .section-title { color: white; }
+    .resa-left .section-chip { background: rgba(255,255,255,0.2); color: white; }
+    .resa-left .section-bar { background: var(--sable); }
+    .resa-left p { margin-bottom: 14px; line-height: 1.8; }
+    .resa-left strong { color: white; }
+    .resa-tel { margin-top: 28px; }
+    .resa-tel a {
+      color: white; text-decoration: none;
+      font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600;
+    }
+    .form-sea { display: flex; flex-direction: column; gap: 12px; }
+    .form-sea input, .form-sea select {
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      color: white; padding: 14px 18px; font-size: 0.9rem;
+      font-family: 'Nunito', sans-serif; outline: none; border-radius: 2px;
+    }
+    .form-sea input::placeholder { color: rgba(255,255,255,0.5); }
+    .form-sea select option { background: var(--azur); color: white; }
+    .btn-terra {
+      background: var(--terra); color: white;
+      padding: 16px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      font-size: 0.88rem; cursor: pointer; border: none; border-radius: 2px;
+      font-family: 'Nunito', sans-serif; transition: opacity .2s;
+    }
+    .btn-terra:hover { opacity: .85; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--mer);
+      text-align: center; padding: 56px 24px;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: white; font-weight: 300; margin-bottom: 8px; }
+    .footer-sub { color: rgba(255,255,255,0.6); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1rem; margin-bottom: 24px; }
+    .footer-info { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-bottom: 4px; }
+    .footer-copy { margin-top: 24px; color: rgba(255,255,255,0.3); font-size: 0.72rem; }
+
+    @media (max-width: 768px) {
+      .atable-grid, .menu-tabs, .resa-grid { grid-template-columns: 1fr; }
+      .terrasse-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Le Petit <em>Bal</em></div>
+  <ul class="nav-links">
+    <li><a href="#atable">À la Table</a></li>
+    <li><a href="#menu">La Carte</a></li>
+    <li><a href="#terrasse">La Terrasse</a></li>
+    <li><a href="#resa">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wave-pattern"></div>
+  <div class="hero-inner">
+    <span class="hero-emoji">🌊</span>
+    <p class="hero-overline">Restaurant méditerranéen · Paris 2e</p>
+    <h1><strong>Le Petit</strong><br/>Bal</h1>
+    <p class="hero-tagline">Les saveurs de la Méditerranée au cœur de Paris —<br/>poissons frais, légumes du soleil, huile d'olive et convivialité.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">🐟 Poissons frais</span>
+      <span class="hero-tag">🫒 Huile d'olive AOC</span>
+      <span class="hero-tag">☀️ Légumes du marché</span>
+      <span class="hero-tag">🍷 Vins du Midi</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#resa" class="btn-white-solid">Réserver une table</a>
+      <a href="#menu" class="btn-outline-white">Voir la carte</a>
+    </div>
+  </div>
+</section>
+
+<!-- À LA TABLE -->
+<section class="atable" id="atable">
+  <div class="section-inner">
+    <div class="atable-grid">
+      <div class="atable-text">
+        <span class="section-chip">Notre philosophie</span>
+        <h2 class="section-title">La Méditerranée,<br/><em>table après table</em></h2>
+        <div class="section-bar"></div>
+        <p>Le Petit Bal vous invite dans un voyage autour de la mer. De la Provence à la Catalogne, du Liban à la Sicile : une cuisine du <strong>soleil et du partage</strong>, ancrée dans les traditions méditerranéennes les plus généreuses.</p>
+        <p>Chaque plat est préparé avec des <strong>produits frais sélectionnés chaque matin</strong> au marché — poissons arrivant directement de Bretagne et de Méditerranée, légumes de saison, herbes fraîches, huiles d'olive d'exception.</p>
+        <p>Une cave à vins pensée pour explorer les <strong>vignobles du pourtour méditerranéen</strong> : Languedoc, Roussillon, Corse, Italie du Sud.</p>
+      </div>
+      <div class="atable-highlights">
+        <div class="highlight-row">
+          <span class="highlight-icon">🐠</span>
+          <div>
+            <div class="highlight-title">Poissons du jour</div>
+            <div class="highlight-desc">Arrivages quotidiens de Bretagne et de Méditerranée. La carte varie selon la pêche.</div>
+          </div>
+        </div>
+        <div class="highlight-row">
+          <span class="highlight-icon">🫙</span>
+          <div>
+            <div class="highlight-title">Mezze à partager</div>
+            <div class="highlight-desc">Houmous, tzatziki, taboulé, légumes grillés : des entrées à partager dans la convivialité.</div>
+          </div>
+        </div>
+        <div class="highlight-row">
+          <span class="highlight-icon">🍋</span>
+          <div>
+            <div class="highlight-title">Saveurs du soleil</div>
+            <div class="highlight-desc">Citron confit, sumac, zaatar, harissa douce : des épices qui racontent un voyage.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA CARTE -->
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <span class="section-chip">Ce que nous proposons</span>
+    <h2 class="section-title">La Carte <em>du Moment</em></h2>
+    <div class="section-bar"></div>
+    <div class="menu-tabs">
+      <div class="menu-col">
+        <div class="menu-col-header">
+          <span class="menu-col-icon">🫒</span>
+          <div class="menu-col-title">Mezze & Entrées</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Mezze à partager (4 pers.)</span><span class="dish-price">32 €</span></div>
+          <div class="dish-desc">Houmous, babaganoush, tzatziki, tomates confites, pain pita chaud</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Burrata et tomates du marché</span><span class="dish-price">16 €</span></div>
+          <div class="dish-desc">Tomates anciennes, basilic frais, fleur de sel, huile d'olive sicilienne</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Salade grecque revisitée</span><span class="dish-price">14 €</span></div>
+          <div class="dish-desc">Concombre, olives Kalamata, feta AOC, herbes fraîches</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Soupe de poisson et sa rouille</span><span class="dish-price">15 €</span></div>
+          <div class="dish-desc">Rouille maison, croûtons aillés, gruyère râpé</div>
+        </div>
+        <p class="menu-note">Entrées adaptées selon les arrivages</p>
+      </div>
+      <div class="menu-col">
+        <div class="menu-col-header">
+          <span class="menu-col-icon">🐟</span>
+          <div class="menu-col-title">Plats & Poissons</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Poisson du jour grillé</span><span class="dish-price">28 €</span></div>
+          <div class="dish-desc">Selon arrivage, citron confit, herbes fraîches, légumes grillés</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Daurade entière au four</span><span class="dish-price">32 €</span></div>
+          <div class="dish-desc">Fenouil, tomates, olives, zaatar, huile d'olive</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Tajine d'agneau aux pruneaux</span><span class="dish-price">26 €</span></div>
+          <div class="dish-desc">Agneau fondant, pruneaux, amandes, ras el hanout, semoule</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Poulpe grillé, skordalia</span><span class="dish-price">29 €</span></div>
+          <div class="dish-desc">Poulpe braisé, purée d'ail, câpres, citron, sumac</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dish-name">Pastilla au poulet et amandes</span><span class="dish-price">24 €</span></div>
+          <div class="dish-desc">Feuilleté croustillant, cannelle, sucre glace, coriandre</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA TERRASSE -->
+<section class="terrasse" id="terrasse">
+  <div class="section-inner">
+    <span class="section-chip">Vivre l'instant</span>
+    <h2 class="section-title">L'esprit <em>méditerranéen</em></h2>
+    <div class="section-bar"></div>
+    <div class="terrasse-grid">
+      <div class="terrasse-card">
+        <div class="terrasse-icon">☀️</div>
+        <div class="terrasse-title">Terrasse ensoleillée</div>
+        <div class="terrasse-text">Profitez de notre terrasse en saison, pour déjeuner ou dîner sous les étoiles au cœur du Paris historique.</div>
+      </div>
+      <div class="terrasse-card">
+        <div class="terrasse-icon">🍷</div>
+        <div class="terrasse-title">Vins naturels du Midi</div>
+        <div class="terrasse-text">Une sélection de vins vivants : Languedoc, Roussillon, Provence, Corse. Vins au verre changés chaque semaine.</div>
+      </div>
+      <div class="terrasse-card">
+        <div class="terrasse-icon">🎶</div>
+        <div class="terrasse-title">Ambiance musicale</div>
+        <div class="terrasse-text">Des soirées musicales méditerranéennes régulières : jazz manouche, musique du monde, flamenco acoustique.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSERVATION -->
+<section class="resa" id="resa">
+  <div class="section-inner">
+    <div class="resa-grid">
+      <div class="resa-left">
+        <span class="section-chip">Nous rejoindre</span>
+        <h2 class="section-title">Réserver votre table</h2>
+        <div class="section-bar"></div>
+        <p><strong>📍 Adresse</strong><br/>36 Rue Léopold Bellan, 75002 Paris<br/>Métro Sentier (ligne 3) ou Réaumur–Sébastopol (ligne 4)</p>
+        <p><strong>🕐 Horaires</strong><br/>Mardi au samedi : 12h–14h30 et 19h–22h30<br/>Dimanche : brunch 11h–15h · Lundi fermé</p>
+        <div class="resa-tel"><a href="tel:0145084583">01 45 08 45 83</a></div>
+      </div>
+      <div>
+        <div class="form-sea">
+          <input type="text" placeholder="Votre prénom et nom" />
+          <input type="tel" placeholder="Téléphone" />
+          <input type="email" placeholder="Email" />
+          <input type="date" />
+          <select>
+            <option value="">Nombre de personnes</option>
+            <option>1 personne</option>
+            <option>2 personnes</option>
+            <option>3–4 personnes</option>
+            <option>5–6 personnes</option>
+            <option>7+ personnes</option>
+          </select>
+          <select>
+            <option value="">Service</option>
+            <option>Déjeuner (12h–14h30)</option>
+            <option>Dîner (19h–22h30)</option>
+            <option>Brunch dimanche (11h–15h)</option>
+          </select>
+          <button class="btn-terra">Confirmer la réservation →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Le Petit Bal</div>
+  <div class="footer-sub">Voyage méditerranéen au cœur de Paris</div>
+  <div class="footer-info">36 Rue Léopold Bellan, 75002 Paris — 01 45 08 45 83</div>
+  <div class="footer-info">Mar–Sam 12h–14h30 · 19h–22h30 · Dim brunch 11h–15h</div>
+  <div class="footer-copy">© 2025 Le Petit Bal — Paris 2e</div>
+</footer>
+
+</body>
+</html>
