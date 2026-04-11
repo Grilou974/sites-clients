@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1er Art - Restaurant & Galerie à Paris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --charcoal: #1C1C1E;
+            --off-white: #FAF9F6;
+            --muted-gold: #C9A96E;
+            --slate-blue: #4A5568;
+            --light-gray: #E8E6E1;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--charcoal);
+            background-color: var(--off-white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--off-white);
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1.2rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(28, 28, 30, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--charcoal);
+        }
+
+        .logo .art {
+            color: var(--muted-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--muted-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--muted-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--off-white) 0%, #F5F3EE 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 10%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(74, 85, 104, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero h1 .accent {
+            color: var(--muted-gold);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--slate-blue);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--muted-gold);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--charcoal);
+            border: 1.5px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--muted-gold);
+        }
+
+        /* Menu Section */
+        #menu {
+            background-color: #FDFBF8;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .menu-category {
+            background-color: var(--off-white);
+            padding: 2.5rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(28, 28, 30, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(28, 28, 30, 0.12);
+        }
+
+        .menu-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            border-bottom: 2px solid var(--muted-gold);
+            padding-bottom: 0.8rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px dashed var(--light-gray);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.9rem;
+            color: var(--slate-blue);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--muted-gold);
+            font-size: 1rem;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, var(--off-white) 0%, #F5F3EE 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .about-text p {
+            color: var(--slate-blue);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            color: var(--muted-gold);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .feature-text h4 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--charcoal);
+        }
+
+        .feature-text p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--muted-gold) 0%, var(--slate-blue) 100%);
+            border-radius: 2px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: slide 15s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        .about-image-icon {
+            font-size: 5rem;
+            color: var(--off-white);
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        #contact h2 {
+            color: var(--off-white);
+        }
+
+        #contact h2::after {
+            background-color: var(--muted-gold);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 2px;
+            border-left: 3px solid var(--muted-gold);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--muted-gold);
+        }
+
+        .contact-card p {
+            color: #D1CFCA;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: var(--muted-gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--off-white);
+        }
+
+        .hours-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #D1CFCA;
+            font-size: 0.95rem;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-day {
+            font-weight: 500;
+        }
+
+        .hours-time {
+            color: var(--muted-gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #141415;
+            color: #999;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--muted-gold);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--off-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 55vh;
+                padding: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .menu-category {
+                padding: 1.5rem;
+            }
+
+            .about-features {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">1<span class="art">er</span> ART</div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1><span class="accent">Première</span> Impression Artistique</h1>
+            <p>Un lieu où l'art rencontre la gastronomie – bienvenue au cœur de Paris</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary">Réserver une Table</button>
+                <button class="btn btn-secondary">Découvrir</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2>Notre Menu</h2>
+            <div class="menu-grid">
+                <!-- Entrées -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-leaf"></i> Entrées</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Œufs Cocotte aux Truffes</div>
+                        <div class="menu-item-desc">Œufs fermiers avec crème fraîche et truffes du Périgord</div>
+                        <div class="menu-item-price">16 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Salade d'Automne</div>
+                        <div class="menu-item-desc">Feuilles mélangées, betteraves rouges, chèvre frais, noix</div>
+                        <div class="menu-item-price">12 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Foie Gras Maison</div>
+                        <div class="menu-item-desc">Foie gras poêlé, brioche grillée, réduction balsamique</div>
+                        <div class="menu-item-price">18 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Carpaccio de Saumon</div>
+                        <div class="menu-item-desc">Saumon sauvage, citron, câpres, huile d'olive vierge extra</div>
+                        <div class="menu-item-price">14 €</div>
+                    </div>
+                </div>
+
+                <!-- Plats Principaux -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-utensils"></i> Plats Principaux</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Steak Frites Premium</div>
+                        <div class="menu-item-desc">Onglet d'Aubrac, beurre maître d'hôtel, frites croustillantes</div>
+                        <div class="menu-item-price">26 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Branzino Rôti</div>
+                        <div class="menu-item-desc">Poisson entier, herbes provençales, citron, légumes de saison</div>
+                        <div class="menu-item-price">24 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Confit de Canard</div>
+                        <div class="menu-item-desc">Cuisse confite, haricots blancs, sauce à l'orange</div>
+                        <div class="menu-item-price">22 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Homard Thermidor</div>
+                        <div class="menu-item-desc">Homard bleu, beurre blanc, gratin d'épinards</div>
+                        <div class="menu-item-price">32 €</div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category">
+                    <h3><i class="fas fa-birthday-cake"></i> Desserts</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Tarte au Chocolat</div>
+                        <div class="menu-item-desc">Ganache intense, génoise légère, crème fraîche</div>
+                        <div class="menu-item-price">8 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Crème Brûlée</div>
+                        <div class="menu-item-desc">Classique de la cuisine française, sucre caramélisé</div>
+                        <div class="menu-item-price">7 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Soufflé à la Vanille</div>
+                        <div class="menu-item-desc">Léger et aérien, vanille de Tahiti, sauce anglaise</div>
+                        <div class="menu-item-price">9 €</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Plateau de Fromages</div>
+                        <div class="menu-item-desc">Sélection de fromages affinés français et étrangers</div>
+                        <div class="menu-item-price">10 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div>
+                    <h3>L'Essence de 1er Art</h3>
+                    <p>Situé au cœur du 3ème arrondissement de Paris, 1er Art est bien plus qu'un simple restaurant. C'est un espace de création où l'art culinaire dialogue avec les œuvres des artistes locaux.</p>
+                    <p>Depuis sa création, nous nous engageons à offrir une expérience gastronomique authentique, dans une ambiance galerie contemporaine qui célèbre la créativité sous toutes ses formes.</p>
+
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-palette"></i></div>
+                            <div class="feature-text">
+                                <h4>Galerie Culinaire</h4>
+                                <p>Chaque plat est une œuvre d'art soignée et présentée</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                            <div class="feature-text">
+                                <h4>Ingrédients Frais</h4>
+                                <p>Sourçage local et respectueux de l'environnement</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-wine-glass"></i></div>
+                            <div class="feature-text">
+                                <h4>Sélection Oenologique</h4>
+                                <p>Vins français et internationaux sélectionnés avec soin</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-camera about-image-icon"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Nous Contacter</h2>
+            <div class="contact-grid">
+                <!-- Adresse -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Adresse</h3>
+                    <p>42 Rue de Turenne</p>
+                    <p>75003 Paris</p>
+                    <p>France</p>
+                </div>
+
+                <!-- Téléphone & Email -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-envelope"></i> Coordonnées</h3>
+                    <p><strong>Téléphone:</strong></p>
+                    <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                    <p style="margin-top: 1rem;"><strong>Email:</strong></p>
+                    <p><a href="mailto:hello@1erart.fr">hello@1erart.fr</a></p>
+                </div>
+
+                <!-- Horaires -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-clock"></i> Horaires d'Ouverture</h3>
+                    <ul class="hours-list">
+                        <li>
+                            <span class="hours-day">Lundi - Jeudi</span>
+                            <span class="hours-time">12h00 - 22h00</span>
+                        </li>
+                        <li>
+                            <span class="hours-day">Vendredi - Samedi</span>
+                            <span class="hours-time">12h00 - 23h30</span>
+                        </li>
+                        <li>
+                            <span class="hours-day">Dimanche</span>
+                            <span class="hours-time">12h00 - 21h00</span>
+                        </li>
+                        <li>
+                            <span class="hours-day">Fermé</span>
+                            <span class="hours-time">Jours fériés</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 1er Art - Restaurant & Galerie. Tous droits réservés.</p>
+        <p>Situé à Paris, France | <a href="#" style="color: #999; text-decoration: none;">Mentions Légales</a> | <a href="#" style="color: #999; text-decoration: none;">Politique de Confidentialité</a></p>
+        <div class="social-links">
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>

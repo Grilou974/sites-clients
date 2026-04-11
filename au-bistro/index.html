@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Au Bistro — Authentic Parisian Bistro — Paris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--burgundy:#722F37;--navy:#1B2A4A;--cream:#F5F0E8;--white:#FFFBF5;--copper:#B87333;--text:#2A2A2A;--light-text:#5A5A5A}
+    html{scroll-behavior:smooth}
+    body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+    /* FIXED NAVIGATION */
+    nav{position:fixed;top:0;width:100%;z-index:1000;padding:20px 50px;display:flex;justify-content:space-between;align-items:center;background:transparent;transition:all .4s ease}
+    nav.scrolled{background:rgba(27,42,74,.95);backdrop-filter:blur(12px);box-shadow:0 4px 12px rgba(0,0,0,.1);padding:16px 50px}
+    .logo{font-family:'Libre Baskerville',serif;font-size:1.3rem;font-weight:700;color:var(--burgundy);letter-spacing:2px;transition:color .3s}
+    nav.scrolled .logo{color:var(--copper)}
+    .nav-links{list-style:none;display:flex;gap:40px;margin:0}
+    .nav-links a{text-decoration:none;color:var(--light-text);font-size:.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--copper);transition:width .3s}
+    .nav-links a:hover::after{width:100%}
+    nav.scrolled .nav-links a{color:rgba(245,240,232,.7)}
+    nav.scrolled .nav-links a:hover{color:var(--copper)}
+
+    /* HERO SECTION (60-70vh) */
+    .hero{min-height:65vh;display:grid;grid-template-columns:55% 45%;background:linear-gradient(135deg,var(--burgundy) 0%,#5C1E25 100%);overflow:hidden;position:relative}
+    .hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(184,115,51,.03) 0,rgba(184,115,51,.03) 1px,transparent 1px,transparent 40px);pointer-events:none}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 70px;position:relative;z-index:2}
+    .h-tag{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--copper);margin-bottom:20px;font-weight:600}
+    .h-title{font-family:'Libre Baskerville',serif;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--white);line-height:1.1;margin-bottom:24px;font-weight:700}
+    .h-title em{font-style:italic;color:var(--copper)}
+    .h-desc{font-size:.95rem;line-height:1.8;color:rgba(245,240,232,.75);max-width:420px;margin-bottom:40px;font-weight:300}
+    .h-btns{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-copper{padding:13px 32px;background:var(--copper);color:var(--white);text-decoration:none;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;transition:all .3s;border:2px solid var(--copper);cursor:pointer;border:none}
+    .btn-copper:hover{background:transparent;color:var(--copper)}
+    .btn-wire{padding:13px 32px;border:2px solid rgba(184,115,51,.5);color:var(--copper);text-decoration:none;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;background:transparent;font-weight:600;cursor:pointer}
+    .btn-wire:hover{border-color:var(--copper);background:rgba(184,115,51,.1)}
+
+    .hero-right{background:linear-gradient(135deg,rgba(27,42,74,.9) 0%,rgba(114,47,55,.8) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .hero-right::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(184,115,51,.04) 0,rgba(184,115,51,.04) 1px,transparent 1px,transparent 30px);pointer-events:none}
+    .hero-card{position:relative;z-index:2;background:rgba(245,240,232,.08);border:1px solid rgba(184,115,51,.3);padding:45px 35px;color:var(--white);text-align:center;backdrop-filter:blur(12px)}
+    .hero-card i{font-size:3.2rem;color:var(--copper);margin-bottom:18px;display:block}
+    .hero-card h3{font-family:'Libre Baskerville',serif;font-size:1.4rem;margin-bottom:10px;font-weight:700}
+    .hero-card p{font-size:.8rem;color:rgba(245,240,232,.6);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+
+    /* ABOUT SECTION */
+    .about{padding:90px 50px;background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+    .tag{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--copper);margin-bottom:18px;display:block;font-weight:600}
+    h2.sec{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,3.5vw,3rem);color:var(--burgundy);line-height:1.2;margin-bottom:18px;font-weight:700}
+    .bar{width:40px;height:3px;background:var(--copper);margin:24px 0 32px}
+    p.bd{font-size:.95rem;line-height:1.85;color:var(--light-text);margin-bottom:18px;font-weight:300}
+
+    .about-features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+    .feat{background:var(--white);padding:28px;border-left:4px solid var(--copper);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+    .feat h4{font-family:'Libre Baskerville',serif;font-size:1.05rem;color:var(--burgundy);margin-bottom:8px;font-weight:700}
+    .feat p{font-size:.85rem;color:var(--light-text);line-height:1.6;font-weight:300}
+
+    .about-visual{background:linear-gradient(135deg,var(--burgundy) 0%,#5C1E25 100%);min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;padding:50px;position:relative;overflow:hidden}
+    .about-visual::before{content:'🍷';font-size:12rem;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.08}
+    .about-stat{color:var(--white);position:relative;z-index:2}
+    .about-stat h3{font-family:'Libre Baskerville',serif;font-size:3.5rem;color:var(--copper);font-weight:700;line-height:1}
+    .about-stat p{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-top:8px;font-weight:600}
+
+    /* MENU SECTION */
+    .menu{background:var(--navy);padding:90px 50px;color:var(--cream)}
+    .menu .tag{color:var(--copper);font-weight:600}
+    .menu h2.sec{color:var(--white)}
+    .menu .bar{background:var(--copper)}
+    .menu-layout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:50px;margin-top:60px}
+    .menu-col h3{font-family:'Libre Baskerville',serif;font-size:1.15rem;color:var(--copper);border-bottom:2px solid rgba(184,115,51,.3);padding-bottom:18px;margin-bottom:28px;font-weight:700}
+    .dish{padding:16px 0;border-bottom:1px solid rgba(245,240,232,.1);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .dish-name{font-size:.9rem;color:var(--cream);font-weight:500}
+    .dish-desc{font-size:.78rem;color:rgba(245,240,232,.5);margin-top:4px;font-style:italic;font-weight:300}
+    .dish-p{color:var(--copper);font-size:.9rem;white-space:nowrap;font-weight:600}
+
+    /* EVENTS SECTION */
+    .events{padding:90px 50px;background:var(--white)}
+    .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+    .event-card{background:var(--cream);padding:40px;border-top:4px solid var(--copper);transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+    .event-card:hover{transform:translateY(-8px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+    .event-day{font-size:.75rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-bottom:16px;font-weight:600}
+    .event-card h3{font-family:'Libre Baskerville',serif;font-size:1.25rem;color:var(--burgundy);margin-bottom:12px;font-weight:700}
+    .event-card p{font-size:.88rem;line-height:1.7;color:var(--light-text);font-weight:300}
+
+    /* CTA SECTION */
+    .cta{background:linear-gradient(135deg,var(--burgundy) 0%,#5C1E25 100%);padding:90px 50px;text-align:center;color:var(--white);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(184,115,51,.04) 0,rgba(184,115,51,.04) 1px,transparent 1px,transparent 40px);pointer-events:none}
+    .cta > *{position:relative;z-index:2}
+    .cta h2{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,4vw,3.5rem);margin-bottom:18px;font-weight:700}
+    .cta p{opacity:.8;max-width:520px;margin:0 auto 48px;line-height:1.85;font-size:.95rem;font-weight:300}
+    .contact-info{font-size:1.05rem;margin-bottom:40px;font-weight:500}
+    .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{background:#0F1620;color:rgba(245,240,232,.4);padding:60px 50px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;border-top:1px solid rgba(184,115,51,.2)}
+    footer h4{font-family:'Libre Baskerville',serif;color:var(--copper);font-size:.95rem;margin-bottom:18px;font-weight:700}
+    footer p,footer a{font-size:.85rem;line-height:2;color:rgba(245,240,232,.4);text-decoration:none;display:block;font-weight:300}
+    footer a:hover{color:var(--copper);transition:color .3s}
+    .foot-logo{font-family:'Libre Baskerville',serif;font-size:1.5rem;color:var(--copper);margin-bottom:12px;font-weight:700}
+    .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(184,115,51,.1);padding-top:28px;text-align:center;font-size:.75rem;font-weight:500}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav{padding:16px 30px}
+      nav.scrolled{padding:12px 30px}
+      .nav-links{gap:20px}
+      .nav-links a{font-size:.75rem}
+      .hero{grid-template-columns:1fr;min-height:auto}
+      .hero-left{padding:60px 30px}
+      .hero-right{padding:40px 30px;min-height:280px}
+      .about{grid-template-columns:1fr;gap:50px;padding:60px 30px}
+      .menu-layout{grid-template-columns:1fr;gap:36px}
+      .events-grid{grid-template-columns:1fr;gap:20px}
+      .cta{padding:60px 30px}
+      footer{grid-template-columns:1fr;gap:30px;padding:40px 30px}
+      .h-title{font-size:clamp(1.8rem,5vw,2.8rem)}
+      h2.sec{font-size:clamp(1.5rem,3vw,2.2rem)}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="logo">AU BISTRO</div>
+  <ul class="nav-links">
+    <li><a href="#about">Le Bistro</a></li>
+    <li><a href="#menu">La Carte</a></li>
+    <li><a href="#events">Vie du Bistro</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="h-tag">Paris 2e — Rue Montmartre</p>
+    <h1 class="h-title">Au <em>Bistro</em></h1>
+    <p class="h-desc">Depuis 1987, une table authentique au cœur de Paris. Zinc patiné, cuisine de saison, vins de vignerons. L'essence même du bistrot parisien.</p>
+    <div class="h-btns">
+      <a href="#menu" class="btn-copper">Notre Carte</a>
+      <a href="#cta" class="btn-wire">Trouver Nous</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <i class="fas fa-wine-glass-alt"></i>
+      <h3>Au Cœur de Paris</h3>
+      <p>2e Arrondissement · Ouvert 7j/7</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+  <div>
+    <span class="tag">Notre Histoire</span>
+    <h2 class="sec">Un bistrot<br>de quartier intemporel</h2>
+    <div class="bar"></div>
+    <p class="bd">Au Bistro, c'est l'esprit parisien dans toute sa pureté. Depuis nos débuts, nous servons une cuisine généreuse et sincère, celle qui se transmet de génération en génération. Zinc lustré par les coudes, banquettes en velours usé, miroirs tachés d'âge — tout raconte une histoire.</p>
+    <p class="bd">Nous croyons au fait maison, aux bons produits du marché et aux vins justes. Ici, on ne prétend pas. On cuisine comme on sait. Et ça plaît.</p>
+    <div class="about-features">
+      <div class="feat"><h4><i class="fas fa-leaf"></i> Marché du jour</h4><p>Sélection quotidienne des meilleurs produits</p></div>
+      <div class="feat"><h4><i class="fas fa-bottle-wine"></i> Vins Nature</h4><p>Vignerons partenaires, petites appellations</p></div>
+      <div class="feat"><h4><i class="fas fa-utensils"></i> Fait Maison</h4><p>Rien de surgelé, tout préparé sur place</p></div>
+      <div class="feat"><h4><i class="fas fa-users"></i> Convivialité</h4><p>La table commune pour se rencontrer</p></div>
+    </div>
+  </div>
+  <div class="about-visual">
+    <div class="about-stat"><h3>37 ans</h3><p>De traditions & d'amitié</p></div>
+  </div>
+</section>
+
+<!-- MENU SECTION -->
+<section class="menu" id="menu">
+  <span class="tag">À découvrir</span>
+  <h2 class="sec">La Carte</h2>
+  <div class="bar"></div>
+  <div class="menu-layout">
+    <div class="menu-col">
+      <h3>Entrées</h3>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Terrine de foie gras maison</div>
+          <div class="dish-desc">Pain d'épices et cornichons</div>
+        </div>
+        <span class="dish-p">18€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Œufs mayo</div>
+          <div class="dish-desc">Mayonnaise à l'ancienne</div>
+        </div>
+        <span class="dish-p">8€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Planche charcuterie</div>
+          <div class="dish-desc">Sélection de la région</div>
+        </div>
+        <span class="dish-p">16€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Soupe à l'oignon</div>
+          <div class="dish-desc">Gratinée au fromage</div>
+        </div>
+        <span class="dish-p">9€</span>
+      </div>
+    </div>
+    <div class="menu-col">
+      <h3>Plats du Bistrot</h3>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Steak frites</div>
+          <div class="dish-desc">Charolais, béarnaise maison</div>
+        </div>
+        <span class="dish-p">26€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Confit de canard</div>
+          <div class="dish-desc">Pommes sarladaises & salade</div>
+        </div>
+        <span class="dish-p">22€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Coq au vin</div>
+          <div class="dish-desc">Bourguignon traditionnel</div>
+        </div>
+        <span class="dish-p">21€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Sole meunière</div>
+          <div class="dish-desc">Beurre citron & légumes</div>
+        </div>
+        <span class="dish-p">24€</span>
+      </div>
+    </div>
+    <div class="menu-col">
+      <h3>Desserts & Boissons</h3>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Crème brûlée</div>
+          <div class="dish-desc">Vanille de Madagascar</div>
+        </div>
+        <span class="dish-p">8€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Mousse au chocolat</div>
+          <div class="dish-desc">Noir 70% — maison</div>
+        </div>
+        <span class="dish-p">7€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Tarte tatin</div>
+          <div class="dish-desc">Avec crème fraîche</div>
+        </div>
+        <span class="dish-p">8€</span>
+      </div>
+      <div class="dish">
+        <div>
+          <div class="dish-name">Verre vin nature</div>
+          <div class="dish-desc">Sélection du patron</div>
+        </div>
+        <span class="dish-p">7€</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section class="events" id="events">
+  <span class="tag">Nos Rendez-vous</span>
+  <h2 class="sec">La Vie du Bistro</h2>
+  <div class="bar"></div>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-day">Chaque soir</div>
+      <h3>L'apéro du Zinc</h3>
+      <p>De 17h à 19h30, au zinc ou en table. Pastis, kir, vins blancs frais. L'heure où le bistro revit vraiment.</p>
+    </div>
+    <div class="event-card">
+      <div class="event-day">Samedi & Dimanche</div>
+      <h3>Brunch du Week-end</h3>
+      <p>De 11h à 15h. Œufs, pains frais, fromages, charcuteries. Jus frais et café noisette en pagaille.</p>
+    </div>
+    <div class="event-card">
+      <div class="event-day">Sur réservation</div>
+      <h3>Dîner Privé</h3>
+      <p>Accueil de groupes jusqu'à 50 personnes. Menu spécial établi avec vous, ambiance chaleureuse garantie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta" id="cta">
+  <span class="tag" style="color:var(--copper)">Venez nous voir</span>
+  <h2>Ici, c'est simple<br>et c'est bon</h2>
+  <div class="contact-info">
+    42 Rue Montmartre, 75002 Paris<br>
+    Ouvert 7j/7 — 12h à 23h
+  </div>
+  <div class="cta-btns">
+    <a href="tel:0142361575" class="btn-copper">01 42 36 15 75</a>
+    <a href="#" class="btn-wire">Plan & Horaires</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="foot-logo">AU BISTRO</div>
+    <p>Bistrot traditionnel<br>Zinc & Tableaux<br>Paris 2e</p>
+  </div>
+  <div>
+    <h4>Horaires</h4>
+    <p>Lun–Ven : 12h–23h</p>
+    <p>Sam–Dim : 11h–23h30</p>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <a href="tel:0142361575">01 42 36 15 75</a>
+    <p>42 Rue Montmartre</p>
+    <p>75002 Paris</p>
+  </div>
+  <div class="foot-bottom">© 2025 Au Bistro — Depuis 1987 — Tous droits réservés</div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>

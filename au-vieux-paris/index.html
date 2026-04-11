@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Au Vieux Paris - Traditional Parisian Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest-green: #1B4332;
+            --gold: #BFA14A;
+            --parchment: #FDF6E3;
+            --dark-brown: #3E2723;
+            --light-gray: #F5F5F5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--dark-brown);
+            background-color: var(--parchment);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--forest-green);
+            color: var(--parchment);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--parchment);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(27, 67, 50, 0.85) 0%, rgba(62, 39, 35, 0.85) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23FDF6E3" width="1200" height="600"/><defs><pattern id="damask" patternUnits="userSpaceOnUse" width="200" height="200"><g fill="%23BFA14A" opacity="0.03"><path d="M100,50 Q120,80 100,110 Q80,80 100,50" /><circle cx="100" cy="100" r="30" /><path d="M50,100 L150,100 M100,50 L100,150" /></g></pattern></defs><rect fill="url(%23damask)" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: var(--parchment);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(45deg, transparent 48%, var(--gold) 49%, var(--gold) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--gold) 49%, var(--gold) 51%, transparent 52%);
+            background-size: 20px 20px;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            padding: 0.85rem 2.5rem;
+            background-color: var(--gold);
+            color: var(--forest-green);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .hero .cta-button:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        /* Decorative divider */
+        .divider {
+            text-align: center;
+            padding: 2rem 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--forest-green);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+            border-left: 8px solid var(--forest-green);
+            border-top: 2px solid var(--gold);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--forest-green);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .highlight-badge {
+            background-color: var(--forest-green);
+            color: var(--parchment);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--light-gray);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-category {
+            background-color: white;
+            padding: 2.5rem;
+            border: 2px solid var(--forest-green);
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(27, 67, 50, 0.15);
+        }
+
+        .menu-category h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--forest-green);
+            padding-bottom: 0.8rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--gold);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .menu-item-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--forest-green);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .menu-item-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            border-right: 8px solid var(--forest-green);
+            border-top: 2px solid var(--gold);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: var(--light-gray);
+            border-color: var(--gold);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--forest-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background-color: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 4px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 5px rgba(191, 161, 74, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--forest-green);
+            color: var(--parchment);
+            border: none;
+            border-radius: 2px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .submit-button:hover {
+            background-color: var(--dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(27, 67, 50, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--forest-green);
+            color: var(--parchment);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-divider {
+            color: var(--gold);
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--parchment);
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            section {
+                padding: 2.5rem 1rem;
+            }
+        }
+
+        /* Art Nouveau inspired borders */
+        .art-nouveau-border {
+            border-image: linear-gradient(45deg, var(--gold), var(--forest-green), var(--gold)) 1;
+        }
+
+        /* Ornamental elements */
+        .ornament {
+            display: inline-block;
+            color: var(--gold);
+            margin: 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">✦ AU VIEUX PARIS ✦</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>AU VIEUX PARIS</h1>
+            <div class="tagline">An Oasis of Elegance in the Heart of the City</div>
+            <div class="divider">✦ ✦ ✦</div>
+            <p style="font-size: 1.05rem; margin-bottom: 2rem; font-weight: 300;">Experience authentic Parisian dining in our beautifully restored historic restaurant, celebrating the culinary traditions of old Paris.</p>
+            <a href="#contact" class="cta-button">Reserve Your Table</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div>
+                <h2>Our Story</h2>
+                <p>Nestled in the charming streets of historic Paris, Au Vieux Paris has been a cherished destination for discerning diners since 1923. Our restaurant embodies the elegance and refinement of the Belle Époque era, with its original Belle Époque decor and timeless ambiance.</p>
+                <p>Every detail, from our Haussmann-era architecture to our carefully curated menu, reflects our commitment to preserving the authentic spirit of old Parisian cuisine and hospitality.</p>
+                <p>Our experienced team of chefs honors traditional French techniques while celebrating the finest seasonal ingredients from local suppliers.</p>
+                <div class="about-highlights">
+                    <span class="highlight-badge">✦ Historic Venue</span>
+                    <span class="highlight-badge">✦ Michelin-Trained Chefs</span>
+                    <span class="highlight-badge">✦ Romantic Ambiance</span>
+                    <span class="highlight-badge">✦ Classic French Cuisine</span>
+                </div>
+            </div>
+            <div style="text-align: center; color: var(--gold); font-size: 4rem; opacity: 0.2;">
+                <i class="fas fa-wine-glass-alt"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-grid">
+            <!-- Appetizers -->
+            <div class="menu-category">
+                <h3>Entrées</h3>
+                <div class="menu-item">
+                    <div class="menu-item-name">Escargots de Bourgogne</div>
+                    <div class="menu-item-description">Fresh garden snails in herb-butter sauce, served with warm crusty bread</div>
+                    <div class="menu-item-price">18€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Foie Gras Terrine</div>
+                    <div class="menu-item-description">Silky foie gras with Sauternes gelée and brioche toast</div>
+                    <div class="menu-item-price">24€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Soupe à l'Oignon</div>
+                    <div class="menu-item-description">Classic French onion soup with Gruyère crust</div>
+                    <div class="menu-item-price">12€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Pâté de Foie</div>
+                    <div class="menu-item-description">House-made country pâté with cornichons and Dijon mustard</div>
+                    <div class="menu-item-price">14€</div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div class="menu-category">
+                <h3>Plats Principaux</h3>
+                <div class="menu-item">
+                    <div class="menu-item-name">Coq au Vin</div>
+                    <div class="menu-item-description">Burgundy chicken braised with red wine, mushrooms, and pearl onions</div>
+                    <div class="menu-item-price">28€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Beef Bourguignon</div>
+                    <div class="menu-item-description">Tender beef stew in rich Burgundy wine sauce</div>
+                    <div class="menu-item-price">32€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Duck Confit</div>
+                    <div class="menu-item-description">Tender duck leg confit with crispy skin, served with pommes sarladaises</div>
+                    <div class="menu-item-price">26€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Sole Meunière</div>
+                    <div class="menu-item-description">Dover sole fillet pan-fried in brown butter with lemon</div>
+                    <div class="menu-item-price">30€</div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-category">
+                <h3>Desserts</h3>
+                <div class="menu-item">
+                    <div class="menu-item-name">Crème Brûlée</div>
+                    <div class="menu-item-description">Silky vanilla custard with caramelized sugar crust</div>
+                    <div class="menu-item-price">9€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Chocolate Soufflé</div>
+                    <div class="menu-item-description">Light and airy dark chocolate soufflé with warm chocolate sauce</div>
+                    <div class="menu-item-price">11€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Tarte Tatin</div>
+                    <div class="menu-item-description">Caramelized apple tart with vanilla ice cream</div>
+                    <div class="menu-item-price">10€</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-name">Panna Cotta</div>
+                    <div class="menu-item-description">Italian cream dessert with fresh berry coulis</div>
+                    <div class="menu-item-price">8€</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">✦ ✦ ✦</div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Reserve Your Table</h2>
+
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Address</h3>
+                <p>42 Rue de Rivoli<br>75004 Paris, France</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <p>+33 (1) 42-60-82-00<br>Open Daily 12pm-2pm, 7pm-10pm</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:reserve@auvieuxparis.fr" style="color: var(--gold); text-decoration: none;">reserve@auvieuxparis.fr</a></p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <input type="number" id="guests" name="guests" min="1" max="12" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Special Requests</label>
+                    <textarea id="message" name="message" placeholder="Allergies, celebrations, special occasions..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">REQUEST RESERVATION</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Au Vieux Paris. All rights reserved.</p>
+        <p>A tribute to the elegance and romance of historic Paris.</p>
+        <div class="footer-divider">✦ ✦ ✦</div>
+        <div class="social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
