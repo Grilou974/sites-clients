@@ -36,86 +36,18 @@ jobs:
               if slug == '':
                   continue
               if os.path.exists(slug):
-                  print(f"CONFLICT: {entry} -> {slug} already exists, skipping")
+                  print(f"CONFLICT: {entry} -> {slug} already exists")
                   continue
               subprocess.run(['git', 'mv', entry, slug], check=True)
               renamed.append(f"{entry} -> {slug}")
               print(f"Renamed: {entry} -> {slug}")
 
-          print(f"\nRenamed {len(renamed)} folders, skipped {len(skipped)} already-ok folders")
+          print(f"Renamed {len(renamed)} folders, skipped {len(skipped)}")
           PYEOF
       - name: Commit and push
         run: |
           git config user.name "Grilou974"
           git config user.email "agelougilles@gmail.com"
           git diff --cached --quiet && echo "Nothing to commit" && exit 0
-          git commit -m "Rename all folders to URL-safe slugs for GitHub Pages"
-          git pushname: Rename folders to URL-safe slugs
-
-on:
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  rename:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Rename folders
-        run: |
-          declare -A RENAMES
-          RENAMES["1er Art"]="1er-art"
-          RENAMES["Au Bistro"]="au-bistro"
-          RENAMES["Au Vieux Paris"]="au-vieux-paris"
-          RENAMES["Aux Viandes de Montmartre"]="aux-viandes-de-montmartre"
-          RENAMES["BARBER STYLE"]="barber-style"
-          RENAMES["Barber Le 20ème Avenue"]="barber-le-20eme-avenue"
-          RENAMES["Bistrot du Canal"]="bistrot-du-canal"
-          RENAMES["C' Clean"]="c-clean"
-          RENAMES["Café Carrousel"]="cafe-carrousel"
-          RENAMES["Chez Madame Lin"]="chez-madame-lin"
-          RENAMES["Comptoir de la Gastronomie"]="comptoir-de-la-gastronomie"
-          RENAMES["Cordonnerie Serrurerie Bastille"]="cordonnerie-serrurerie-bastille"
-          RENAMES["Grill Ménilmontant"]="grill-menilmontant"
-          RENAMES["Jolia Paris"]="jolia-paris"
-          RENAMES["Kat Pressing"]="kat-pressing"
-          RENAMES["Kebab Istanbul"]="kebab-istanbul"
-          RENAMES["La Cave A Cigares"]="la-cave-a-cigares"
-          RENAMES["La Fontaine Fleurie"]="la-fontaine-fleurie"
-          RENAMES["La Fournée de Flandre"]="la-fournee-de-flandre"
-          RENAMES["La Tour Montlhery - Chez Denise"]="la-tour-montlhery-chez-denise"
-          RENAMES["Laverie Smile Gare De L'Est"]="laverie-smile-gare-de-l-est"
-          RENAMES["Le Comice"]="le-comice"
-          RENAMES["Le Comptoir Gourmet"]="le-comptoir-gourmet"
-          RENAMES["Le Cordonnier Parisien"]="le-cordonnier-parisien"
-          RENAMES["Le Galibot"]="le-galibot"
-          RENAMES["Le Petit Bal"]="le-petit-bal"
-          RENAMES["Les Chartrons"]="les-chartrons"
-          RENAMES["Les Jalles"]="les-jalles"
-          RENAMES["Les Saveurs D'Italie"]="les-saveurs-d-italie"
-          RENAMES["Marilyn Institut"]="marilyn-institut"
-          RENAMES["New Festin Imperial"]="new-festin-imperial"
-          RENAMES["Pressing Dupleix"]="pressing-dupleix"
-          RENAMES["Safari Restaurant"]="safari-restaurant"
-          RENAMES["So Good"]="so-good"
-          RENAMES["Tabac Lepic"]="tabac-lepic"
-
-          for old in "${!RENAMES[@]}"; do
-            new="${RENAMES[$old]}"
-            if [ -d "$old" ]; then
-              echo "Renaming: $old -> $new"
-              git mv "$old" "$new"
-            else
-              echo "Skip (not found): $old"
-            fi
-          done
-
-      - name: Commit and push
-        run: |
-          git config user.name "Grilou974"
-          git config user.email "agelougilles@gmail.com"
           git commit -m "Rename all folders to URL-safe slugs for GitHub Pages"
           git push
