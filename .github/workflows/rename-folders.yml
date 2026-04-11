@@ -1,4 +1,56 @@
 name: Rename folders to URL-safe slugs
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rename:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rename folders with Python
+        run: |
+          python3 << 'PYEOF'
+          import os, re, unicodedata, subprocess
+
+          def slugify(name):
+              s = unicodedata.normalize('NFKD', name)
+              s = s.encode('ascii', 'ignore').decode('ascii')
+              s = s.lower().strip()
+              s = re.sub(r"[^a-z0-9]+", "-", s)
+              s = re.sub(r"-+", "-", s)
+              s = s.strip("-")
+              return s
+
+          skipped = []
+          renamed = []
+          for entry in sorted(os.listdir('.')):
+              if not os.path.isdir(entry):
+                  continue
+              if entry.startswith('.'):
+                  continue
+              slug = slugify(entry)
+              if slug == entry:
+                  skipped.append(entry)
+                  continue
+              if slug == '':
+                  continue
+              if os.path.exists(slug):
+                  print(f"CONFLICT: {entry} -> {slug} already exists, skipping")
+                  continue
+              subprocess.run(['git', 'mv', entry, slug], check=True)
+              renamed.append(f"{entry} -> {slug}")
+              print(f"Renamed: {entry} -> {slug}")
+
+          print(f"\nRenamed {len(renamed)} folders, skipped {len(skipped)} already-ok folders")
+          PYEOF
+      - name: Commit and push
+        run: |
+          git config user.name "Grilou974"
+          git config user.email "agelougilles@gmail.com"
+          git diff --cached --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "Rename all folders to URL-safe slugs for GitHub Pages"
+          git pushname: Rename folders to URL-safe slugs
 
 on:
   workflow_dispatch:
